@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saif — Frontend Developer</title>
+
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  --bg:#0f1419;
+  --panel:#1b2128;
+  --muted:#cfd8dc;
+  --accent-1:#00C6FF;
+  --accent-2:#0072FF;
+  --radius:14px;
+  --card-shadow:0 6px 20px rgba(0,0,0,0.35);
+  --max-width:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:white;line-height:1.6;display:flex;justify-content:center;padding:80px 16px 40px;}
+.container{max-width:var(--max-width);width:100%;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;border-radius:10px;}
+
+/* Navbar */
+nav {position:fixed;top:0;left:0;width:100%;backdrop-filter:blur(12px);background:rgba(15,20,25,0.65);border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 40px;z-index:1000;display:flex;justify-content:space-between;align-items:center;}
+nav .logo{font-weight:700;font-size:20px;}
+nav a{margin:0 12px;color:white;transition:0.3s;}
+nav a:hover{color:var(--accent-1);}
+
+/* Hero */
+header{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start;margin-bottom:50px;}
+.hero{flex:1 1 600px;margin-top:40px;}
+.hero .eyebrow{color:var(--muted);font-size:15px;margin-bottom:8px;}
+.hero h1{font-size:3rem;margin-bottom:12px;}
+.hero .gradient-text{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));-webkit-background-clip:text;color:transparent;}
+.hero .role{color:var(--muted);margin-bottom:20px;font-size:1.1rem;}
+.actions{display:flex;gap:12px;margin-top:14px;}
+.btn{padding:12px 22px;border-radius:12px;border:none;font-weight:600;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#01101a;cursor:pointer;transition:0.3s;}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(0,114,255,0.25);}
+.btn.secondary{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.2);}
+.btn.secondary:hover{background:rgba(255,255,255,0.05);}
+
+.profile-card{background:var(--panel);padding:20px;border-radius:var(--radius);width:280px;text-align:center;box-shadow:var(--card-shadow);}
+.profile-pic{width:170px;height:230px;margin:auto;overflow:hidden;border-radius:12px;margin-bottom:12px;}
+.profile-pic img{width:100%;height:100%;object-fit:cover;}
+.profile-card .name{font-weight:700;margin-bottom:6px;font-size:1.2rem;}
+.profile-card .role{font-size:14px;color:var(--muted);margin-bottom:12px;}
+
+/* Skills */
+.skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+.skill{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);transition:0.2s;font-size:14px;}
+.skill:hover{transform:scale(1.05);box-shadow:0 6px 20px rgba(0,198,255,0.15);}
+
+/* Projects */
+section.projects{margin-top:60px;}
+section h2{font-size:2rem;margin-bottom:20px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.card{background:var(--panel);padding:16px;border-radius:var(--radius);position:relative;overflow:hidden;box-shadow:var(--card-shadow);transition:0.3s;}
+.card:hover{transform:translateY(-5px);}
+.card .thumb{height:180px;overflow:hidden;border-radius:10px;margin-bottom:14px;}
+.card .thumb img{width:100%;height:100%;object-fit:cover;transition:0.4s;}
+.card:hover .thumb img{transform:scale(1.08);}
+.card h3{margin-bottom:6px;font-size:1.3rem;}
+.card p{color:var(--muted);font-size:15px;}
+
+/* Testimonials */
+.testimonials{margin-top:60px;}
+.swiper-slide{background:var(--panel);padding:18px;border-radius:var(--radius);}
+.testimonial{display:flex;gap:14px;align-items:flex-start;}
+.avatar{width:60px;height:60px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.avatar img{width:100%;height:100%;object-fit:cover;}
+.test-body{color:var(--muted);font-size:15px;}
+.client{font-weight:700;color:#cfefff;margin-top:8px;font-size:15px;}
+.swiper-pagination-bullet{background:white;opacity:0.5;}
+.swiper-pagination-bullet-active{background:var(--accent-1);opacity:1;}
+.swiper-button-next,.swiper-button-prev{color:white;}
+
+/* Contact */
+.contact{margin-top:60px;background:var(--panel);padding:22px;border-radius:var(--radius);}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+input,textarea{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:white;outline:none;font-size:15px;}
+input:focus,textarea:focus{border-color:var(--accent-1);box-shadow:0 6px 20px rgba(0,198,255,0.2);}
+
+/* Footer */
+footer{margin-top:40px;text-align:center;color:var(--muted);font-size:14px;padding:20px;}
+
+/* Back top */
+.back-top{position:fixed;right:20px;bottom:20px;width:50px;height:50px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));cursor:pointer;color:#01101a;font-size:20px;font-weight:bold;transition:0.3s;}
+.back-top:hover{transform:scale(1.1) rotate(10deg);}
+
+/* Floating WhatsApp */
+.whatsapp-float{position:fixed;width:55px;height:55px;bottom:90px;right:20px;background:#25D366;color:#fff;border-radius:50px;text-align:center;font-size:28px;z-index:1000;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+.whatsapp-float:hover{background:#20b857;}
+
+@media(max-width:900px){header{flex-direction:column;align-items:flex-start;}.profile-card{width:100%;}.row{grid-template-columns:1fr;}.hero h1{font-size:2.3rem;}}
+@media(max-width:480px){.hero h1{font-size:1.8rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Saif</div>
+  <div><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+</nav>
+
+<div class="container">
+<header>
+<div class="hero" data-aos="fade-up">
+  <div class="eyebrow">Frontend Developer — Responsive & Pixel-perfect</div>
+  <h1>Hi, I'm <span class="gradient-text">Saif</span> <span id="typed">Frontend Developer</span></h1>
+  <div class="role">I build modern, fast, responsive interfaces using HTML, CSS & JS.</div>
+  <div class="actions">
+    <a href="#projects" class="btn">View Work</a>
+    <a href="#contact" class="btn secondary">Hire Me</a>
+  </div>
+  <div class="skills" data-aos="fade-up" data-aos-delay="80">
+    <div class="skill">HTML</div><div class="skill">CSS</div>
+    <div class="skill">JavaScript</div><div class="skill">Responsive Design</div>
+    <div class="skill">Git & GitHub</div><div class="skill">Figma → Frontend</div>
+  </div>
+</div>
+<aside class="profile-card" data-aos="fade-left">
+  <div class="profile-pic"><img src="protfoliopic.png" alt="Saif"></div>
+  <div class="name">Saif</div>
+  <div class="role">Frontend Developer — Pakistan</div>
+  <a class="btn secondary" href="https://wa.me/923163533206" target="_blank">Contact</a>
+</aside>
+</header>
+
+<section id="projects" class="projects" data-aos="fade-up">
+<h2>Selected Projects</h2>
+<div class="grid">
+  <article class="card">
+    <div class="thumb"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt=""></div>
+    <h3>Landing Page — Startup</h3>
+    <p>Modern responsive landing page with animations and smooth layout.</p>
+  </article>
+  <article class="card">
+    <div class="thumb"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt=""></div>
+    <h3>Business Site</h3>
+    <p>Corporate style multi-section responsive business website.</p>
+  </article>
+  <article class="card">
+    <div class="thumb"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0" alt=""></div>
+    <h3>Product Card UI</h3>
+    <p>Interactive product card UI component for e-commerce platforms.</p>
+  </article>
+</div>
+</section>
+
+<section class="testimonials" data-aos="fade-up">
+<h2>Testimonials</h2>
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><div class="testimonial"><div class="avatar"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt=""></div><div><div class="test-body">“Great work — quick delivery and clean code.”</div><div class="client">— Zara Khan</div></div></div></div>
+    <div class="swiper-slide"><div class="testimonial"><div class="avatar"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt=""></div><div><div class="test-body">“Responsive and pixel-perfect design.”</div><div class="client">— Ali Raza</div></div></div></div>
+    <div class="swiper-slide"><div class="testimonial"><div class="avatar"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt=""></div><div><div class="test-body">“Very professional and easy to work with.”</div><div class="client">— Hira Ahmed</div></div></div></div>
+    <div class="swiper-slide"><div class="testimonial"><div class="avatar"><img src="https://randomuser.me/api/portraits/men/65.jpg" alt=""></div><div><div class="test-body">“服务非常好，团队专业高效！”</div><div class="client">— Li Wei, China</div></div></div></div>
+    <div class="swiper-slide"><div class="testimonial"><div class="avatar"><img src="https://randomuser.me/api/portraits/women/33.jpg" alt=""></div><div><div class="test-body">“Проект выполнен на высшем уровне!”</div><div class="client">— Olga Ivanova, Russia</div></div></div></div>
+    <div class="swiper-slide"><div class="testimonial"><div class="avatar"><img src="https://randomuser.me/api/portraits/men/18.jpg" alt=""></div><div><div class="test-body">“团队非常专业，结果超出预期！”</div><div class="client">— Zhang Min, China</div></div></div></div>
+    <div class="swiper-slide"><div class="testimonial"><div class="avatar"><img src="https://randomuser.me/api/portraits/women/55.jpg" alt=""></div><div><div class="test-body">“Loved working with them, highly professional.”</div><div class="client">— Maria Garcia, Spain</div></div></div></div>
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+</section>
+
+<section id="contact" class="contact" data-aos="fade-up">
+<h2>Contact</h2>
+<p>Send a message below or email me directly.</p>
+<form id="contactForm" action="https://formspree.io/f/mkgqzwdn" method="POST" style="display:grid;gap:14px;max-width:880px;">
+  <div class="row">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+  </div>
+  <textarea name="message" rows="6" placeholder="Message (brief)" required></textarea>
+  <div style="display:flex;gap:12px;align-items:center">
+    <button class="btn" type="submit">Send message</button>
+    <div style="color:var(--muted);font-size:14px">Or email: <a href="mailto:you@example.com">you@example.com</a></div>
+  </div>
+</form>
+</section>
+
+<footer>© 2025 Saif — Built with ❤ HTML, CSS & JS</footer>
+</div>
+
+<a href="#top" class="back-top">↑</a>
+<a href="https://wa.me/923163533206" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+AOS.init({duration:700,once:true});
+
+// typing animation
+(function(){
+  const elems=['Frontend Developer','Responsive UI','Pixel-perfect HTML & CSS'];
+  const el=document.getElementById('typed');let i=0, charIndex=0, direction=1;
+  function tick(){const word=elems[i];el.textContent=word.slice(0,charIndex);charIndex+=direction;if(charIndex===word.length+1){direction=-1;setTimeout(tick,800);return;}if(charIndex===0){direction=1;i=(i+1)%elems.length;}setTimeout(tick,70);}
+  tick();
+})();
+
+// testimonial slider infinite smooth
+const swiper = new Swiper('.mySwiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  loop: true,
+  freeMode: true,
+  speed: 8000,
+  autoplay: { delay: 1, disableOnInteraction: false },
+  pagination: { el: ".swiper-pagination", clickable: true },
+  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+});
+
+// contact form alert
+document.getElementById('contactForm').addEventListener('submit',function(e){alert('Your message has been sent!');});
+</script>
+</body>
+</html>
