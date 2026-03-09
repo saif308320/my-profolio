@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>3D Skew Developer Menu</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#2c313c;
+  font-family:Verdana;
+}
+
+ul{
+  position:relative;
+  transform:skewY(-15deg);
+}
+
+ul li{
+  position:relative;
+  list-style:none;
+  width:260px;
+  background:#3e3f46;
+  padding:18px 28px;
+  transition:0.5s;
+  z-index: calc(1 * var(--i));
+  margin-bottom:12px;
+  box-shadow: 0px 6px 12px rgba(0,0,0,.35);
+}
+
+/* Hover */
+ul li:hover{
+ background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  transform:translateX(-60px);
+  box-shadow:0px 12px 25px rgba(0,0,0,.6);
+}
+
+/* Left icon panel */
+ul li::before{
+  content:attr(data-icon);
+  font-family:"FontAwesome";
+  font-weight:900;
+  color:#bbb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  top:0;
+  left:-45px;
+  width:45px;
+  height:100%;
+  background:#2e3133;
+  transition:.5s;
+}
+
+ul li:hover::before{
+  color:#fff;
+ background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+}
+
+/* Top 3D cap */
+ul li::after{
+  content:"";
+  position:absolute;
+  top:-40px;
+  left:0;
+  width:100%;
+  height:40px;
+  background:#35383e;
+  transform-origin:bottom;
+  transform:skewX(45deg);
+  transition:.5s;
+}
+
+ul li:hover::after{
+ background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+}
+
+/* Text */
+ul li a{
+  text-decoration:none;
+  color:#ddd;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  transition:.5s;
+}
+
+ul li:hover a{
+  color:#fff;
+}
+
+/* Bottom shadow depth */
+ul li:last-child::after{
+  box-shadow:-120px 120px 25px rgba(0,0,0,.3);
+}
+
+</style>
+</head>
+
+<body>
+
+<ul>
+  <li style="--i:6;" data-icon="&#xf121;"><a href="#">Web Developer</a></li>
+  <li style="--i:5;" data-icon="&#xf19a;"><a href="#">WordPress Developer</a></li>
+  <li style="--i:4;" data-icon="&#xf7d9;"><a href="#">GHL Developer</a></li>
+  <li style="--i:3;" data-icon="&#xf1fc;"><a href="#">Figma Designer</a></li>
+  <li style="--i:2;" data-icon="&#xf5ad;"><a href="#">UI/UX Designer</a></li>
+  <li style="--i:1;" data-icon="&#xf0c3;"><a href="#">Automation Expert</a></li>
+</ul>
+
+</body>
+</html>

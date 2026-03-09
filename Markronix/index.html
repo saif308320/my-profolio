@@ -1,0 +1,172 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markonix Ultra Logo Animation</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    svg {
+      width: 80%;
+      max-width: 800px;
+      filter: drop-shadow(0 0 15px #ff002b);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 120px;
+      font-weight: 800;
+      fill: none;
+      stroke-width: 2;
+      stroke-dasharray: 1500;
+      stroke-dashoffset: 1500;
+      animation: draw 4s ease-in-out infinite alternate;
+    }
+
+    .white {
+      stroke: #ffffff;
+      filter: drop-shadow(0 0 10px #ffffff);
+    }
+
+    .red {
+      stroke: #ff002b;
+      filter: drop-shadow(0 0 15px #ff002b);
+      animation-delay: 2s;
+    }
+
+    @keyframes draw {
+      0% { stroke-dashoffset: 1500; opacity: 0.6; }
+      50% { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: 1500; opacity: 0.6; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,0,43,0.4) 0%, transparent 70%);
+      animation: moveGlow 6s linear infinite;
+      border-radius: 50%;
+      filter: blur(50px);
+    }
+
+    @keyframes moveGlow {
+      0% { transform: translate(-50%, -50%) translateX(-200px); }
+      50% { transform: translate(-50%, -50%) translateX(200px); }
+      100% { transform: translate(-50%, -50%) translateX(-200px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <svg viewBox="0 0 1000 200">
+    <text x="50" y="150" class="white">MARKO</text>
+    <text x="530" y="150" class="red">NIX</text>
+  </svg>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markonix Intro</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: opacity 1s ease;
+    }
+
+    svg {
+      width: 80%;
+      max-width: 800px;
+      filter: drop-shadow(0 0 15px #ff002b);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 120px;
+      font-weight: 800;
+      fill: none;
+      stroke-width: 2;
+      stroke-dasharray: 1500;
+      stroke-dashoffset: 1500;
+      animation: draw 4s ease-in-out infinite alternate;
+    }
+
+    .white { stroke: #ffffff; filter: drop-shadow(0 0 10px #ffffff); }
+    .red { stroke: #ff002b; filter: drop-shadow(0 0 15px #ff002b); animation-delay: 2s; }
+
+    @keyframes draw {
+      0% { stroke-dashoffset: 1500; opacity: 0.6; }
+      50% { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: 1500; opacity: 0.6; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,0,43,0.4) 0%, transparent 70%);
+      animation: moveGlow 6s linear infinite;
+      border-radius: 50%;
+      filter: blur(50px);
+    }
+
+    @keyframes moveGlow {
+      0% { transform: translate(-50%, -50%) translateX(-200px); }
+      50% { transform: translate(-50%, -50%) translateX(200px); }
+      100% { transform: translate(-50%, -50%) translateX(-200px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <svg viewBox="0 0 1000 200">
+    <text x="50" y="150" class="white">MARKO</text>
+    <text x="530" y="150" class="red">NIX</text>
+  </svg>
+
+  <script>
+    // Ensure everything is loaded before timer starts
+    window.addEventListener("load", () => {
+      console.log("Intro started...");
+      setTimeout(() => {
+        document.body.style.opacity = "0"; // fade out
+        setTimeout(() => {
+          window.location.href = "home.html"; // redirect
+        }, 1000); // 1s fade transition
+      }, 10000); // 15 sec delay
+    });
+  </script>
+</body>
+</html>

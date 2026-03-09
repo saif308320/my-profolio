@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login | Futuristic 3D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0c0f25;
+  overflow:hidden;
+  opacity:0;
+  animation:fadeIn 1s forwards;
+}
+@keyframes fadeIn{ to{opacity:1;} }
+
+.card{
+  width:400px;
+  padding:40px;
+  border-radius:20px;
+  background:linear-gradient(145deg,#1f1f45,#0c0f25);
+  box-shadow:0 20px 50px rgba(0,0,0,0.7);
+  transform-style:preserve-3d;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover{
+  transform: rotateY(5deg) rotateX(3deg) scale(1.02);
+  box-shadow:0 30px 60px rgba(0,0,0,0.8);
+}
+
+h2{text-align:center;margin-bottom:30px;color:#0dcaf0;text-shadow:0 0 12px #0dcaf0;}
+
+.field{position:relative;margin-bottom:25px;}
+.field input{
+  width:100%;
+  padding:12px 10px 12px 35px; /* left padding for icon */
+  background:transparent;
+  border:none;
+  border-bottom:2px solid #2defff;
+  color:#fff;
+  font-size:16px;
+  outline:none;
+  transition:border-color 0.3s;
+}
+.field input:focus{ border-color:#6a11cb; }
+.field i{
+  position:absolute;
+  left:10px;  /* ICON LEFT SIDE */
+  right:auto;
+  top:12px;
+  color:#2defff;
+  transition:0.3s;
+}
+.field input:focus + i{
+  color:#6a11cb;
+  transform:scale(1.2);
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#0dcaf0,#6a11cb);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 0 18px rgba(47,228,255,0.7);
+  font-size:16px;
+  transition:0.3s;
+}
+button:hover{
+  box-shadow:0 0 30px rgba(47,228,255,1);
+  transform:scale(1.05);
+}
+
+.links{text-align:center;margin-top:20px;font-size:14px;color:#ccc;}
+.links span{
+  color:#2defff;
+  cursor:pointer;
+  text-decoration:underline;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>Login</h2>
+  <div class="field">
+    <input type="text" placeholder="Username">
+    <i class="fas fa-user"></i>
+  </div>
+  <div class="field">
+    <input type="password" placeholder="Password">
+    <i class="fas fa-lock"></i>
+  </div>
+  <button>Login</button>
+  <div class="links">
+    Don’t have an account? 
+    <span onclick="transitionTo('registration.html')">Sign Up</span>
+  </div>
+</div>
+
+<script>
+function transitionTo(url){
+  document.body.style.opacity = 0;
+  setTimeout(()=>{ window.location.href = url; }, 600);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>5D Ultra Neon 3D Menu</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#1a1a2e;
+  font-family:Verdana;
+  perspective:1200px;
+}
+
+.container{
+  display:flex;
+  align-items:flex-start;
+  gap:60px;
+}
+
+/* MENU */
+ul{
+  transform:skewY(-15deg);
+}
+
+ul li{
+  position:relative;
+  list-style:none;
+  width:240px;
+  padding:20px 30px;
+  background:#2e2f44;
+  margin-bottom:15px;
+  cursor:pointer;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  transition:all 0.5s ease;
+  transform-style:preserve-3d;
+  z-index:1;
+}
+
+/* Neon pulse animation on hover */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow:0 0 15px #00f0ff40, 0 0 30px #aa00ff40 inset; }
+  50% { box-shadow:0 0 25px #00f0ff80, 0 0 50px #aa00ff80 inset; }
+}
+
+ul li:hover{
+  transform:translateX(-20px) rotateY(-15deg) rotateX(5deg) scale(1.05);
+  background: linear-gradient(135deg, #00f0ff, #aa00ff);
+  z-index:10;
+  animation: pulseGlow 1.2s infinite;
+}
+
+/* Icon panel */
+ul li::before{
+  content:attr(data-icon);
+  font-family:"FontAwesome";
+  font-weight:900;
+  color:#ccc;
+  position:absolute;
+  top:0;
+  left:-50px;
+  width:50px;
+  height:100%;
+  background:#1f1f3e;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:8px 0 0 8px;
+  transition:all 0.5s ease;
+}
+
+ul li:hover::before{
+  color:#fff;
+  background:#ff00aa;
+  box-shadow:0 0 20px #ff00aa, 0 0 40px #aa00ff;
+  animation: pulseGlow 1.2s infinite;
+}
+
+/* Top 3D cap */
+ul li::after{
+  content:"";
+  position:absolute;
+  top:-35px;
+  left:0;
+  width:100%;
+  height:35px;
+  background:#252544;
+  transform-origin:bottom;
+  transform:skewX(45deg);
+  transition:all 0.5s ease;
+  border-radius:12px;
+}
+
+ul li:hover::after{
+  background:#00f0ff;
+  box-shadow:0 10px 30px #00f0ff50;
+}
+
+/* Text */
+ul li a{
+  text-decoration:none;
+  color:#ddd;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  transition:color 0.5s ease;
+  font-weight:bold;
+  text-shadow:0 0 5px #00f0ff40;
+}
+
+ul li:hover a{
+  color:#fff;
+  text-shadow:0 0 10px #00f0ff, 0 0 20px #aa00ff;
+}
+
+/* Tabs */
+.tab-box{
+  width:450px;
+  background:#252544;
+  padding:30px;
+  border-radius:15px;
+  color:white;
+  box-shadow:0 10px 30px rgba(0,0,0,0.7);
+  display:none;
+  transform:translateX(40px) rotateY(-5deg);
+  transition:all 0.5s ease;
+}
+
+.tab-box.active{
+  display:block;
+  transform:translateX(0) rotateY(0deg);
+}
+
+.tab-box h2{
+  margin-bottom:15px;
+  color:#00f0ff;
+}
+
+.tab-box p{
+  line-height:1.5;
+  color:#ccc;
+}
+
+</style>
+</head>
+
+<body>
+<div class="container">
+  <ul>
+    <li data-icon="&#xf121;" onclick="openTab('web')"><a>Web Developer</a></li>
+    <li data-icon="&#xf19a;" onclick="openTab('wp')"><a>WordPress Developer</a></li>
+    <li data-icon="&#xf7d9;" onclick="openTab('ghl')"><a>GHL Developer</a></li>
+    <li data-icon="&#xf1fc;" onclick="openTab('figma')"><a>Figma Designer</a></li>
+    <li data-icon="&#xf5ad;" onclick="openTab('uiux')"><a>UI/UX Designer</a></li>
+    <li data-icon="&#xf0c3;" onclick="openTab('auto')"><a>Automation Expert</a></li>
+  </ul>
+
+  <div>
+    <div class="tab-box" id="web">
+      <h2>Web Developer</h2>
+      <p>I build modern responsive websites using HTML, CSS, JavaScript & latest frameworks.</p>
+    </div>
+
+    <div class="tab-box" id="wp">
+      <h2>WordPress Developer</h2>
+      <p>Custom WordPress themes, Elementor, WooCommerce & high converting websites.</p>
+    </div>
+
+    <div class="tab-box" id="ghl">
+      <h2>GHL Developer</h2>
+      <p>GoHighLevel funnels, automations, CRM setups and full marketing systems.</p>
+    </div>
+
+    <div class="tab-box" id="figma">
+      <h2>Figma Designer</h2>
+      <p>Pixel perfect UI mockups, wireframes and interactive prototypes.</p>
+    </div>
+
+    <div class="tab-box" id="uiux">
+      <h2>UI / UX Designer</h2>
+      <p>Modern interface designing with user experience best practices.</p>
+    </div>
+
+    <div class="tab-box" id="auto">
+      <h2>Automation Expert</h2>
+      <p>Zapier + API + automation workflows to save time & boost conversions.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openTab(id){
+  document.querySelectorAll(".tab-box").forEach(box=>{
+    box.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!-- Portfolio Section Start -->
+<style>
+.portfolio-section {
+  background: linear-gradient(135deg, #0F172A 60%, #7C3AED 100%);
+  color: #E0E7FF;
+  padding: 64px 0 0 0;
+  font-family: 'Inter', sans-serif;
+}
+.portfolio-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.portfolio-intro {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.portfolio-intro h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #00D9FF;
+  margin-bottom: 12px;
+}
+.portfolio-intro .badges {
+  margin-bottom: 18px;
+}
+.badge {
+  display: inline-block;
+  background: #7C3AED;
+  color: #fff;
+  border-radius: 16px;
+  padding: 6px 18px;
+  margin: 0 6px 6px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(124,62,237,0.12);
+}
+.portfolio-intro p {
+  font-size: 1.2rem;
+  color: #A5B4FC;
+  margin-bottom: 24px;
+}
+.portfolio-intro .cta-btns {
+  margin-bottom: 24px;
+}
+.cta-btn {
+  background: linear-gradient(90deg, #00D9FF 60%, #7C3AED 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,217,255,0.12);
+  transition: transform 0.2s;
+}
+.cta-btn:hover {
+  transform: scale(1.08);
+}
+.stats-cards {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+.stat-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,217,255,0.08);
+  position: relative;
+}
+.stat-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  color: #F7B801;
+  animation: bounce 1.2s infinite alternate;
+}
+@keyframes bounce {
+  to { transform: translateY(-8px);}
+}
+.stat-number {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #00D9FF;
+}
+.stat-label {
+  font-size: 1rem;
+  color: #A5B4FC;
+  margin-top: 4px;
+}
+.skills-section {
+  margin-bottom: 48px;
+}
+.skills-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.skill-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(124,62,237,0.08);
+  transition: transform 0.2s;
+  border: 2px solid #00D9FF;
+}
+.skill-card:hover {
+  transform: scale(1.06);
+  border-color: #7C3AED;
+}
+.skill-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  color: #FF6B35;
+  animation: bounce 1.2s infinite alternate;
+}
+.skill-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00D9FF;
+  margin-bottom: 6px;
+}
+.skill-desc {
+  font-size: 1rem;
+  color: #A5B4FC;
+  margin-bottom: 12px;
+}
+.skill-bar-bg {
+  background: #1A1A2E;
+  border-radius: 8px;
+  height: 10px;
+  width: 100%;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  background: linear-gradient(90deg, #00D9FF 60%, #7C3AED 100%);
+  height: 100%;
+  border-radius: 8px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.projects-section {
+  margin-bottom: 48px;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+.project-card {
+  background: rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,217,255,0.08);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid #7C3AED;
+}
+.project-card:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 8px 32px rgba(124,62,237,0.18);
+}
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #00D9FF;
+  margin-bottom: 6px;
+}
+.project-badge {
+  display: inline-block;
+  background: #F7B801;
+  color: #0F172A;
+  border-radius: 12px;
+  padding: 3px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.project-tech {
+  font-size: 0.95rem;
+  color: #A5B4FC;
+  margin-bottom: 8px;
+}
+.project-rating {
+  color: #F7B801;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.project-cta {
+  display: inline-block;
+  background: linear-gradient(90deg, #00D9FF 60%, #7C3AED 100%);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.project-cta:hover {
+  background: linear-gradient(90deg, #7C3AED 60%, #00D9FF 100%);
+  transform: scale(1.08);
+}
+.testimonials-section {
+  margin-bottom: 48px;
+}
+.testimonials-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.testimonial-card {
+  background: rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 260px;
+  box-shadow: 0 2px 12px rgba(247,184,1,0.08);
+  transition: transform 0.2s;
+  border: 2px solid #F7B801;
+}
+.testimonial-card:hover {
+  transform: scale(1.04);
+  border-color: #00D9FF;
+}
+.testimonial-stars {
+  color: #F7B801;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  animation: pulse 1.2s infinite alternate;
+}
+@keyframes pulse {
+  to { color: #FF6B35;}
+}
+.testimonial-quote {
+  font-size: 1rem;
+  color: #A5B4FC;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.testimonial-client {
+  font-size: 0.95rem;
+  color: #E0E7FF;
+  font-weight: 600;
+}
+.cta-section {
+  background: linear-gradient(90deg, #00D9FF 60%, #7C3AED 100%);
+  padding: 48px 0;
+  text-align: center;
+  border-radius: 24px;
+  margin-bottom: 48px;
+}
+.cta-section h2 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+.cta-section p {
+  font-size: 1.1rem;
+  color: #E0E7FF;
+  margin-bottom: 24px;
+}
+.cta-section .cta-btn {
+  background: #fff;
+  color: #00D9FF;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,217,255,0.12);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.cta-section .cta-btn:hover {
+  background: #7C3AED;
+  color: #fff;
+  transform: scale(1.08);
+}
+@media (max-width: 900px) {
+  .stats-cards, .skills-grid, .testimonials-grid {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+</style>
+
+<section class="portfolio-section">
+  <div class="portfolio-container">
+
+    <!-- Personal Intro Block -->
+    <div class="portfolio-intro">
+      <h1>Saifullah</h1>
+      <div class="badges">
+        <span class="badge">Innovative</span>
+        <span class="badge">Detail-Oriented</span>
+        <span class="badge">Fast Delivery</span>
+        <span class="badge">Client-Focused</span>
+      </div>
+      <p>GHL Developer | Father: Asif Soomro<br>
+      Passionate about building modern, high-converting web experiences. 20+ projects delivered in 1 month. Expert in HTML, CSS, JavaScript, and GHL Convert Building.</p>
+      <div class="cta-btns">
+        <button class="cta-btn">Get In Touch</button>
+        <button class="cta-btn">View Work</button>
+      </div>
+      <div class="stats-cards">
+        <div class="stat-card">
+          <div class="stat-icon">🚀</div>
+          <div class="stat-number" id="projects-count">0</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-number" id="satisfaction-count">0</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💡</div>
+          <div class="stat-number" id="skills-count">0</div>
+          <div class="stat-label">Core Skills</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number" id="experience-count">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Block -->
+    <div class="skills-section">
+      <h2 style="text-align:center;color:#00D9FF;font-size:2rem;font-weight:700;margin-bottom:24px;">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-title">HTML</div>
+          <div class="skill-desc">Semantic, accessible markup for modern web apps.</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <div class="skill-title">CSS</div>
+          <div class="skill-desc">Responsive, animated, and visually stunning styles.</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92%"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">⚡</div>
+          <div class="skill-title">JavaScript</div>
+          <div class="skill-desc">Dynamic, interactive, and high-performance code.</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔧</div>
+          <div class="skill-title">GHL Convert Building</div>
+          <div class="skill-desc">Expert in GHL page builder and conversion funnels.</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Block -->
+    <div class="projects-section">
+      <h2 style="text-align:center;color:#7C3AED;font-size:2rem;font-weight:700;margin-bottom:24px;">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-title">E-Commerce Platform</div>
+          <div class="project-badge">E-Commerce</div>
+          <div class="project-tech">HTML, CSS, JS, GHL</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">SaaS Dashboard</div>
+          <div class="project-badge">SaaS</div>
+          <div class="project-tech">HTML, CSS, JS</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Landing Page Redesign</div>
+          <div class="project-badge">Landing Page</div>
+          <div class="project-tech">HTML, CSS, GHL</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Client Portal</div>
+          <div class="project-badge">Portal</div>
+          <div class="project-tech">HTML, CSS, JS</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Mobile Responsive Site</div>
+          <div class="project-badge">Mobile</div>
+          <div class="project-tech">HTML, CSS</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Interactive Web App</div>
+          <div class="project-badge">Web App</div>
+          <div class="project-tech">HTML, CSS, JS</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Business Website</div>
+          <div class="project-badge">Business</div>
+          <div class="project-tech">HTML, CSS, JS, GHL</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Conversion Funnel</div>
+          <div class="project-badge">Funnel</div>
+          <div class="project-tech">HTML, CSS, GHL</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Portfolio Website</div>
+          <div class="project-badge">Portfolio</div>
+          <div class="project-tech">HTML, CSS, JS</div>
+          <div class="project-rating">★★★★★</div>
+          <a href="#" class="project-cta">View Project</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Block -->
+    <div class="testimonials-section">
+      <h2 style="text-align:center;color:#F7B801;font-size:2rem;font-weight:700;margin-bottom:24px;">Client Testimonials</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-quote">"Saifullah delivered our project ahead of schedule and exceeded expectations. Highly recommended!"</div>
+          <div class="testimonial-client">- John Doe, CEO</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-quote">"Professional, creative, and always available for support. Will work again!"</div>
+          <div class="testimonial-client">- Jane Smith, Marketing Lead</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-quote">"The best GHL developer I've worked with. Fast and reliable."</div>
+          <div class="testimonial-client">- Alex Lee, Product Manager</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Block -->
+    <div class="cta-section">
+      <h2>Ready to Bring Your Vision to Life?</h2>
+      <p>Let's build something amazing together. Start your project or schedule a call now!</p>
+      <button class="cta-btn">Start a Project</button>
+      <button class="cta-btn">Schedule a Call</button>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript for Animated Counters and Skill Bars -->
+<script>
+function animateCounter(id, end, duration) {
+  let start = 0;
+  const step = Math.ceil(end / (duration / 20));
+  const el = document.getElementById(id);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= end) {
+      el.textContent = end;
+      clearInterval(timer);
+    } else {
+      el.textContent = start;
+    }
+  }, 20);
+}
+window.addEventListener('DOMContentLoaded', () => {
+  animateCounter('projects-count', 25, 1200);
+  animateCounter('satisfaction-count', 100, 1200);
+  animateCounter('skills-count', 4, 1200);
+  animateCounter('experience-count', 2, 1200);
+
+  document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+    setTimeout(() => {
+      bar.style.width = bar.getAttribute('data-width');
+    }, 400);
+  });
+});
+</script>  

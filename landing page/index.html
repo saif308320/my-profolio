@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pro Landing — Portfolio Template</title>
+  <meta name="description" content="Professional landing page template — hero, features, about, testimonials, pricing, blog, FAQ.">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ScrollReveal for scroll animations -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    :root{
+      --brand-600:#4f46e5;
+      --brand-400:#7c3aed;
+    }
+    html,body{height:100%}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: linear-gradient(180deg,#fbfdff 0%, #f3f7ff 100%);
+      color:#0f172a;
+    }
+    /* subtle card hover */
+    .card-hover{transition: transform .28s ease, box-shadow .28s ease;}
+    .card-hover:hover{transform:translateY(-8px)}
+    /* avatar ring */
+    .avatar-ring{box-shadow:0 4px 18px rgba(79,70,229,.12);border:4px solid white}
+    /* hero decorative */
+    .hero-deco{position:absolute; right:-120px; top:-40px; width:420px; height:420px; filter:blur(36px); opacity:.18; pointer-events:none; transform:rotate(18deg);}
+    /* responsive adjustments */
+    @media (max-width:768px){
+      .hero-deco{display:none}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="w-full bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white font-bold">PB</div>
+        <span class="font-semibold text-lg">ProBrand</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="#features" class="hover:text-indigo-600">Features</a>
+        <a href="#about" class="hover:text-indigo-600">About</a>
+        <a href="#testimonials" class="hover:text-indigo-600">Testimonials</a>
+        <a href="#pricing" class="hover:text-indigo-600">Pricing</a>
+        <a href="#blog" class="hover:text-indigo-600">Blog</a>
+        <a href="#faq" class="hover:text-indigo-600">FAQ</a>
+        <a href="#contact" class="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 ml-2">Contact</a>
+      </nav>
+
+      <div class="md:hidden">
+        <button id="mobileBtn" aria-expanded="false" class="p-2 rounded-md border border-slate-200">
+          <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 bg-white">
+      <div class="px-6 py-4 space-y-3">
+        <a href="#features" class="block">Features</a>
+        <a href="#about" class="block">About</a>
+        <a href="#testimonials" class="block">Testimonials</a>
+        <a href="#pricing" class="block">Pricing</a>
+        <a href="#blog" class="block">Blog</a>
+        <a href="#faq" class="block">FAQ</a>
+        <a href="#contact" class="block text-indigo-600 font-semibold">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="relative overflow-hidden">
+      <div class="hero-deco bg-gradient-to-tr from-indigo-400 to-pink-400 rounded-full"></div>
+
+      <div class="max-w-7xl mx-auto px-6 md:px-10 py-20 lg:py-28 flex flex-col lg:flex-row items-center gap-12">
+        <div class="w-full lg:w-6/12" data-sr>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 mb-4">
+            Build & Scale <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">beautiful</span> products — fast.
+          </h1>
+          <p class="text-slate-600 mb-6 max-w-xl">
+            I design and build modern websites and web apps with performance, accessibility, and conversion in mind. Clean code, polished UI and pixel-perfect execution.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <a href="#contact" class="inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 to-violet-600 text-white px-5 py-3 rounded-lg shadow-lg hover:scale-[1.02] transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-90" viewBox="0 0 20 20" fill="currentColor"><path d="M2 5a2 2 0 012-2h3.5a1 1 0 01.8.4l1 1.5a1 1 0 00.8.4H16a2 2 0 012 2v3.5a1 1 0 01-.4.8l-1.5 1a1 1 0 00-.4.8V18a2 2 0 01-2 2H7a2 2 0 01-2-2V5z"/></svg>
+              Get Started
+            </a>
+
+            <a href="#features" class="inline-flex items-center gap-2 px-4 py-3 border border-slate-200 rounded-lg hover:bg-slate-50">
+              See Features
+            </a>
+
+            <a href="/resume.pdf" class="inline-flex items-center gap-2 px-4 py-3 border border-slate-200 rounded-lg ml-2">
+              Download Resume
+            </a>
+          </div>
+
+          <div class="mt-8 flex items-center gap-6 text-sm text-slate-600">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=60&h=60&fit=crop&auto=format&dpr=1" onerror="this.src='https://via.placeholder.com/60x60.png?text=U';" class="w-10 h-10 rounded-full avatar-ring" alt="client">
+              <div>
+                <div class="font-semibold text-slate-900">Trusted by</div>
+                <div class="text-xs">Startups & Agencies worldwide</div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="text-xs text-slate-500">Avg. project delivery</div>
+              <div class="font-semibold text-slate-900">2–4 weeks</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-6/12 flex justify-center" data-sr>
+          <!-- hero image with fallback -->
+          <picture class="rounded-2xl shadow-2xl overflow-hidden">
+            <source srcset="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1200&fit=crop&auto=format&dpr=1" />
+            <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1200&fit=crop&auto=format&dpr=1"
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/900x600.png?text=Team+Meeting';"
+                 alt="Team meeting"
+                 class="w-full max-w-xl object-cover"/>
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-16">
+      <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="text-center mb-10" data-sr>
+          <h2 class="text-2xl font-semibold">What I Offer</h2>
+          <p class="text-slate-600 max-w-2xl mx-auto mt-2">From landing pages to complex SaaS dashboards — I craft high-converting experiences.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- card -->
+          <article class="bg-white rounded-2xl p-6 card-hover shadow" data-sr>
+            <img class="w-full h-44 object-cover rounded-md mb-4"
+                 src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/600x360.png?text=Design';"
+                 alt="Design">
+            <h3 class="text-lg font-semibold mb-2">Pixel-perfect UI</h3>
+            <p class="text-slate-600">Design systems, responsive components, and polished micro-interactions.</p>
+          </article>
+
+          <article class="bg-white rounded-2xl p-6 card-hover shadow" data-sr>
+            <img class="w-full h-44 object-cover rounded-md mb-4"
+                 src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/600x360.png?text=Code';"
+                 alt="Development">
+            <h3 class="text-lg font-semibold mb-2">Front-end Development</h3>
+            <p class="text-slate-600">HTML, CSS, JavaScript, React — performance focused and accessible.</p>
+          </article>
+
+          <article class="bg-white rounded-2xl p-6 card-hover shadow" data-sr>
+            <img class="w-full h-44 object-cover rounded-md mb-4"
+                 src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/600x360.png?text=Support';"
+                 alt="Support">
+            <h3 class="text-lg font-semibold mb-2">Maintenance & Support</h3>
+            <p class="text-slate-600">Post-launch monitoring, feature updates and performance optimizations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-2 gap-10 items-center">
+        <div data-sr>
+          <img class="rounded-2xl shadow-lg w-full object-cover" alt="office"
+               src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&fit=crop&auto=format&dpr=1"
+               onerror="this.src='https://via.placeholder.com/800x520.png?text=Office';">
+        </div>
+
+        <div data-sr>
+          <h2 class="text-3xl font-bold mb-4">Small team. Big impact.</h2>
+          <p class="text-slate-600 mb-6">I partner with founders and product teams to ship features quickly and move the needle. My process focuses on clear communication, iterative design, and measurable results.</p>
+
+          <ul class="space-y-3 text-slate-700">
+            <li class="flex items-start gap-3"><span class="text-indigo-600 mt-1">✔</span> Clean, maintainable code</li>
+            <li class="flex items-start gap-3"><span class="text-indigo-600 mt-1">✔</span> Accessibility-first approach</li>
+            <li class="flex items-start gap-3"><span class="text-indigo-600 mt-1">✔</span> Fast load times & SEO basics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-16">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 text-center">
+        <h2 class="text-2xl font-semibold mb-6">Trusted by teams worldwide</h2>
+        <p class="text-slate-600 max-w-2xl mx-auto mb-8">Real feedback from customers and partners.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <figure class="bg-white rounded-2xl p-6 shadow card-hover" data-sr>
+            <img class="w-14 h-14 rounded-full mx-auto avatar-ring mb-4"
+                 src="https://images.unsplash.com/photo-1545996124-7fa0c5a3f41d?q=80&w=80&h=80&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/80x80.png?text=JD';" alt="client">
+            <blockquote class="text-slate-700 italic mb-3">"They shipped our landing page in 7 days — conversion rates jumped 38%."</blockquote>
+            <figcaption class="text-sm font-semibold">— Leila M., Founder</figcaption>
+          </figure>
+
+          <figure class="bg-white rounded-2xl p-6 shadow card-hover" data-sr>
+            <img class="w-14 h-14 rounded-full mx-auto avatar-ring mb-4"
+                 src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=80&h=80&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/80x80.png?text=AS';" alt="client">
+            <blockquote class="text-slate-700 italic mb-3">"Clear communication and thoughtful UX. Couldn't be happier."</blockquote>
+            <figcaption class="text-sm font-semibold">— Omar R., Product Lead</figcaption>
+          </figure>
+
+          <figure class="bg-white rounded-2xl p-6 shadow card-hover" data-sr>
+            <img class="w-14 h-14 rounded-full mx-auto avatar-ring mb-4"
+                 src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=80&h=80&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/80x80.png?text=EC';" alt="client">
+            <blockquote class="text-slate-700 italic mb-3">"Professional, proactive and fast — highly recommend."</blockquote>
+            <figcaption class="text-sm font-semibold">— Priya S., Marketing</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-16 bg-gradient-to-b from-white to-slate-50">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 text-center">
+        <h2 class="text-2xl font-semibold mb-4">Pricing plans</h2>
+        <p class="text-slate-600 max-w-2xl mx-auto mb-8">Simple pricing for small teams and startups. Custom enterprise plans available.</p>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="bg-white rounded-2xl p-6 shadow card-hover" data-sr>
+            <div class="text-slate-700 font-semibold text-lg mb-2">Starter</div>
+            <div class="text-3xl font-extrabold text-indigo-600 mb-4">$29<span class="text-sm font-medium text-slate-500">/mo</span></div>
+            <ul class="text-slate-600 mb-5 space-y-2">
+              <li>• Up to 5 pages</li>
+              <li>• Basic design system</li>
+              <li>• Email support</li>
+            </ul>
+            <button class="w-full py-2 rounded-md bg-indigo-600 text-white">Get Started</button>
+          </div>
+
+          <div class="bg-indigo-600 text-white rounded-2xl p-6 shadow-xl transform scale-100 md:scale-105" data-sr>
+            <div class="font-semibold text-lg mb-2">Pro</div>
+            <div class="text-3xl font-extrabold mb-4">$79<span class="text-sm font-medium text-indigo-100">/mo</span></div>
+            <ul class="mb-5 space-y-2">
+              <li>• Unlimited pages</li>
+              <li>• Component library</li>
+              <li>• Priority support</li>
+            </ul>
+            <button class="w-full py-2 rounded-md bg-white text-indigo-600 font-semibold">Choose Pro</button>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow card-hover" data-sr>
+            <div class="text-slate-700 font-semibold text-lg mb-2">Enterprise</div>
+            <div class="text-3xl font-extrabold text-indigo-600 mb-4">Custom</div>
+            <ul class="text-slate-600 mb-5 space-y-2">
+              <li>• Custom integrations</li>
+              <li>• Dedicated engineer</li>
+              <li>• 24/7 support</li>
+            </ul>
+            <button class="w-full py-2 rounded-md bg-indigo-600 text-white">Contact Sales</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" class="py-16">
+      <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <div class="text-center mb-8" data-sr>
+          <h2 class="text-2xl font-semibold">Latest articles</h2>
+          <p class="text-slate-600 mt-2">Short practical reads about product design & front-end development.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="bg-white rounded-2xl overflow-hidden shadow card-hover" data-sr>
+            <img class="w-full h-48 object-cover" alt="blog1"
+                 src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/800x480.png?text=Blog+1';">
+            <div class="p-5">
+              <h3 class="font-semibold mb-2">How to design landing pages that convert</h3>
+              <p class="text-slate-600 text-sm mb-4">A short checklist you can use to optimize hero sections and CTAs.</p>
+              <a class="text-indigo-600 font-semibold" href="#">Read more →</a>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl overflow-hidden shadow card-hover" data-sr>
+            <img class="w-full h-48 object-cover" alt="blog2"
+                 src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/800x480.png?text=Blog+2';">
+            <div class="p-5">
+              <h3 class="font-semibold mb-2">Top front-end performance tips</h3>
+              <p class="text-slate-600 text-sm mb-4">Real, pragmatic steps to make pages load faster.</p>
+              <a class="text-indigo-600 font-semibold" href="#">Read more →</a>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl overflow-hidden shadow card-hover" data-sr>
+            <img class="w-full h-48 object-cover" alt="blog3"
+                 src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&fit=crop&auto=format&dpr=1"
+                 onerror="this.src='https://via.placeholder.com/800x480.png?text=Blog+3';">
+            <div class="p-5">
+              <h3 class="font-semibold mb-2">A practical guide to responsive grids</h3>
+              <p class="text-slate-600 text-sm mb-4">How to think about columns, gaps and breakpoints.</p>
+              <a class="text-indigo-600 font-semibold" href="#">Read more →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-6 md:px-10">
+        <h2 class="text-center text-2xl font-semibold mb-8" data-sr>Frequently asked</h2>
+
+        <div class="space-y-4">
+          <details class="p-5 rounded-lg bg-slate-50" open data-sr>
+            <summary class="font-medium cursor-pointer">How do I get started?</summary>
+            <div class="mt-3 text-slate-600">Drop a message via the contact form or email — we'll schedule a short discovery call.</div>
+          </details>
+
+          <details class="p-5 rounded-lg bg-slate-50" data-sr>
+            <summary class="font-medium cursor-pointer">Do you build full product UI or only landing pages?</summary>
+            <div class="mt-3 text-slate-600">Both. From marketing pages to complex dashboards and component libraries.</div>
+          </details>
+
+          <details class="p-5 rounded-lg bg-slate-50" data-sr>
+            <summary class="font-medium cursor-pointer">What technologies do you use?</summary>
+            <div class="mt-3 text-slate-600">HTML, CSS (Tailwind), JavaScript — optionally React / Next.js for apps.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / CONTACT -->
+    <section id="contact" class="py-16">
+      <div class="max-w-5xl mx-auto px-6 md:px-10 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-2xl p-8 text-white shadow-xl" data-sr>
+        <div class="grid md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h2 class="text-2xl font-semibold mb-2">Ready to build something great?</h2>
+            <p class="text-white/90 mb-4">Send a short message and I'll reply within one business day.</p>
+            <div class="flex gap-3">
+              <a href="#contact" class="px-4 py-2 bg-white text-indigo-600 rounded-md font-semibold">Contact Me</a>
+              <a href="/resume.pdf" class="px-4 py-2 border border-white/30 rounded-md">Download Resume</a>
+            </div>
+          </div>
+
+          <form id="contactForm" class="bg-white rounded-lg p-4 text-slate-700" onsubmit="event.preventDefault(); alert('Demo form — integrate your backend.');">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <input required placeholder="Your name" class="p-3 border rounded-md" />
+              <input required type="email" placeholder="Email" class="p-3 border rounded-md" />
+            </div>
+            <textarea required placeholder="Message" rows="4" class="mt-3 p-3 border rounded-md w-full"></textarea>
+            <div class="mt-3 text-right">
+              <button class="px-4 py-2 bg-indigo-600 text-white rounded-md">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slate-900 text-slate-300">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold">PB</div>
+          <div>
+            <div class="text-sm font-semibold">ProBrand</div>
+            <div class="text-xs text-slate-500">Designed & built by you</div>
+          </div>
+        </div>
+
+        <div class="text-sm">© <span id="year"></span> ProBrand. All rights reserved.</div>
+
+        <div class="flex gap-3 text-sm">
+          <a class="hover:text-white" href="#">Twitter</a>
+          <a class="hover:text-white" href="#">LinkedIn</a>
+          <a class="hover:text-white" href="#">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const btn = document.getElementById('mobileBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', !open);
+    });
+
+    // ScrollReveal: subtle reveal animations
+    ScrollReveal().reveal('[data-sr]', {
+      distance: '28px',
+      duration: 700,
+      easing: 'cubic-bezier(.22,.9,.3,1)',
+      origin: 'bottom',
+      interval: 100,
+      reset: false,
+      viewFactor: 0.12
+    });
+
+    // small accessibility: focus outlines for keyboard users
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') document.body.classList.add('show-focus-outline');
+    });
+  </script>
+
+</body>
+</html>

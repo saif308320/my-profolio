@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skill Sphere — Application Portal (Frontend Demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --accent:#ff5a5f; --muted:#7b8794; --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 30px rgba(29,35,41,0.07);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#eef4ff 0%,var(--bg) 100%);color:#14202b}
+    .container{max-width:980px;margin:28px auto;padding:20px}
+
+    .header{display:flex;align-items:center;gap:16px}
+    .brand{display:flex;flex-direction:column}
+    .brand h1{margin:0;font-size:20px;letter-spacing:0.2px}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+
+    .grid{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:22px}
+    @media(max-width:920px){.grid{grid-template-columns:1fr;}}
+
+    /* Left card (form) */
+    .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:var(--shadow)}
+    .card h2{margin:0 0 10px 0}
+    .desc{color:var(--muted);font-size:14px;margin-bottom:14px}
+
+    .form-row{display:flex;gap:14px;margin-bottom:12px}
+    .form-row.col{flex-direction:column}
+    .field{flex:1}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input, select, textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e6eef6;background:#fbfdff;font-size:14px}
+    textarea{min-height:90px;resize:vertical}
+
+    .btn{background:var(--accent);color:white;padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn.ghost{background:transparent;color:var(--accent);border:1px solid rgba(255,90,95,0.12)}
+
+    /* Right panel */
+    .panel{position:sticky;top:20px}
+    .panel .logo{height:72px;width:72px;border-radius:12px;background:linear-gradient(180deg,#fff 0%,#f2f6ff 100%);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:18px}
+    .status-pill{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+
+    .small{font-size:13px;color:var(--muted)}
+    .list{margin-top:12px}
+    .list .row{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:10px;background:linear-gradient(180deg,rgba(9,30,66,0.01),transparent);margin-bottom:8px}
+
+    .admin-toggle{display:flex;align-items:center;gap:10px;margin-top:12px}
+    .admin-login{display:none;margin-top:12px}
+    .admin-area{margin-top:12px}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* badges */
+    .badge-pending{background:#fff2e6;color:#b86b00;padding:6px 8px;border-radius:8px}
+    .badge-accepted{background:#e9fbe9;color:#116d1f;padding:6px 8px;border-radius:8px}
+    .badge-rejected{background:#ffeef0;color:#a12b2b;padding:6px 8px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo brand-icon"><div style="width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#ff8a80,#ff5a5f);display:flex;align-items:center;justify-content:center;color:white;font-weight:800">SS</div></div>
+      <div class="brand">
+        <h1>Skill Sphere — Application Portal</h1>
+        <p>Create printable slips & manage applications (frontend demo)</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Apply Now</h2>
+        <p class="desc">Fill the form below carefully. Click <strong>Download Slip</strong> to generate a printable PDF. (Demo saves data locally.)</p>
+
+        <form id="appForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="fullName">Full Name</label>
+              <input id="fullName" required placeholder="e.g. Ahmed Khan" />
+            </div>
+            <div class="field">
+              <label for="cnic">CNIC</label>
+              <input id="cnic" required placeholder="e.g. 42101-1234567-1" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" placeholder="0300-1234567" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="qualification">Qualification</label>
+              <select id="qualification">
+                <option>Matric</option>
+                <option>Intermediate</option>
+                <option>Graduate</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="appliedFor">Applied For</label>
+              <input id="appliedFor" placeholder="e.g. Frontend Developer" />
+            </div>
+          </div>
+
+          <div class="form-row col">
+            <div class="field">
+              <label for="address">Address</label>
+              <textarea id="address" placeholder="Full address..."></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;margin-top:10px;align-items:center">
+            <button type="button" class="btn" id="downloadBtn">Download Slip</button>
+            <button type="reset" class="btn ghost">Reset</button>
+            <div style="margin-left:auto;font-size:13px;color:var(--muted)">Form ID: <span id="formId">—</span></div>
+          </div>
+        </form>
+
+        <hr style="margin:18px 0;border:none;height:1px;background:#eef4fb;border-radius:2px">
+        <div class="small">Notes: This is a frontend-only demo. All data is saved to your browser's localStorage. For production, connect to a server/database.</div>
+      </div>
+
+      <aside class="panel">
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div class="logo">SS</div>
+            <div>
+              <div style="font-weight:700">Skill Sphere</div>
+              <div class="small">Admin quick actions</div>
+            </div>
+          </div>
+
+          <div class="list" id="applicationsList">
+            <!-- rows injected here -->
+          </div>
+
+          <div class="admin-toggle">
+            <button id="showAdmin" class="btn ghost">Admin Login</button>
+            <button id="clearAll" class="btn ghost">Clear Local Data</button>
+          </div>
+
+          <div class="admin-login card" id="adminLoginBox" style="margin-top:12px">
+            <label for="adminPass">Admin Password</label>
+            <input id="adminPass" placeholder="password" />
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button id="adminLoginBtn" class="btn">Login</button>
+              <button id="adminCancel" class="btn ghost">Cancel</button>
+            </div>
+          </div>
+
+          <div class="admin-area" id="adminArea" style="display:none">
+            <h3 style="margin:6px 0">Admin Panel</h3>
+            <div class="small">Change status or delete entries</div>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button class="btn ghost" id="exportData">Export JSON</button>
+              <button class="btn ghost" id="importData">Import JSON</button>
+            </div>
+            <div style="margin-top:10px;font-size:12px;color:var(--muted)">Admin password (demo): <strong>admin123</strong></div>
+          </div>
+
+        </div>
+        <footer>Built as a frontend demo • LocalStorage only</footer>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Simple frontend-only portal demo
+    const storageKey = 'skill_sphere_apps_v1';
+    const form = document.getElementById('appForm');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const applicationsList = document.getElementById('applicationsList');
+    const formIdSpan = document.getElementById('formId');
+
+    // Admin elements
+    const showAdmin = document.getElementById('showAdmin');
+    const adminLoginBox = document.getElementById('adminLoginBox');
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    const adminPass = document.getElementById('adminPass');
+    const adminArea = document.getElementById('adminArea');
+    const adminCancel = document.getElementById('adminCancel');
+    const clearAll = document.getElementById('clearAll');
+    const exportData = document.getElementById('exportData');
+    const importData = document.getElementById('importData');
+
+    // util
+    function uid(){return 'SS'+Date.now().toString().slice(-7)}
+    function loadApps(){try{return JSON.parse(localStorage.getItem(storageKey)||'[]')}catch(e){return []}}
+    function saveApps(list){localStorage.setItem(storageKey,JSON.stringify(list))}
+
+    function renderList(){
+      const list = loadApps().slice().reverse();
+      applicationsList.innerHTML = '';
+      if(!list.length){applicationsList.innerHTML='<div class="small" style="padding:8px">No applications yet.</div>';return}
+      list.forEach(app=>{
+        const row = document.createElement('div');row.className='row';
+        const left = document.createElement('div');
+        left.innerHTML = <div style="font-weight:600">${app.fullName}</div><div class="small">${app.appliedFor} • ${app.email||app.phone||''}</div>;
+        const right = document.createElement('div');
+        const badge = document.createElement('span');
+        if(app.status==='Pending') { badge.className='badge-pending'; badge.textContent='Pending' }
+        if(app.status==='Accepted') { badge.className='badge-accepted'; badge.textContent='Accepted' }
+        if(app.status==='Rejected') { badge.className='badge-rejected'; badge.textContent='Rejected' }
+
+        const actions = document.createElement('div');actions.style.display='flex';actions.style.gap='8px';actions.style.alignItems='center';
+        const dl = document.createElement('button'); dl.className='btn ghost'; dl.textContent='Download';
+        dl.onclick = ()=> generatePDF(app,true);
+        actions.appendChild(dl);
+
+        if(adminArea.style.display!=='none'){
+          const sel = document.createElement('select');sel.innerHTML='<option>Pending</option><option>Accepted</option><option>Rejected</option>';sel.value=app.status;
+          sel.onchange = (e)=>{ updateStatus(app.id,e.target.value) }
+          const del = document.createElement('button');del.className='btn ghost';del.textContent='Delete';del.onclick=()=>{ if(confirm('Delete this entry?')) deleteApp(app.id) }
+          actions.appendChild(sel);actions.appendChild(del);
+        }
+
+        right.appendChild(badge);right.appendChild(actions);
+        row.appendChild(left);row.appendChild(right);
+        applicationsList.appendChild(row);
+      })
+    }
+
+    function updateStatus(id,status){
+      const list = loadApps();
+      const idx = list.findIndex(x=>x.id===id);
+      if(idx>-1){list[idx].status=status;saveApps(list);renderList();}
+    }
+    function deleteApp(id){const list=loadApps().filter(x=>x.id!==id);saveApps(list);renderList();}
+
+    function generatePDF(data,download=false){
+      // data: object of form fields
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({unit:'pt',format:'a4'});
+      const pad = 40; let y = 60;
+      // header
+      doc.setFontSize(20);doc.setTextColor('#ff5a5f');doc.text('Skill Sphere',pad,y);
+      y+=28;doc.setFontSize(12);doc.setTextColor('#222');doc.text('Application Slip',pad,y);
+      y+=18;doc.setDrawColor('#eee');doc.line(pad,y,pad+520,y);y+=18;
+
+      doc.setFontSize(11);doc.setTextColor('#333');
+      doc.text(Form ID: ${data.id},pad,y);doc.text(Status: ${data.status||'Pending'},pad+320,y);y+=22;
+
+      const fields = [
+        ['Full Name',data.fullName||'-'],
+        ['CNIC',data.cnic||'-'],
+        ['Email',data.email||'-'],
+        ['Phone',data.phone||'-'],
+        ['Applied For',data.appliedFor||'-'],
+        ['Qualification',data.qualification||'-'],
+        ['Address',data.address||'-']
+      ];
+      fields.forEach(f=>{
+        doc.setFontSize(10);doc.setTextColor('#444');doc.text(f[0]+':',pad,y);
+        doc.setFontSize(11);doc.text(String(f[1]),pad+110,y);
+        y+=18; if(y>720){doc.addPage();y=60}
+      })
+
+      // footer
+      y+=30;doc.setDrawColor('#eee');doc.line(pad,y,pad+520,y);y+=12;
+      doc.setFontSize(9);doc.setTextColor('#777');doc.text('Generated by Skill Sphere Portal (frontend demo)',pad,y);
+
+      if(download) doc.save(${data.fullName || 'application'}_${data.id}.pdf);
+      return doc.output('blob');
+    }
+
+    // handle form submit
+    downloadBtn.addEventListener('click',()=>{
+      const payload = {
+        id: uid(),
+        fullName: document.getElementById('fullName').value.trim(),
+        cnic: document.getElementById('cnic').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        qualification: document.getElementById('qualification').value,
+        appliedFor: document.getElementById('appliedFor').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        status: 'Pending',
+        createdAt: new Date().toISOString()
+      };
+
+      if(!payload.fullName || !payload.cnic){alert('Please fill at least Name and CNIC');return}
+
+      // save to localStorage
+      const list = loadApps(); list.push(payload); saveApps(list); renderList();
+      form.reset(); formIdSpan.textContent = payload.id;
+
+      // generate pdf and download
+      generatePDF(payload,true);
+      alert('Slip downloaded and application saved locally (status: Pending).');
+    })
+
+    // admin toggle
+    showAdmin.addEventListener('click',()=>{ adminLoginBox.style.display = adminLoginBox.style.display==='none' || adminLoginBox.style.display==='' ? 'block':'none' })
+    adminCancel.addEventListener('click',()=>{ adminLoginBox.style.display='none'; adminPass.value=''; })
+
+    adminLoginBtn.addEventListener('click',()=>{
+      const pass = adminPass.value.trim();
+      if(pass==='admin123'){ adminArea.style.display='block'; adminLoginBox.style.display='none'; adminPass.value=''; renderList(); alert('Admin logged in (demo).') }
+      else alert('Wrong password (demo uses admin123).')
+    })
+
+    clearAll.addEventListener('click',()=>{ if(confirm('Clear all local entries?')){ localStorage.removeItem(storageKey); renderList(); alert('Cleared') } })
+
+    exportData.addEventListener('click',()=>{
+      const data = loadApps(); const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'skill_sphere_export.json'; a.click(); URL.revokeObjectURL(url);
+    })
+
+    importData.addEventListener('click',async ()=>{
+      const text = prompt('Paste JSON array of applications to import (will merge).');
+      if(!text) return; try{ const incoming = JSON.parse(text); if(!Array.isArray(incoming)){throw new Error('Not array')}
+        const existing = loadApps(); const merged = existing.concat(incoming); saveApps(merged); renderList(); alert('Imported '+incoming.length+' entries');
+      }catch(e){alert('Invalid JSON')}
+    })
+
+    // helpers
+    function init(){ renderList(); formIdSpan.textContent='—'; adminLoginBox.style.display='none'; }
+    init();
+  </script>
+</body>
+</html>
+</body>
+</html>

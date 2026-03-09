@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nature Layout</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #6fd3f7;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      background: #8fe1f9;
+      border-radius: 15px;
+      padding: 20px 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 35px;
+      color: #333;
+    }
+
+    .hero-text h1 span {
+      color: #fff;
+    }
+
+    .hero-text p {
+      margin: 20px 0;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .hero-text button {
+      padding: 10px 25px;
+      background: #3a3a3a;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .hero-text button:hover {
+      background: #000;
+    }
+
+    .hero-image img {
+      max-width: 400px;
+      border-radius: 50% 20% 50% 20% / 30% 50% 30% 50%;
+    }
+
+    /* Footer Icons */
+    .social {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .social a {
+      font-size: 20px;
+      color: #000;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="logo">LOGO</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Info</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="hero-text">
+        <h1>LIKE NATURE <br><span>BE CREATIVE!</span></h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <button>MORE INFO</button>
+      </div>
+      <div class="hero-image">
+        <img src="https://img.freepik.com/free-vector/landscape-nature-scene-with-hills-mountains_1308-106453.jpg" alt="Nature Image">
+      </div>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="social">
+      <a href="#">&#xf09a;</a> <!-- facebook -->
+      <a href="#">&#xf099;</a> <!-- twitter -->
+      <a href="#">&#xf16d;</a> <!-- instagram -->
+    </div>
+  </div>
+</body>
+</html>

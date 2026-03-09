@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Funnel Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .step-hidden { display: none; }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+    <div class="fixed top-0 left-0 w-full h-2 bg-gray-800">
+        <div id="progress" class="h-full bg-blue-600 transition-all duration-500" style="width: 33%"></div>
+    </div>
+
+    <div class="min-h-screen flex items-center justify-center p-4">
+        
+        <div id="step1" class="max-w-md w-full bg-gray-900 p-8 rounded-3xl border border-gray-800 shadow-2xl fade-in">
+            <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Step 01: The Hook</span>
+            <h2 class="text-3xl font-black mt-2 mb-4">Get My $997 Coding Blueprint for <span class="text-green-500">FREE</span></h2>
+            <p class="text-gray-400 mb-6">Enter your email to unlock the secret sauce of becoming a Pro Developer.</p>
+            <input type="email" id="email" placeholder="Enter your best email" class="w-full p-4 rounded-xl bg-gray-800 border border-gray-700 mb-4 focus:outline-none focus:border-blue-500">
+            <button onclick="nextStep(2)" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all transform hover:scale-105">Access Now →</button>
+        </div>
+
+        <div id="step2" class="max-w-4xl w-full bg-gray-900 rounded-3xl border border-gray-800 shadow-2xl fade-in step-hidden">
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8 border-r border-gray-800">
+                    <span class="text-yellow-500 font-bold uppercase text-sm">Step 02: Exclusive Deal</span>
+                    <h2 class="text-4xl font-black mt-2 mb-4">Wait! Grab The "Mastery Kit"</h2>
+                    <p class="text-gray-400 mb-6">People pay $500 for this. You can get it for 10% of the price because you're early.</p>
+                    <ul class="space-y-3 mb-6 text-sm">
+                        <li>✅ 50+ Premium Templates</li>
+                        <li>✅ Backend Mastery Guide</li>
+                        <li>✅ Lifetime Updates</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 p-8 bg-gray-800 flex flex-col justify-center rounded-r-3xl">
+                    <div class="text-center mb-6">
+                        <span class="line-through text-gray-500 text-xl">$499</span>
+                        <span class="text-5xl font-bold ml-2 text-white">$49</span>
+                    </div>
+                    <button onclick="nextStep(3)" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-black py-4 rounded-xl mb-4">Add to My Order 🚀</button>
+                    <button onclick="nextStep(3)" class="text-gray-500 text-sm hover:underline">No thanks, I'll pass on this deal</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="step3" class="max-w-md w-full text-center fade-in step-hidden">
+            <div class="bg-green-500 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-500/50">
+                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h2 class="text-4xl font-black mb-2">Welcome to the Club!</h2>
+            <p class="text-gray-400 mb-8">Check your inbox. Your transformation has already started.</p>
+            <button onclick="location.reload()" class="bg-gray-800 px-8 py-3 rounded-full text-sm border border-gray-700 hover:bg-gray-700 transition">Back to Start</button>
+        </div>
+
+    </div>
+
+    <script>
+        function nextStep(step) {
+            // Hide all steps
+            document.getElementById('step1').classList.add('step-hidden');
+            document.getElementById('step2').classList.add('step-hidden');
+            document.getElementById('step3').classList.add('step-hidden');
+
+            // Show current step
+            const current = document.getElementById('step' + step);
+            current.classList.remove('step-hidden');
+
+            // Update progress bar
+            const progress = (step / 3) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+
+            // Logic check
+            if(step === 2) {
+                console.log("Lead Captured: " + document.getElementById('email').value);
+            }
+        }
+    </script>
+</body>
+</html>

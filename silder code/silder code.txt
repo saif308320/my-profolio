@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classic Luxury Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        :root {
+            --gold: #caa35c;
+            --soft-bg: #f4f4f4;
+            --white: #ffffff;
+            --text: #555;
+            --heading: #222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--soft-bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .slider-wrap {
+            max-width: 1100px;
+            margin: auto;
+            width: 90%;
+            position: relative;
+        }
+
+        .slider-viewport {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            overflow: hidden;
+            position: relative;
+            height: 550px;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            padding: 60px 80px;
+            opacity: 0;
+            visibility: hidden;
+            display: none; /* Hidden by default */
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== LEFT CONTENT ===== */
+        .left {
+            width: 60%;
+            padding-right: 40px;
+        }
+
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            color: #e5dfd3;
+            line-height: 0;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            line-height: 1.5;
+            color: var(--text);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .rating {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 25px;
+            letter-spacing: 5px;
+        }
+
+        .author-info .name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--heading);
+            display: block;
+        }
+
+        .author-info .role {
+            font-size: 16px;
+            color: var(--gold);
+            margin-top: 5px;
+            display: block;
+            letter-spacing: 1px;
+        }
+
+        /* ===== RIGHT IMAGE ===== */
+        .right {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            perspective: 1000px;
+        }
+
+        .image-wrapper {
+            width: 320px;
+            height: 420px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s ease;
+        }
+
+        /* ===== CONTROLS ===== */
+        .controls {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-buttons { display: flex; gap: 15px; }
+
+        .arrow {
+            width: 55px;
+            height: 55px;
+            background: var(--white);
+            color: var(--gold);
+            border: 1px solid #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+
+        .arrow:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+        }
+
+        .dots { display: flex; gap: 8px; }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .dot.active {
+            width: 35px;
+            background: var(--gold);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider-wrap">
+    <div class="slider-viewport">
+        <div class="slide active">
+            <div class="left">
+                <span class="quote-mark">“</span>
+                <p class="testimonial-text">The process was incredibly efficient and professional. Their attention to detail is unmatched.</p>
+                <div class="rating">★★★★★</div>
+                <div class="author-info">
+                    <span class="name">Dr. Evelyn Reed</span>
+                    <span class="role">Commercial Investor</span>
+                </div>
+            </div>
+            <div class="right">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828a27">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="left">
+                <span class="quote-mark">“</span>
+                <p class="testimonial-text">Outstanding professional service. They found me the perfect portfolio assets in weeks.</p>
+                <div class="rating">★★★★★</div>
+                <div class="author-info">
+                    <span class="name">James Walker</span>
+                    <span class="role">Wealth Advisor</span>
+                </div>
+            </div>
+            <div class="right">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="left">
+                <span class="quote-mark">“</span>
+                <p class="testimonial-text">Very smooth process. The team handled everything with grace and transparency.</p>
+                <div class="rating">★★★★★</div>
+                <div class="author-info">
+                    <span class="name">Sarah Khan</span>
+                    <span class="role">Private Investor</span>
+                </div>
+            </div>
+            <div class="right">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2">
+                </div>
+            </div>
+        </div>
+        
+        </div>
+
+    <div class="controls">
+        <div class="nav-buttons">
+            <div class="arrow" id="prev">‹</div>
+            <div class="arrow" id="next">›</div>
+        </div>
+        <div class="dots"></div>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.querySelector('.dots');
+    let current = 0;
+    let isAnimating = false;
+
+    // Create Dots
+    slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => { if(!isAnimating) move(i); });
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function move(nextIndex) {
+        if (isAnimating || nextIndex === current) return;
+        isAnimating = true;
+
+        const outgoing = slides[current];
+        const incoming = slides[nextIndex];
+
+        // GSAP Power Animation
+        const tl = gsap.timeline({
+            onComplete: () => {
+                outgoing.classList.remove('active');
+                isAnimating = false;
+                current = nextIndex;
+            }
+        });
+
+        // Current Slide Out
+        tl.to(outgoing.querySelector('.testimonial-text'), { opacity: 0, y: -20, duration: 0.4 })
+          .to(outgoing.querySelector('.image-wrapper'), { scale: 0.9, opacity: 0, duration: 0.5 }, "-=0.3")
+          .set(outgoing, { display: 'none' });
+
+        // New Slide In
+        tl.set(incoming, { display: 'flex', opacity: 1 })
+          .fromTo(incoming.querySelector('.image-wrapper'), 
+            { x: 100, opacity: 0, rotateY: -20 }, 
+            { x: 0, opacity: 1, rotateY: 0, duration: 0.8, ease: "power2.out" })
+          .fromTo(incoming.querySelector('.testimonial-text'), 
+            { y: 30, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, "-=0.4")
+          .fromTo(incoming.querySelector('.author-info'), 
+            { opacity: 0 }, { opacity: 1, duration: 0.4 });
+
+        dots.forEach((d, i) => d.classList.toggle('active', i === nextIndex));
+        incoming.classList.add('active');
+    }
+
+    document.getElementById('next').onclick = () => {
+        move((current + 1) % slides.length);
+    };
+
+    document.getElementById('prev').onclick = () => {
+        move((current - 1 + slides.length) % slides.length);
+    };
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ultra Luxury Testimonials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        :root {
+            --gold: #caa35c;
+            --dark: #0a0a0a;
+            --bg: #fdfcf9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .slider-container {
+            max-width: 1300px;
+            margin: auto;
+            padding: 40px;
+            width: 100%;
+            position: relative;
+        }
+
+        .slider-viewport {
+            position: relative;
+            height: 500px; /* Fixed height for consistency */
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        /* ===== CONTENT SIDE ===== */
+        .content-box {
+            width: 60%;
+            padding-right: 50px;
+            z-index: 2;
+        }
+
+        .quote-icon {
+            font-family: 'Cinzel', serif;
+            font-size: 120px;
+            color: var(--gold);
+            opacity: 0.15;
+            line-height: 0;
+            margin-bottom: 20px;
+        }
+
+        .text {
+            font-size: 32px;
+            line-height: 1.4;
+            color: var(--dark);
+            font-weight: 300;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+        }
+
+        .name {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: var(--dark);
+        }
+
+        .role {
+            font-size: 14px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+
+        /* ===== IMAGE SIDE ===== */
+        .image-box {
+            width: 40%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 30px 30px 80px rgba(0,0,0,0.1);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2); /* For reveal animation */
+        }
+
+        /* ===== CONTROLS ===== */
+        .controls {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-arrows {
+            display: flex;
+            gap: 15px;
+        }
+
+        .arrow {
+            width: 60px;
+            height: 60px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            font-size: 20px;
+            background: white;
+        }
+
+        .arrow:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .dots {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 40px;
+            height: 2px;
+            background: #ddd;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            width: 80px;
+        }
+
+        /* Floating Badge */
+        .badge {
+            position: absolute;
+            top: -20px; right: -20px;
+            background: var(--gold);
+            color: white;
+            padding: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transform: rotate(10deg);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="slider-container">
+    <div class="slider-viewport">
+        <div class="slide active">
+            <div class="content-box">
+                <div class="quote-icon">“</div>
+                <p class="text">The architectural integrity and the seamless acquisition process was beyond elite. Truly a masterpiece experience.</p>
+                <div class="profile-info">
+                    <span class="name">Dr. Evelyn Reed</span>
+                    <span class="role">Commercial Investor</span>
+                </div>
+            </div>
+            <div class="image-box">
+                <div class="badge">TRUSTED</div>
+                <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828a27" alt="Client">
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="content-box">
+                <div class="quote-icon">“</div>
+                <p class="text">Exceptional professional service. Their portfolio of luxury assets is unmatched in the current global market.</p>
+                <div class="profile-info">
+                    <span class="name">James Walker</span>
+                    <span class="role">Strategic Advisor</span>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1" alt="Client">
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="nav-arrows">
+            <div class="arrow" id="prev">←</div>
+            <div class="arrow" id="next">→</div>
+        </div>
+        <div class="dots"></div>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const dotsBox = document.querySelector('.dots');
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    // Create Dots
+    slides.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => !isAnimating && goToSlide(i);
+        dotsBox.appendChild(d);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+        if (index === currentIndex) return;
+        isAnimating = true;
+
+        const oldSlide = slides[currentIndex];
+        const newSlide = slides[index];
+
+        // GSAP Timeline for Ultra Animation
+        const tl = gsap.timeline({
+            onComplete: () => {
+                oldSlide.classList.remove('active');
+                currentIndex = index;
+                isAnimating = false;
+            }
+        });
+
+        // Outgoing Slide Animation
+        tl.to(oldSlide.querySelector('.text'), { opacity: 0, y: -20, duration: 0.4 })
+          .to(oldSlide.querySelector('.image-box img'), { scale: 1.5, opacity: 0, duration: 0.6 }, "-=0.3")
+          .set(oldSlide, { visibility: 'hidden' });
+
+        // Incoming Slide Animation
+        tl.set(newSlide, { visibility: 'visible', opacity: 1 })
+          .fromTo(newSlide.querySelector('.image-box'), 
+            { clipPath: 'inset(0 100% 0 0)' }, 
+            { clipPath: 'inset(0 0% 0 0)', duration: 0.8, ease: "expo.out" })
+          .fromTo(newSlide.querySelector('.image-box img'), 
+            { scale: 1.4 }, 
+            { scale: 1, duration: 1.2, ease: "power2.out" }, "-=0.6")
+          .fromTo(newSlide.querySelector('.text'), 
+            { opacity: 0, y: 30 }, 
+            { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.7)" }, "-=0.8")
+          .fromTo(newSlide.querySelector('.profile-info'), 
+            { opacity: 0, x: -20 }, 
+            { opacity: 1, x: 0, duration: 0.5 }, "-=0.4");
+
+        newSlide.classList.add('active');
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    document.getElementById('next').onclick = () => {
+        if (!isAnimating) goToSlide((currentIndex + 1) % slides.length);
+    };
+
+    document.getElementById('prev').onclick = () => {
+        if (!isAnimating) goToSlide((currentIndex - 1 + slides.length) % slides.length);
+    };
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+new style silders code => 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Premium Hover Gallery</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  /* background REMOVED */
+  padding:40px;
+  font-family:Arial, sans-serif;
+}
+
+/* MAIN */
+.lux-slider{
+  display:flex;
+  height:520px;
+  max-width:1400px;
+  margin:auto;
+  border-radius:30px;
+  overflow:hidden;
+  /* background REMOVED */
+}
+
+/* SLIDES */
+.lux-slide{
+  flex:1;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  cursor:pointer;
+  transition:all 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+/* FIRST IMAGE DEFAULT HERO */
+.lux-slide:first-child{
+  flex:2.1;
+}
+
+/* NORMAL HOVER */
+.lux-slide:hover{
+  flex:3;
+}
+
+/* SECOND IMAGE SPECIAL */
+.lux-slide:nth-child(2):hover{
+  flex:3.4;
+}
+
+/* WHEN SECOND IS HOVERED → RIGHT IMAGES COMPRESS */
+.lux-slide:nth-child(2):hover ~ .lux-slide{
+  flex:0.8;
+}
+
+/* CONTENT */
+.lux-content{
+  position:absolute;
+  bottom:45px;
+  left:50%;
+  transform:translateX(-50%) translateY(18px);
+  text-align:center;
+  opacity:0;
+  transition:0.4s ease;
+  color:#fff;
+  text-shadow:0 3px 12px rgba(0,0,0,0.55);
+}
+
+/* SHOW ONLY ON HOVER */
+.lux-slide:hover .lux-content{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* TEXT */
+.lux-content h3{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+/* BUTTON */
+.lux-content span{
+  display:inline-block;
+  padding:8px 22px;
+  border-radius:30px;
+  border:1px solid #af9123;
+  background:transparent;
+  color:#af9123;
+  font-size:13px;
+  letter-spacing:1px;
+  transition:0.3s ease;
+}
+
+.lux-content span:hover{
+  background:#af9123;
+  color:#000;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .lux-slider{
+    flex-direction:column;
+    height:auto;
+  }
+  .lux-slide{
+    height:220px;
+    flex:unset !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="lux-slider">
+
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');">
+    <div class="lux-content">
+      <h3>House One</h3>
+      <span>01 PROPERTIES</span>
+    </div>
+  </div>
+
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914');">
+    <div class="lux-content">
+      <h3>House Two</h3>
+      <span>02 PROPERTIES</span>
+    </div>
+  </div>
+
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1502005097973-6a7082348e28');">
+    <div class="lux-content">
+      <h3>Abiene</h3>
+      <span>03 PROPERTIES</span>
+    </div>
+  </div>
+
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6');">
+    <div class="lux-content">
+      <h3>Modern Villa</h3>
+      <span>04 PROPERTIES</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+second silder code =>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra Premium Gallery</title>
+
+<style>
+:root {
+  --gold: #dfbd69;
+  --bg-dark: #0a0a0a;
+  --transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* CONTAINER */
+.lux-slider {
+  display: flex;
+  width: 100%;
+  max-width: 1300px;
+  height: 600px;
+  gap: 12px; /* Slight gap for modern look */
+}
+
+/* INDIVIDUAL SLIDE */
+.lux-slide {
+  position: relative;
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  filter: grayscale(40%) brightness(0.7); /* Cinematic look */
+}
+
+/* HOVER STATES - ULTRA LOGIC */
+.lux-slide:hover {
+  flex: 5; /* Dynamic expansion */
+  filter: grayscale(0%) brightness(1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* INITIAL STATE FOR FIRST SLIDE */
+.lux-slide:first-child {
+  flex: 1.5;
+}
+
+/* OVERLAY FOR TEXT READABILITY */
+.lux-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.8) 100%);
+  opacity: 0.6;
+  transition: var(--transition);
+}
+
+.lux-slide:hover::before {
+  opacity: 0.9;
+}
+
+/* CONTENT CONTAINER */
+.lux-content {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease 0.2s; /* Delay for smooth reveal */
+  pointer-events: none;
+}
+
+.lux-slide:hover .lux-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TYPOGRAPHY */
+.lux-content h3 {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.lux-content .badge {
+  display: inline-block;
+  padding: 6px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .lux-slider {
+    height: 85vh;
+    flex-direction: column;
+  }
+  .lux-slide {
+    flex: 1 !important;
+  }
+  .lux-slide:hover {
+    flex: 4 !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="lux-slider">
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');">
+    <div class="lux-content">
+      <span class="badge">01 LUXURY</span>
+      <h3>Heritage Estate</h3>
+    </div>
+  </div>
+
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914');">
+    <div class="lux-content">
+      <span class="badge">02 MODERN</span>
+      <h3>The Glass House</h3>
+    </div>
+  </div>
+
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1502005097973-6a7082348e28');">
+    <div class="lux-content">
+      <span class="badge">03 EXCLUSIVE</span>
+      <h3>Abiene Villa</h3>
+    </div>
+  </div>
+
+  <div class="lux-slide" style="background-image:url('https://images.unsplash.com/photo-1523217582562-09d0def993a6');">
+    <div class="lux-content">
+      <span class="badge">04 PRESTIGE</span>
+      <h3>Modern Oasis</h3>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+third silder codes =>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra 2026 Gallery</title>
+<style>
+    :root {
+        --timing: 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+    }
+
+    body {
+        background: #050505;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .container {
+        display: flex;
+        width: 95vw;
+        height: 80vh;
+        gap: 0; /* No gaps, seamless look */
+    }
+
+    .shard {
+        position: relative;
+        flex: 1;
+        transition: var(--timing);
+        clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%); /* Angled Shards */
+        margin-left: -5%; /* Overlap effect */
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .shard:first-child {
+        margin-left: 0;
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    }
+
+    .shard:last-child {
+        clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .shard img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.2);
+        filter: saturate(0) brightness(0.5);
+        transition: var(--timing);
+    }
+
+    /* THE ULTRA EFFECT */
+    .shard:hover {
+        flex: 4;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); /* Morphs into square */
+        z-index: 10;
+        margin: 0 5px; /* Adds space when active */
+        border-radius: 20px;
+    }
+
+    .shard:hover img {
+        transform: scale(1);
+        filter: saturate(1) brightness(1);
+    }
+
+    /* Floating Labels with Mix-Blend-Mode */
+    .label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        color: white;
+        font-size: 5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        mix-blend-mode: overlay;
+        opacity: 0.3;
+        transition: var(--timing);
+        white-space: nowrap;
+        pointer-events: none;
+    }
+
+    .shard:hover .label {
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 1;
+        font-size: 3rem;
+        mix-blend-mode: normal;
+        bottom: 10%;
+        top: auto;
+    }
+
+    /* Content Overlay */
+    .content {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        color: white;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .shard:hover .content {
+        opacity: 1;
+        transition-delay: 0.4s;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="shard">
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200" alt="1">
+        <div class="label">URBAN</div>
+        <div class="content">
+            <h2>Sky Loft</h2>
+            <p>Penthouse in NYC</p>
+        </div>
+    </div>
+    <div class="shard">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200" alt="2">
+        <div class="label">MINIMAL</div>
+        <div class="content">
+            <h2>Zen Villa</h2>
+            <p>Pure Glass Retreat</p>
+        </div>
+    </div>
+    <div class="shard">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200" alt="3">
+        <div class="label">LUXURY</div>
+        <div class="content">
+            <h2>Gold Coast</h2>
+            <p>Miami Beach Front</p>
+        </div>
+    </div>
+    <div class="shard">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200" alt="4">
+        <div class="label">BRUTAL</div>
+        <div class="content">
+            <h2>The Rock</h2>
+            <p>Cave Architecture</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+new silder code four silder =>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anamorphic UI</title>
+<style>
+    :root {
+        --active-width: 65vw;
+        --idle-width: calc((100vw - var(--active-width)) / 3);
+        --ease: cubic-bezier(0.15, 0.85, 0.35, 1);
+    }
+
+    body {
+        margin: 0;
+        background: #000;
+        color: white;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .shutter-gallery {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        gap: 2px;
+    }
+
+    .panel {
+        position: relative;
+        flex: 0 0 var(--idle-width);
+        height: 100%;
+        overflow: hidden;
+        transition: all 0.9s var(--ease);
+        filter: saturate(0.2) contrast(1.2);
+        /* 2026 Trend: Glass masking */
+        mask-image: linear-gradient(to right, black 95%, transparent);
+    }
+
+    .panel:hover {
+        flex: 0 0 var(--active-width);
+        filter: saturate(1.1) contrast(1);
+        z-index: 10;
+    }
+
+    /* Parallax Effect without JS */
+    .panel img {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        height: 100%;
+        width: 100vw; /* Fixed width to create perspective shift */
+        object-fit: cover;
+        transform: translateX(-50%);
+        transition: transform 0.9s var(--ease);
+    }
+
+    /* Logic: Moving image opposite to hover to keep focus center */
+    .panel:hover img {
+        transform: translateX(-50%) scale(1.05);
+    }
+
+    /* Geometric Text Layout (Hard-Coded Layouts) */
+    .meta {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        width: 40%;
+        opacity: 0;
+        transform: skewX(-15deg) translateX(-100px);
+        transition: 0.6s var(--ease) 0.3s;
+    }
+
+    .panel:hover .meta {
+        opacity: 1;
+        transform: skewX(0deg) translateX(0);
+    }
+
+    .meta h1 {
+        font-size: 8vw;
+        font-weight: 900;
+        line-height: 0.8;
+        text-transform: uppercase;
+        margin: 0;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        color: transparent;
+    }
+
+    .panel:hover .meta h1 {
+        color: white;
+        -webkit-text-stroke: 0;
+    }
+
+    /* Modern Overlay: Scanline effect */
+    .panel::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="shutter-gallery">
+    <div class="panel">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=2000">
+        <div class="meta">
+            <h1>Retro</h1>
+            <p>001 / SYSTEM ARCHIVE</p>
+        </div>
+    </div>
+    <div class="panel">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000">
+        <div class="meta">
+            <h1>Cyber</h1>
+            <p>002 / DATA STREAM</p>
+        </div>
+    </div>
+    <div class="panel">
+        <img src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=2000">
+        <div class="meta">
+            <h1>Void</h1>
+            <p>003 / DARK MATTER</p>
+        </div>
+    </div>
+    <div class="panel">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000">
+        <div class="meta">
+            <h1>Tech</h1>
+            <p>004 / NEURAL LINK</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+new code silder =>
+
+
+

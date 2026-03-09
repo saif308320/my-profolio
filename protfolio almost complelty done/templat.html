@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saif Raza | Master Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <style>
+        :root {
+            --primary: #00C1FF;
+            --primary-glow: rgba(0, 193, 255, 0.6);
+            --bg-dark: #050505;
+            --card-bg: #0f0f11;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 60px 20px;
+        }
+
+        /* Neon Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--primary); 
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+
+        .header span {
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Grid for 12 Items */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Card Engine */
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 520px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 193, 255, 0.1);
+        }
+
+        /* Screenshot Viewer */
+        .screen {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            background: #161618;
+        }
+
+        .screen img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 6s ease-in-out; 
+        }
+
+        .card:hover .screen img {
+            transform: translateY(calc(-100% + 520px));
+        }
+
+        /* Glass Overlay */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0,0,0,1) 40%, transparent);
+            transform: translateY(60px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 5;
+        }
+
+        .card:hover .overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .overlay h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .overlay p {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        .view-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Saif's <span>Portfolio</span></h1>
+        <p>A collection of 12 premium web templates</p>
+    </div>
+
+    <div class="portfolio-grid">
+        
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Wayne%20Valay%20Animal%20Hospital.png" alt="Wayne Valay">
+            </div>
+            <div class="overlay">
+                <h3>Animal Hospital</h3>
+                <p>Healthcare & Veterinary Management</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/E.V.V.A%20Voice%20Ai.png" alt="EVVA AI">
+            </div>
+            <div class="overlay">
+                <h3>E.V.V.A Voice AI</h3>
+                <p>AI Emergency Assistant</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Youthful%20MD.png" alt="Youthful MD">
+            </div>
+            <div class="overlay">
+                <h3>Youthful MD</h3>
+                <p>Health & Wellness Platform</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Mechenical%20Crop.png" alt="Mechanical Crop">
+            </div>
+            <div class="overlay">
+                <h3>Mechanical Crop</h3>
+                <p>Industrial & Agri-Tech Solutions</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Welhus%20studio.png" alt="Welhus Studio">
+            </div>
+            <div class="overlay">
+                <h3>Welhus Studio</h3>
+                <p>Creative Studio & Design Hub</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Vratans%20Benefits%20center.png" alt="Vratans">
+            </div>
+            <div class="overlay">
+                <h3>Vratans Benefits</h3>
+                <p>Employee Center & Benefits Portal</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Aquasition.png" alt="Aquasition">
+            </div>
+            <div class="overlay">
+                <h3>Aquasition</h3>
+                <p>Marketing & Lead Acquisition</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Lawdingo.png" alt="Lawdingo">
+            </div>
+            <div class="overlay">
+                <h3>Lawdingo</h3>
+                <p>Legal Consultation Platform</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Championlife%20CRM.png" alt="CRM">
+            </div>
+            <div class="overlay">
+                <h3>Championlife CRM</h3>
+                <p>Customer Management System</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Champion%20Life.png" alt="Champion Life">
+            </div>
+            <div class="overlay">
+                <h3>Champion Life</h3>
+                <p>Lifestyle & Fitness Web Portal</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/Wayne%20Valay%20Animal%20Hospital.png" alt="Wayne Valay Repeat">
+            </div>
+            <div class="overlay">
+                <h3>Veterinary Care</h3>
+                <p>Medical Center Showcase</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+        <div class="card" data-tilt data-tilt-max="6">
+            <div class="screen">
+                <img src="https://hashir-raza.netlify.app/img/projects/E.V.V.A%20Voice%20Ai.png" alt="EVVA AI Repeat">
+            </div>
+            <div class="overlay">
+                <h3>AI Assistant</h3>
+                <p>Voice Interface Concept</p>
+                <a href="#" class="view-btn">View Project</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Init 3D Depth
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 8,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.15,
+        });
+
+        // Auto-fix for any broken images
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                this.src = "https://via.placeholder.com/500x1500/111/00C1FF?text=Project+Loading...";
+            };
+        });
+    </script>
+</body>
+</html>

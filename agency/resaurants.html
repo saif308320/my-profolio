@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra-Premium Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* RESET */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0A0A0C;
+  color: #F4F1EC;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4,h5 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+p, li {
+  font-family: 'Inter', sans-serif;
+}
+
+/* LINKS & BUTTONS */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+button {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  border: 2px solid #C1A45F;
+  background: transparent;
+  color: #F4F1EC;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+button:hover {
+  background: rgba(193,164,95,0.2);
+  box-shadow: 0 0 15px rgba(193,164,95,0.5);
+  transform: translateY(-4px);
+}
+
+/* CUSTOM CURSOR */
+body {
+  cursor: none;
+}
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #C1A45F;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+button:hover ~ .cursor,
+a:hover ~ .cursor {
+  width: 40px;
+  height: 40px;
+  background: rgba(193,164,95,0.2);
+  border-color: #FFB000;
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero video {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+.hero .content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+.hero h1 {
+  font-size: 4rem;
+  color: #F4F1EC;
+  margin-bottom: 1rem;
+  animation: fadeUp 1.2s ease forwards;
+  opacity: 0;
+}
+.hero .buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  animation: fadeUp 1.5s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeUp {
+  0% {opacity:0; transform: translateY(20px);}
+  100% {opacity:1; transform: translateY(0);}
+}
+
+/* BRAND MANIFESTO */
+.manifesto {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+.manifesto h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.manifesto p {
+  font-size: 2rem;
+  margin: 1rem 0;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* EXPERIENCE PANELS */
+.experience {
+  display: flex;
+  gap: 2rem;
+  padding: 4rem 2rem;
+}
+.panel {
+  flex:1;
+  background: #0E2F2A;
+  padding:4rem 2rem;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.panel:hover {
+  flex:2;
+}
+.panel h3 {
+  font-size:2rem;
+  margin-bottom:1rem;
+}
+.panel p {
+  font-size:1.2rem;
+}
+
+/* SIGNATURE CREATIONS */
+.signature {
+  padding: 4rem 2rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+}
+.dish {
+  flex:1 1 calc(33% - 2rem);
+  background:#121212;
+  padding:2rem;
+  position:relative;
+  overflow:hidden;
+  transition: transform 0.4s ease;
+}
+.dish:hover {
+  transform: translateY(-5px);
+}
+.dish h4 {
+  margin-bottom:1rem;
+}
+.dish p {
+  font-size:0.9rem;
+  color: #C1A45F;
+}
+
+/* GALLERY */
+.gallery {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+  gap:1rem;
+  padding:4rem 2rem;
+}
+.gallery img {
+  width:100%;
+  display:block;
+  transition: transform 0.5s ease;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* CHEF AUTHORITY */
+.chef {
+  display:flex;
+  align-items:center;
+  gap:3rem;
+  padding:4rem 2rem;
+}
+.chef img {
+  width:300px;
+  filter: grayscale(100%);
+}
+.chef-text h3 {
+  font-size:2rem;
+  margin-bottom:1rem;
+}
+.chef-text p {
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  color:#C1A45F;
+}
+
+/* CTA */
+.cta {
+  text-align:center;
+  padding:6rem 2rem;
+}
+.cta button {
+  font-size:1.5rem;
+  padding:1rem 3rem;
+  border:2px solid #C1A45F;
+  background:transparent;
+  color:#F4F1EC;
+  transition:all 0.4s ease;
+}
+.cta button:hover {
+  background: rgba(193,164,95,0.2);
+  box-shadow: 0 0 20px rgba(193,164,95,0.5);
+  transform: translateY(-5px);
+}
+
+/* INTERNAL PAGES STUBS */
+.menu, .about, .reservation, .contact {
+  padding:4rem 2rem;
+}
+.menu h2, .about h2, .reservation h2, .contact h2 {
+  font-size:3rem;
+  margin-bottom:2rem;
+}
+
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:2rem;
+  color:#C1A45F;
+  border-top:1px solid #C1A45F;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .experience {
+    flex-direction: column;
+  }
+  .dish {
+    flex:1 1 100%;
+  }
+  .chef {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <video src="hero-video.mp4" autoplay muted loop></video>
+  <div class="content">
+    <h1>Where fire becomes flavor.</h1>
+    <div class="buttons">
+      <button>Reserve Experience</button>
+      <button>Explore Philosophy</button>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND MANIFESTO -->
+<section class="manifesto">
+  <h2>Brand Manifesto</h2>
+  <p>Fire.</p>
+  <p>Time.</p>
+  <p>Respect.</p>
+</section>
+
+<!-- EXPERIENCE PANELS -->
+<section class="experience">
+  <div class="panel">
+    <h3>Open Fire Kitchen</h3>
+    <p>Raw fire, raw flavor.</p>
+  </div>
+  <div class="panel">
+    <h3>Chef's Table</h3>
+    <p>Personal culinary journey.</p>
+  </div>
+  <div class="panel">
+    <h3>Seasonal Rituals</h3>
+    <p>Crafted with seasonal respect.</p>
+  </div>
+  <div class="panel">
+    <h3>Private Evenings</h3>
+    <p>Intimate elite experience.</p>
+  </div>
+</section>
+
+<!-- SIGNATURE CREATIONS -->
+<section class="signature">
+  <div class="dish">
+    <h4>Smoked Ember Salmon</h4>
+    <p>Delicate fire kiss.</p>
+  </div>
+  <div class="dish">
+    <h4>Charred Vegetable Mosaic</h4>
+    <p>Nature's ember palette.</p>
+  </div>
+  <div class="dish">
+    <h4>Flame-Kissed Chocolate</h4>
+    <p>Smoke & sweet harmony.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <img src="gallery1.jpg" alt="">
+  <img src="gallery2.jpg" alt="">
+  <img src="gallery3.jpg" alt="">
+  <img src="gallery4.jpg" alt="">
+</section>
+
+<!-- CHEF AUTHORITY -->
+<section class="chef">
+  <img src="chef.jpg" alt="">
+  <div class="chef-text">
+    <h3>Crafted by hands that respect fire.</h3>
+    <p>Chef John Doe</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <button>Reserve more than a table. Reserve a moment.</button>
+</section>
+
+<!-- INTERNAL PAGES STUBS -->
+<section class="menu">
+  <h2>Menu</h2>
+  <p>Category smooth scroll, minimal ingredients, allergen icons.</p>
+</section>
+<section class="about">
+  <h2>About / Philosophy</h2>
+  <p>Idea → Fire → Craft → Present</p>
+</section>
+<section class="reservation">
+  <h2>Reservation</h2>
+  <p>Date / Time / Guests / Powerful button</p>
+</section>
+<section class="contact">
+  <h2>Contact</h2>
+  <p>Dark mode map, minimal elegant form.</p>
+</section>
+
+<footer>
+  &copy; 2025 Ultra-Premium Restaurant
+</footer>
+
+<!-- CURSOR SCRIPT -->
+<script>
+const cursor = document.querySelector('.cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+</script>
+
+</body>
+</html>

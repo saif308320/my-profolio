@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markonix | Digital Agency</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <img src="./none-removebg-preview.png" alt="Markonix Logo" class="logo">
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Review</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Contact</a>
+    </div>
+    <button class="cta-btn">Get Started Today</button>
+  </nav>
+
+  <!-- Landing Section -->
+  <section class="landing">
+    <div class="bg-text" id="bgText">MARKONIX</div>
+    <h1 id="heading">Welcome to Markonix</h1>
+    <p id="paragraph">
+      Crafting bold, innovative digital experiences that inspire, captivate, and empower audiences worldwide—transforming ideas into immersive, cutting-edge solutions that elevate brands and leave a lasting impact.
+    </p>
+    <button class="btn">Explore Now</button>
+  </section>
+
+  <!-- JavaScript -->
+  <script>
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const bgText = document.getElementById('bgText');
+        const heading = document.getElementById('heading');
+        const paragraph = document.getElementById('paragraph');
+
+        // Parallax
+        bgText.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.1}px)) scale(1)`;
+        heading.style.transform = `translateY(${scrollY * 0.3}px)`;
+        paragraph.style.transform = `translateY(${scrollY * 0.25}px)`;
+    });
+  </script>
+
+</body>
+</html>
+
+
+

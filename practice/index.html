@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Good Bye 2025 → Welcome 2026</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top, #0b0b0b 0%, #000 75%);
+      overflow: hidden;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #fff;
+    }
+
+    canvas { position: fixed; inset: 0; }
+
+    .center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .goodbye {
+      font-size: clamp(36px, 6vw, 90px);
+      letter-spacing: 6px;
+      animation: fadeIn 2s ease forwards;
+      text-shadow: 0 0 25px rgba(255,255,255,.4);
+    }
+
+    .welcome {
+      font-size: clamp(50px, 8vw, 130px);
+      font-weight: 900;
+      opacity: 0;
+      background: linear-gradient(90deg,#ffd700,#ff004c,#00eaff,#7CFF00);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 35px rgba(255,255,255,.35);
+    }
+
+    .welcome.show {
+      animation: pop 1.6s ease forwards, gradMove 4s linear infinite;
+    }
+
+    .counter {
+      margin-top: 20px;
+      font-size: clamp(28px, 4vw, 60px);
+      opacity: .85;
+      letter-spacing: 4px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: scale(.3) rotateX(70deg); }
+      to { opacity: 1; transform: scale(1) rotateX(0); }
+    }
+
+    @keyframes gradMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fx"></canvas>
+
+  <div class="center">
+    <div class="goodbye" id="goodbye">GOOD BYE 2025</div>
+    <div class="counter" id="counter">10</div>
+    <div class="welcome" id="welcome">WELCOME 2026</div>
+  </div>
+
+  <script>
+    /* ============ CANVAS ============ */
+    const canvas = document.getElementById('fx');
+    const ctx = canvas.getContext('2d');
+    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize(); addEventListener('resize', resize);
+
+    /* ============ REAL FIREWORK SOUND ============ */
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioCtx();
+
+    function fireworkBoom(power=1){
+      if(audioCtx.state==='suspended') audioCtx.resume();
+
+      const noise = audioCtx.createBufferSource();
+      const buffer = audioCtx.createBuffer(1, audioCtx.sampleRate*0.6, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for(let i=0;i<data.length;i++) data[i] = (Math.random()*2-1)*Math.exp(-i/8000);
+      noise.buffer = buffer;
+
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 1200;
+
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(1.2*power, audioCtx.currentTime+0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime+0.7);
+
+      noise.connect(filter).connect(gain).connect(audioCtx.destination);
+      noise.start(); noise.stop(audioCtx.currentTime+0.75);
+    }
+
+    /* ============ FIREWORKS ============ */
+    const fireworks=[], particles=[];
+    let allow= true;
+
+    class Firework{
+      constructor(){
+        this.x=Math.random()*innerWidth;
+        this.y=innerHeight;
+        this.ty=Math.random()*innerHeight*0.45+50;
+        this.v=8;
+        this.c=`hsl(${Math.random()*360},100%,60%)`;
+      }
+      update(){
+        this.y-=this.v;
+        if(this.y<=this.ty){ explode(this.x,this.y,this.c); fireworkBoom(1.4); return true; }
+        return false;
+      }
+      draw(){ ctx.fillStyle=this.c; ctx.fillRect(this.x,this.y,3,12); }
+    }
+
+    class Particle{
+      constructor(x,y,c){
+        const a=Math.random()*Math.PI*2;
+        const s=Math.random()*7+2;
+        this.x=x; this.y=y;
+        this.vx=Math.cos(a)*s;
+        this.vy=Math.sin(a)*s;
+        this.a=1; this.c=c;
+      }
+      update(){ this.vy+=0.06; this.x+=this.vx; this.y+=this.vy; this.a-=0.014; return this.a<=0; }
+      draw(){ ctx.globalAlpha=this.a; ctx.fillStyle=this.c; ctx.beginPath(); ctx.arc(this.x,this.y,2.2,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; }
+    }
+
+    function explode(x,y,c){ for(let i=0;i<110;i++) particles.push(new Particle(x,y,c)); }
+
+    function loop(){
+      ctx.fillStyle='rgba(0,0,0,.25)';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      if(allow && Math.random()<0.08) fireworks.push(new Firework());
+
+      for(let i=fireworks.length-1;i>=0;i--){ if(fireworks[i].update()) fireworks.splice(i,1); else fireworks[i].draw(); }
+      for(let i=particles.length-1;i>=0;i--){ if(particles[i].update()) particles.splice(i,1); else particles[i].draw(); }
+
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    /* ============ COUNTDOWN LOGIC ============ */
+    let time=10;
+    const counter=document.getElementById('counter');
+    const goodbye=document.getElementById('goodbye');
+    const welcome=document.getElementById('welcome');
+
+    const timer=setInterval(()=>{
+      time--;
+      counter.textContent=time;
+      if(time<=0){
+        clearInterval(timer);
+        goodbye.style.display='none';
+        counter.style.display='none';
+        welcome.classList.add('show');
+        allow=true;
+        for(let i=0;i<8;i++) fireworkBoom(2);
+      }
+    },1000);
+
+    // Click dependency removed – fireworks auto start only via countdown });
+  </script>
+</body>
+</html>

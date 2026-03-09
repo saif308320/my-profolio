@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(193, 191, 188);
+}
+
+.div2{
+      background-color: rgb(253, 255, 255);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      margin-top: 200px;
+      width: 300px;
+      margin-left: 500px;
+}

@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saifullah | Portfolio Expert</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<style>
+:root {
+  --bg: #05070a;
+  --panel: #0b0f14;
+  --accent: #0088FF;
+  --accent-grad: linear-gradient(90deg, #0088FF, #00c6ff);
+  --text-white: #ffffff;
+  --text-muted: #94a3b8;
+  --card-bg: rgba(15, 20, 28, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Desktop par default cursor hide kiya taake custom aura dikhe */
+@media (min-width: 993px) {
+  body, a, button, .service-card, .stat-item, .skill-card { cursor: none !important; }
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-white);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+/* --- AURA CURSOR STYLE --- */
+.cursor-dot {
+  position: fixed; top: 0; left: 0; width: 12px; height: 12px;
+  background-color: var(--accent); border-radius: 50%; pointer-events: none;
+  z-index: 99999; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s;
+  box-shadow: 0 0 15px var(--accent);
+}
+.cursor-outline {
+  position: fixed; top: 0; left: 0; width: 40px; height: 40px;
+  border: 1.5px solid rgba(0, 136, 255, 0.4); border-radius: 50%; pointer-events: none;
+  z-index: 99998; transform: translate(-50%, -50%); transition: all 0.3s ease-out;
+}
+body.cursor-hover .cursor-dot { width: 8px; background-color: #fff; }
+body.cursor-hover .cursor-outline {
+  width: 80px; height: 80px; background-color: rgba(0, 136, 255, 0.1);
+  border-color: var(--accent); box-shadow: 0 0 30px rgba(0, 136, 255, 0.4);
+}
+
+/* --- ANIMATED DOTS BACKGROUND --- */
+#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background-color: var(--bg); }
+.bg-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0, 136, 255, 0.12) 0%, transparent 70%);
+  top: -100px; right: -100px; z-index: -1; filter: blur(80px);
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* --- NAV & UNDERLINE HOVER --- */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 30px 0; }
+.logo { font-weight: 800; font-size: 1.6rem; letter-spacing: -1px; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links li a { text-decoration: none; color: var(--text-white); font-size: 0.95rem; font-weight: 500; position: relative; padding-bottom: 5px; transition: 0.3s; }
+.nav-links li a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background: var(--accent-grad); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(-50%); }
+.nav-links li a:hover { color: var(--accent); }
+.nav-links li a:hover::after { width: 100%; }
+
+/* --- BUTTON REVEAL SYSTEM --- */
+.btn-reveal {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 28px; border: 1px solid var(--accent); color: var(--text-white);
+  text-decoration: none; font-weight: 700; border-radius: 50px; overflow: hidden;
+  transition: all 0.4s ease; background: transparent; z-index: 1; cursor: pointer;
+}
+.btn-reveal::before, .btn-reveal::after {
+  content: ''; position: absolute; left: 0; width: 100%; height: 50%;
+  background: var(--accent-grad); z-index: -1; transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.btn-reveal::before { top: -50%; } .btn-reveal::after { bottom: -50%; }
+.btn-reveal:hover::before { top: 0; } .btn-reveal:hover::after { bottom: 0; }
+.btn-reveal:hover { color: #000; box-shadow: 0 0 25px rgba(0, 136, 255, 0.4); }
+.btn-large { padding: 18px 40px; border-radius: 12px; }
+
+/* --- HERO --- */
+.hero { display: flex; align-items: center; justify-content: space-between; min-height: 85vh; gap: 50px; }
+.hero-content { flex: 1.2; }
+.hello-tag { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--accent); margin-bottom: 20px; }
+.hero-content h1 { font-size: clamp(3rem, 7vw, 5rem); line-height: 1; font-weight: 800; margin-bottom: 20px; }
+.hero-content p { color: var(--text-muted); font-size: 1.1rem; max-width: 550px; margin-bottom: 40px; line-height: 1.8; }
+.image-container { width: 440px; height: 440px; border-radius: 50%; padding: 4px; background: var(--accent-grad); box-shadow: 0 0 60px rgba(0, 136, 255, 0.3); display: flex; align-items: center; justify-content: center; }
+.image-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background: var(--bg); }
+
+/* --- UNIVERSAL GLOW EFFECT FOR ALL CARDS --- */
+.service-card, .skill-card, .stat-item {
+  position: relative; overflow: hidden;
+  --x: 50%; --y: 50%;
+}
+.service-card::after, .skill-card::after, .stat-item::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle 180px at var(--x) var(--y), rgba(0, 136, 255, 0.3), transparent 80%);
+  opacity: 0; transition: opacity 0.4s; pointer-events: none; z-index: 0;
+}
+.service-card:hover::after, .skill-card:hover::after, .stat-item:hover::after { opacity: 1; }
+.service-card *, .skill-card *, .stat-item * { position: relative; z-index: 1; }
+
+/* --- ABOUT SECTION --- */
+.about { padding: 120px 0; display: flex; align-items: center; gap: 80px; }
+.about-image-side { flex: 1; position: relative; }
+.about-square-container { width: 100%; max-width: 450px; position: relative; padding: 4px; background: var(--accent-grad); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); }
+.about-square-container img { width: 100%; height: auto; display: block; }
+.about-square-container::before { content: ''; position: absolute; top: -15px; left: -15px; width: 80px; height: 80px; border-top: 4px solid var(--accent); border-left: 4px solid var(--accent); z-index: 1; }
+.about-content { flex: 1.2; }
+.about-content h2 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; color: var(--accent); }
+.about-content p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 35px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.stat-item { background: var(--panel); padding: 25px 15px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; text-align: center; }
+.stat-item:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0, 136, 255, 0.2); }
+.stat-item h3 { font-size: 1.8rem; color: var(--accent); margin-bottom: 5px; font-weight: 800; }
+.stat-item p { font-size: 0.85rem; font-weight: 600; color: var(--text-white); }
+
+/* --- SERVICES SECTION --- */
+.services { padding: 100px 0; }
+.section-head { text-align: center; margin-bottom: 60px; }
+.section-head h2 { font-size: 3.5rem; font-weight: 800; color: var(--accent); }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.service-card { background: var(--card-bg); padding: 50px 30px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s; position: relative; text-align: center; backdrop-filter: blur(10px); }
+.service-card:hover { transform: translateY(-15px); border-color: var(--accent); box-shadow: 0 20px 50px rgba(0, 136, 255, 0.2); }
+.icon-box { width: 70px; height: 70px; background: rgba(0, 136, 255, 0.1); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; color: var(--accent); border: 1px solid rgba(0, 136, 255, 0.2); transition: 0.4s; }
+.service-card:hover .icon-box { background: var(--accent-grad); color: #000; transform: rotateY(180deg); box-shadow: 0 0 20px var(--accent); }
+.service-card h3 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; }
+.service-card p { color: var(--text-muted); line-height: 1.7; margin-bottom: 25px; }
+.hire-reveal { opacity: 0; transform: translateY(20px); transition: 0.4s ease; }
+.service-card:hover .hire-reveal { opacity: 1; transform: translateY(0); }
+
+/* --- SKILLS SECTION (NEW) --- */
+.skills-section { padding: 100px 0; text-align: center; }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+.skill-card {
+  background: var(--panel); padding: 40px 20px; border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.4s;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.skill-card img { width: 60px; height: 60px; margin-bottom: 20px; object-fit: contain; }
+.skill-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; }
+.skill-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+@media (max-width: 992px) {
+  .hero, .about { flex-direction: column; text-align: center; }
+  .services-grid, .stats-grid, .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links, .cursor-dot, .cursor-outline { display: none !important; }
+}
+@media (max-width: 600px) { .services-grid, .stats-grid, .skills-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<div id="particles-js"></div>
+<div class="bg-glow"></div>
+
+<div class="container">
+  <nav>
+    <div class="logo">Saifullah<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+    </ul>
+    <a href="#" class="btn-reveal">DOWNLOAD CV</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-right">
+      <div class="hello-tag"><span>👋</span> Hello, I am</div>
+      <h1>Saifullah<span style="color:var(--accent)">.</span></h1>
+      <h2 style="font-size: 2.5rem; margin-top: -10px; margin-bottom: 25px;">
+        A <span id="type-target" style="background: var(--accent-grad); -webkit-background-clip: text; color: transparent;">GHL Expert</span>
+      </h2>
+      <p>I build high-converting landing pages and automated systems. My mission is to merge pixel-perfect design with elite functionality.</p>
+      <a href="#portfolio" class="btn-reveal btn-large">VIEW PORTFOLIO</a>
+    </div>
+    <div class="hero-image-wrapper" data-aos="zoom-in">
+      <div class="image-container">
+        <img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698619c303c9d55872d4fb56.jpg" alt="Saifullah Hero">
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-image-side" data-aos="fade-right">
+      <div class="about-square-container">
+        <img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698605f203c9d50495d11d68.png" alt="About Saifullah">
+      </div>
+    </div>
+    <div class="about-content" data-aos="fade-left">
+      <h2>About Me</h2>
+      <p>I am a passionate GHL Expert and dedicated developer with expertise in creating modern, responsive, and user-friendly websites. I deliver digital solutions that perform at the highest level.</p>
+      <div class="stats-grid">
+        <div class="stat-item"><h3>2+</h3><p>Years Exp</p></div>
+        <div class="stat-item"><h3>50+</h3><p>Projects</p></div>
+        <div class="stat-item"><h3>30+</h3><p>Clients</p></div>
+      </div>
+      <div style="margin-top: 45px;">
+        <a href="#contact" class="btn-reveal">LET'S BUILD SOMETHING</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="section-head" data-aos="fade-up">
+      <h2>My Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-aos="fade-up">
+        <div class="icon-box"><i data-lucide="zap"></i></div>
+        <h3>GHL Specialist</h3>
+        <p>Advanced funnels and CRM automation setup.</p>
+        <a href="#" class="btn-reveal hire-reveal">HIRE ME</a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-box"><i data-lucide="code"></i></div>
+        <h3>Web Development</h3>
+        <p>High-speed React and WordPress solutions.</p>
+        <a href="#" class="btn-reveal hire-reveal">HIRE ME</a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-box"><i data-lucide="layers"></i></div>
+        <h3>Automation Pro</h3>
+        <p>Seamless workflows and API integrations.</p>
+        <a href="#" class="btn-reveal hire-reveal">HIRE ME</a>
+      </div>
+      <div class="service-card" data-aos="fade-up">
+        <div class="icon-box"><i data-lucide="palette"></i></div>
+        <h3>UI/UX Design</h3>
+        <p>Modern and intuitive interfaces in Figma.</p>
+        <a href="#" class="btn-reveal hire-reveal">HIRE ME</a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-box"><i data-lucide="smartphone"></i></div>
+        <h3>Responsive Design</h3>
+        <p>Perfect viewing on every screen size.</p>
+        <a href="#" class="btn-reveal hire-reveal">HIRE ME</a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-box"><i data-lucide="rocket"></i></div>
+        <h3>SaaS Solutions</h3>
+        <p>Landing pages and dashboards for SaaS.</p>
+        <a href="#" class="btn-reveal hire-reveal">HIRE ME</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-section" id="skills">
+    <div class="section-head" data-aos="fade-up">
+      <h2>My <span style="color:var(--accent)">Skills</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card" data-aos="fade-up">
+        <img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png" alt="HTML">
+        <h3>HTML</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="50">
+        <img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_1280.png" alt="CSS">
+        <h3>CSS</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JS">
+        <h3>JavaScript</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="150">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React">
+        <h3>React</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg" alt="Git">
+        <h3>Git</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="250">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap">
+        <h3>Bootstrap</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind">
+        <h3>Tailwind</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="350">
+        <img src="https://www.vectorlogo.zone/logos/wordpress/wordpress-icon.svg" alt="WordPress">
+        <h3>WordPress</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698623513fae0a2c5231e866.png" alt="GHL">
+        <h3>Gohighlevel</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="450">
+        <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma">
+        <h3>Figma</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+        <img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" alt="GSAP">
+        <h3>GSAP</h3>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="550">
+        <img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698623510a7fd135a2bfa8e0.png" alt="Click Funnel">
+        <h3>Click Funnel</h3>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  lucide.createIcons();
+  AOS.init({ duration: 1000, once: true });
+
+  /* --- AURA CURSOR LOGIC --- */
+  const dot = document.querySelector('.cursor-dot');
+  const outline = document.querySelector('.cursor-outline');
+  let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0, outX = 0, outY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateCursor() {
+    dotX += (mouseX - dotX) * 0.2;
+    dotY += (mouseY - dotY) * 0.2;
+    dot.style.left = dotX + 'px';
+    dot.style.top = dotY + 'px';
+    outX += (mouseX - outX) * 0.12;
+    outY += (mouseY - outY) * 0.12;
+    outline.style.left = outX + 'px';
+    outline.style.top = outY + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  /* --- GLOW EFFECT FOR CARDS --- */
+  const glowCards = document.querySelectorAll('.service-card, .skill-card, .stat-item');
+  glowCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--x', `${x}%`);
+      card.style.setProperty('--y', `${y}%`);
+    });
+  });
+
+  const auraTargets = document.querySelectorAll('a, button, .service-card, .skill-card, .stat-item, .logo');
+  auraTargets.forEach(t => {
+    t.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    t.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  /* --- Particles Config --- */
+  particlesJS('particles-js', {
+    "particles": {
+      "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#0088FF" },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.2, "random": false },
+      "size": { "value": 3, "random": true },
+      "line_linked": { "enable": true, "distance": 150, "color": "#0088FF", "opacity": 0.1, "width": 1 },
+      "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+    },
+    "interactivity": {
+      "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
+      "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } } }
+    },
+    "retina_detect": true
+  });
+
+  const textEl = document.getElementById('type-target');
+  const items = ["GHL Expert", "Frontend Dev", "Automation Pro"];
+  let i = 0, j = 0, isBack = false;
+
+  function typeAnim() {
+    const full = items[i];
+    textEl.textContent = full.substring(0, j);
+    if (!isBack && j < full.length) { j++; setTimeout(typeAnim, 100); }
+    else if (isBack && j > 0) { j--; setTimeout(typeAnim, 50); }
+    else { isBack = !isBack; if (!isBack) i = (i + 1) % items.length; setTimeout(typeAnim, isBack ? 2000 : 500); }
+  }
+  typeAnim();
+</script>
+</body>
+</html>

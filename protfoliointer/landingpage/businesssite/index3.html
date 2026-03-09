@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zervte — Elevate Your Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #6a11cb;
+  --secondary: #2575fc;
+  --accent: #ff7eb3;
+  --bg: #050510;
+  --glass: rgba(255,255,255,0.08);
+  --text: #f0f0ff;
+  --subtext: #a0a0ff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+
+body {
+  background: radial-gradient(circle at 20% 20%, #0f0f1f, var(--bg));
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Navbar */
+header {
+  position: sticky; top:0; z-index:20;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 50px;
+  background: rgba(0,0,0,0.35); backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--glass);
+}
+.logo {
+  font-size:34px; font-weight:800;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text; color:transparent;
+  letter-spacing:1px;
+}
+.nav a {
+  margin:0 16px; font-weight:500; position:relative;
+}
+.nav a::after {
+  content:''; position:absolute; bottom:-6px; left:0;
+  width:0%; height:2px;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  transition:0.4s;
+}
+.nav a:hover::after { width:100%; }
+.btn {
+  padding:10px 22px; border:none; border-radius:12px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:white; font-weight:600;
+  box-shadow:0 8px 25px rgba(100,50,255,0.3);
+  cursor:pointer; transition:0.3s;
+}
+.btn:hover { transform:scale(1.05); }
+
+/* Hero */
+.hero {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:100px 60px; flex-wrap:wrap;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 70% 20%,rgba(100,0,255,0.2),transparent 70%);
+  filter:blur(120px); z-index:0;
+}
+.hero-content { flex:1; min-width:280px; z-index:1; }
+.hero-content h1 {
+  font-size:60px; line-height:1.2; margin-bottom:30px;
+  background:linear-gradient(90deg,#9d4edd,#00b4d8);
+  -webkit-background-clip:text; color:transparent;
+}
+.hero-content p {
+  color:var(--subtext); font-size:22px; margin-bottom:50px;
+  max-width:600px;
+}
+.hero-buttons button {
+  margin-right:14px; font-size:18px;
+}
+.hero-img {
+  flex:1; text-align:center; z-index:1;
+}
+.hero-img img {
+  width:420px; border-radius:40px; box-shadow:0 0 80px rgba(100,0,255,0.25);
+}
+
+/* Section titles */
+section h2 {
+  text-align:center; font-size:46px;
+  margin-bottom:40px; position:relative;
+}
+section h2::after {
+  content:''; width:80px; height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  display:block; margin:14px auto; border-radius:10px;
+}
+
+/* Services */
+.services {
+  padding:100px 60px;
+}
+.service-grid {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:30px;
+}
+.card {
+  background:var(--glass); border:1px solid rgba(255,255,255,0.12);
+  border-radius:20px; padding:30px;
+  width:300px; text-align:center;
+  transition:0.4s; backdrop-filter: blur(12px);
+}
+.card:hover {
+  transform:translateY(-8px);
+  background:rgba(255,255,255,0.1);
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+.card img {
+  width:260px; height:160px; border-radius:18px; margin-bottom:20px; object-fit:cover;
+}
+.card h3 { font-size:24px; margin-bottom:10px; }
+.card p { color:var(--subtext); }
+
+/* About */
+.about {
+  padding:100px 60px; text-align:center;
+}
+.about p {
+  font-size:22px; max-width:800px; margin:0 auto;
+  color:var(--subtext);
+}
+
+/* Team */
+.team {
+  padding:100px 60px; text-align:center;
+}
+.team-members {
+  display:flex; flex-wrap:wrap; gap:30px; justify-content:center;
+}
+.member {
+  background:var(--glass); border-radius:18px;
+  padding:24px; width:250px; transition:0.3s;
+}
+.member img {
+  width:100%; height:250px; border-radius:14px; object-fit:cover; margin-bottom:10px;
+}
+.member:hover { transform:translateY(-8px); background:rgba(255,255,255,0.1); }
+
+/* Contact */
+.contact {
+  padding:100px 60px; text-align:center;
+}
+form {
+  display:flex; flex-direction:column; gap:16px;
+  max-width:480px; margin:0 auto;
+}
+input, textarea {
+  padding:14px 18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.08);
+  color:white;
+}
+textarea { height:120px; resize:none; }
+form button {
+  background:linear-gradient(90deg,var(--accent),var(--secondary));
+  color:white; border:none; border-radius:12px;
+  padding:12px; font-weight:600; cursor:pointer; transition:0.3s;
+}
+form button:hover { transform:scale(1.05); }
+
+/* Footer */
+footer {
+  text-align:center; padding:40px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  font-size:18px; color:var(--subtext);
+}
+footer a { margin:0 8px; }
+footer a:hover { color:var(--accent); }
+
+/* Responsive */
+@media(max-width:900px){
+  .hero {flex-direction:column; text-align:center;}
+  .hero-img img {width:80%;}
+  .hero-content h1 {font-size:42px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Zervte</div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="btn">Get Started</button>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Transform Your Business with Zervte</h1>
+    <p>Empowering brands and companies with smart digital strategies, creativity, and innovation that deliver real results.</p>
+    <div class="hero-buttons">
+      <button class="btn">Start Your Journey</button>
+      <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.2);">Learn More</button>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="./Zzervte image icon.png" alt="Zervte">
+  </div>
+</section>
+
+<section class="services" id="services">
+  <h2>Our Services</h2>
+  <div class="service-grid">
+    <div class="card">
+      <img src="./b1.png" alt="">
+      <h3>Business Consulting</h3>
+      <p>Data-driven strategies to boost growth and redefine your business potential.</p>
+    </div>
+    <div class="card">
+      <img src="./marketing solution.jpg" alt="">
+      <h3>Marketing Solutions</h3>
+      <p>Powerful campaigns designed to amplify your brand presence and reach.</p>
+    </div>
+    <div class="card">
+      <img src="./analyics.jpg" alt="">
+      <h3>Analytics & Insights</h3>
+      <p>Turn data into smart decisions through modern analytics tools.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2>About Zervte</h2>
+  <p>At Zervte, we blend technology, innovation, and creativity to build next-generation business solutions that make an impact globally.</p>
+</section>
+
+<section class="team" id="team">
+  <h2>Our Team</h2>
+  <div class="team-members">
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1" alt="">
+      <h3>Sarah Johnson</h3>
+      <p>Founder & CEO</p>
+    </div>
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6" alt="">
+      <h3>Michael Lee</h3>
+      <p>Head of Marketing</p>
+    </div>
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="">
+      <h3>Olivia Smith</h3>
+      <p>Creative Director</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+    <div id="formStatus" style="margin-top:12px;color:var(--subtext);"></div>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 Zervte. All Rights Reserved.</p>
+  <div>
+    <a href="#">LinkedIn</a> •
+    <a href="#">Twitter</a> •
+    <a href="#">Facebook</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', async e=>{
+    e.preventDefault();
+    status.textContent='';
+    const name=form.name.value.trim();
+    const email=form.email.value.trim();
+    const message=form.message.value.trim();
+    if(name.length<2){status.textContent='Name must be 2+ characters';return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){status.textContent='Enter valid email';return;}
+    if(message.length<10){status.textContent='Message must be 10+ characters';return;}
+    try{
+      const res=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,message})});
+      const data=await res.json();
+      if(!res.ok){status.textContent=data.error||'Error sending';return;}
+      status.textContent='Message sent. Thank you!';
+      form.reset();
+    }catch(err){status.textContent='Network error';console.error(err);}
+  });
+})();
+</script>
+
+</body>
+</html>

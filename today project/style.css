@@ -1,0 +1,159 @@
+/* /* img {
+    width: 300px;
+    /* margin-top: 50px;
+
+
+}
+
+/* .href div{
+      text-align: end;
+} */
+/* .nav{
+    text-decoration: none;
+
+} 
+
+.a1{
+    text-decoration: none;
+    color: gray;
+    margin-left: 800px;
+    font-size: 25px;
+    
+    
+    
+}
+
+
+.a2{
+    text-decoration: none;
+     color: gray;
+     font-size: 25px;
+     padding-left: 50px;
+     
+}
+
+
+
+.a3{
+    text-decoration: none;
+     color: gray;
+     font-size: 25px;
+         padding-left: 50px;
+}
+
+
+.a4{
+    text-decoration: none;
+     color: gray;
+     font-size: 25px;
+         padding-left: 50px;
+         
+}
+.h11{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 80px;
+    font-weight: bold;
+    
+
+}
+ span{
+    color: rgb(255, 166, 0);
+ }
+
+ .pre1{
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    font-weight: lighter;
+
+ }
+
+/* our ventures */
+
+
+
+ h1{
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+    color:rgb(255, 149, 10) ;
+ }
+
+ .img1{
+    width: 200px;
+    margin-left: 9%;
+ }
+ .img5{
+    width: 200px;
+    margin-left: 28%;
+ }
+
+  .img6{
+    width: 120px;
+    margin-left: 13%;
+ }
+/* Madsgency founder section  */
+
+p {
+    
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.Madsgency{
+    color: rgb(255, 149, 10);
+    font-size: 50px;
+}
+
+/* corousal section*/
+
+#carouselExampleFade{
+ margin-left: 500px;
+
+}
+
+/* new section */
+.h111{
+    color:rgb(255, 149, 10) ;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+/* h12 */
+.h12{
+    font-size: 60px;
+}
+ h3{
+    text-align: center;
+ }
+
+ /* button section */
+
+.but{
+  color: rgb(255, 149, 10);
+  text-align: center;
+  padding: 20px;
+
+ }
+
+ button{
+    background-color: rgb(255, 149, 10);
+    padding: 10px;
+    width: 160px;
+   border: 10px;
+   
+    
+ }
+
+h2{
+    margin-left: 90px;
+    
+
+}
+
+.img33{
+
+} 

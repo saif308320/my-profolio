@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Skill Sphere — Responsive Portal (STS-style)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    /* Reset & root */
+    :root{
+      --bg:#f2f6fb; --card:#ffffff; --muted:#6b7280; --accent:#0b5cff; --accent-2:#0ea5a4; --danger:#ef4444;
+      --glass: rgba(255,255,255,0.7);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#eef6ff 0%,var(--bg) 100%);color:#0f1724}
+
+    /* Layout */
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+    .grid{display:grid;grid-template-columns:620px 360px;gap:28px;width:100%;max-width:1100px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}}
+
+    /* Card */
+    .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 12px 40px rgba(9,30,66,0.08)}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6c5ce7);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px}
+    h1{margin:0;font-size:20px}
+    .sub{color:var(--muted);font-size:13px}
+
+    /* Form styles */
+    form{margin-top:18px}
+    .row{display:flex;gap:12px}
+    .row.col{flex-direction:column}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input,select,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e6eef6;background:#fbfdff;font-size:14px}
+    textarea{min-height:96px;resize:vertical}
+
+    .controls{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .btn{background:var(--accent);color:white;padding:12px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn.secondary{background:transparent;color:var(--accent);border:1px solid rgba(11,92,255,0.12)}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* Right admin panel */
+    .panel .logoSmall{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+    .apps{margin-top:14px}
+    .appRow{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,rgba(11,92,255,0.03),transparent);margin-bottom:8px}
+    .status{padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+    .s-pending{background:#fff7ed;color:#b45309}
+    .s-accepted{background:#ecfdf5;color:#065f46}
+    .s-rejected{background:#fff1f2;color:#9f1239}
+
+    .adminActions{display:flex;gap:8px;margin-top:12px}
+    .smallNote{font-size:12px;color:var(--muted);margin-top:10px}
+
+    /* responsive tweaks */
+    @media(max-width:520px){
+      .logo{width:56px;height:56px;font-size:16px}
+      .grid{gap:14px}
+      .card{padding:16px}
+    }
+
+    /* footer */
+    footer{text-align:center;margin-top:18px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- LEFT: Main Form Card -->
+      <section class="card">
+        <div class="brand">
+          <div class="logo">SS</div>
+          <div>
+            <h1>Skill Sphere Application Portal</h1>
+            <div class="sub">Professional application portal — fill form & download slip. (Demo: data saved locally)</div>
+          </div>
+        </div>
+
+        <form id="mainForm" autocomplete="off">
+          <div class="row" style="margin-top:14px">
+            <div style="flex:1">
+              <label for="name">Full Name</label>
+              <input id="name" placeholder="e.g. Muhammad Saif" required />
+            </div>
+            <div style="width:190px">
+              <label for="cnic">CNIC</label>
+              <input id="cnic" placeholder="42101-1234567-1" required />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <div style="flex:1">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div style="width:190px">
+              <label for="phone">Phone</label>
+              <input id="phone" placeholder="0300-1234567" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <div style="flex:1">
+              <label for="appliedFor">Applied For</label>
+              <input id="appliedFor" placeholder="e.g. Frontend Developer" />
+            </div>
+            <div style="width:190px">
+              <label for="qualification">Qualification</label>
+              <select id="qualification">
+                <option>Matric</option>
+                <option>Intermediate</option>
+                <option>Graduate</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label for="address">Address</label>
+            <textarea id="address" placeholder="Full address..."></textarea>
+          </div>
+
+          <div class="controls">
+            <button type="button" id="downloadBtn" class="btn">Download Slip</button>
+            <button type="reset" class="btn secondary">Reset</button>
+            <div style="margin-left:auto" class="muted">Form ID: <strong id="formId">—</strong></div>
+          </div>
+
+          <div class="smallNote">Tip: For real production, connect to a backend (Node.js + MongoDB). This demo stores entries locally in browser.</div>
+        </form>
+      </section>
+
+      <!-- RIGHT: Admin Panel -->
+      <aside class="card panel">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logoSmall">SS</div>
+          <div>
+            <div style="font-weight:700">Skill Sphere — Admin</div>
+            <div class="small">Manage applications (demo)</div>
+          </div>
+        </div>
+
+        <div class="adminActions" style="margin-top:14px">
+          <button id="showLogin" class="btn secondary">Admin Login</button>
+          <button id="exportAll" class="btn secondary">Export JSON</button>
+          <button id="clearAll" class="btn secondary">Clear Data</button>
+        </div>
+
+        <div id="loginBox" style="display:none;margin-top:12px">
+          <label for="adminPass">Admin Password</label>
+          <input id="adminPass" placeholder="password" />
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="adminLogin" class="btn">Login</button>
+            <button id="adminCancel" class="btn secondary">Cancel</button>
+          </div>
+        </div>
+
+        <div class="apps" id="appsList">
+          <!-- applications injected here -->
+        </div>
+
+        <div class="smallNote">Demo admin password: <strong>admin123</strong></div>
+        <footer>Built as responsive frontend demo • LocalStorage</footer>
+      </aside>
+
+    </div>
+  </div>
+
+  <script>
+    // Responsive STS-style frontend-only portal with admin demo
+    const STORAGE_KEY = 'skill_sphere_sts_v2';
+    const form = document.getElementById('mainForm');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const formIdEl = document.getElementById('formId');
+    const appsList = document.getElementById('appsList');
+
+    // Admin elements
+    const showLogin = document.getElementById('showLogin');
+    const loginBox = document.getElementById('loginBox');
+    const adminLogin = document.getElementById('adminLogin');
+    const adminPass = document.getElementById('adminPass');
+    const adminCancel = document.getElementById('adminCancel');
+    const exportAll = document.getElementById('exportAll');
+    const clearAll = document.getElementById('clearAll');
+
+    // utils
+    function uid(){return 'SS'+Date.now().toString().slice(-6)}
+    function loadApps(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch(e){return []}}
+    function saveApps(list){localStorage.setItem(STORAGE_KEY,JSON.stringify(list))}
+
+    function renderApps(isAdmin=false){
+      const list = loadApps().slice().reverse();
+      appsList.innerHTML = '';
+      if(!list.length){appsList.innerHTML = '<div class="muted" style="padding:12px">No applications yet.</div>';return}
+      list.forEach(app=>{
+        const row = document.createElement('div'); row.className='appRow';
+        const left = document.createElement('div'); left.innerHTML = <div style="font-weight:700">${app.fullName}</div><div class="muted">${app.appliedFor} • ${app.email||app.phone||''}</div>;
+        const right = document.createElement('div');
+
+        // status badge
+        const badge = document.createElement('span'); badge.className='status '+(app.status==='Accepted'?'s-accepted':app.status==='Rejected'?'s-rejected':'s-pending'); badge.textContent = app.status || 'Pending';
+        right.appendChild(badge);
+
+        // actions
+        const actions = document.createElement('div'); actions.style.marginTop='8px'; actions.style.display='flex'; actions.style.gap='8px'; actions.style.alignItems='center';
+        const dl = document.createElement('button'); dl.className='btn secondary'; dl.textContent='Download'; dl.onclick = ()=> generatePDF(app, true);
+        actions.appendChild(dl);
+
+        if(isAdmin){
+          const sel = document.createElement('select'); sel.innerHTML='<option>Pending</option><option>Accepted</option><option>Rejected</option>'; sel.value = app.status || 'Pending'; sel.onchange = (e)=> updateStatus(app.id, e.target.value);
+          const del = document.createElement('button'); del.className='btn secondary'; del.textContent='Delete'; del.onclick = ()=>{ if(confirm('Delete this application?')) deleteApp(app.id) };
+          actions.appendChild(sel); actions.appendChild(del);
+        }
+
+        right.appendChild(actions);
+        row.appendChild(left); row.appendChild(right);
+        appsList.appendChild(row);
+      })
+    }
+
+    function updateStatus(id, status){
+      const list = loadApps(); const idx = list.findIndex(x=>x.id===id);
+      if(idx>-1){list[idx].status = status; saveApps(list); renderApps(true);}    
+    }
+    function deleteApp(id){const list = loadApps().filter(x=>x.id!==id); saveApps(list); renderApps(true)}
+
+    function generatePDF(data, download = false){
+      const { jsPDF } = window.jspdf; const doc = new jsPDF({unit:'pt',format:'a4'});
+      const pad = 40; let y = 60;
+      doc.setFontSize(20); doc.setTextColor('#0b5cff'); doc.text('Skill Sphere', pad, y);
+      y += 26; doc.setFontSize(12); doc.setTextColor('#111'); doc.text('Application Slip', pad, y);
+      y += 14; doc.setDrawColor('#eee'); doc.line(pad, y, pad+520, y); y += 18;
+
+      doc.setFontSize(11); doc.setTextColor('#222'); doc.text(Form ID: ${data.id}, pad, y); doc.text(Status: ${data.status||'Pending'}, pad+320, y); y += 20;
+
+      const fields = [ ['Full Name', data.fullName], ['CNIC', data.cnic], ['Email', data.email], ['Phone', data.phone], ['Applied For', data.appliedFor], ['Qualification', data.qualification], ['Address', data.address] ];
+      fields.forEach(([k,v])=>{ doc.setFontSize(10); doc.setTextColor('#444'); doc.text(k+':', pad, y); doc.setFontSize(11); const text = String(v || '-'); const split = doc.splitTextToSize(text, 380); doc.text(split, pad+110, y); y += (split.length * 14); if(y > 720){doc.addPage(); y = 60;} });
+
+      y += 20; doc.setDrawColor('#eee'); doc.line(pad, y, pad+520, y); y += 12; doc.setFontSize(9); doc.setTextColor('#666'); doc.text('Generated by Skill Sphere Portal', pad, y);
+
+      if(download) doc.save(${(data.fullName||'application')}_${data.id}.pdf);
+      return doc.output('blob');
+    }
+
+    // Form handling
+    downloadBtn.addEventListener('click', ()=>{
+      const payload = {
+        id: uid(),
+        fullName: document.getElementById('name').value.trim(),
+        cnic: document.getElementById('cnic').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        appliedFor: document.getElementById('appliedFor').value.trim(),
+        qualification: document.getElementById('qualification').value,
+        address: document.getElementById('address').value.trim(),
+        status: 'Pending',
+        createdAt: new Date().toISOString()
+      };
+
+      if(!payload.fullName || !payload.cnic){ alert('Please fill at least Full Name and CNIC'); return }
+
+      const list = loadApps(); list.push(payload); saveApps(list); renderApps(false);
+      form.reset(); formIdEl.textContent = payload.id;
+      generatePDF(payload, true);
+      alert('Slip downloaded and application saved locally (status: Pending).');
+    });
+
+    // Admin login
+    showLogin.addEventListener('click', ()=>{ loginBox.style.display = loginBox.style.display === 'none' || loginBox.style.display === '' ? 'block' : 'none'; })
+    adminCancel.addEventListener('click', ()=>{ loginBox.style.display='none'; adminPass.value=''; })
+    adminLogin.addEventListener('click', ()=>{
+      const pass = adminPass.value.trim();
+      if(pass === 'admin123'){
+        alert('Admin logged in (demo)'); loginBox.style.display='none'; adminPass.value=''; renderApps(true);
+        // show admin controls in UI
+        showLogin.textContent = 'Logged in as Admin'; showLogin.disabled = true;
+      } else alert('Wrong password (demo)');
+    })
+
+    exportAll.addEventListener('click', ()=>{
+      const data = loadApps(); const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'skill_sphere_export.json'; a.click(); URL.revokeObjectURL(a.href);
+    });
+
+    clearAll.addEventListener('click', ()=>{ if(confirm('Clear all stored applications?')){ localStorage.removeItem(STORAGE_KEY); renderApps(false); alert('Cleared'); }});
+
+    // init
+    renderApps(false);
+  </script>
+</body>
+</html>

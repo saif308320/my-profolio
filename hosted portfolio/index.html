@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saifullah | Portfolio Expert</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+  <div class="preloader">
+    <div class="loader-content">
+      <div class="loader-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+      <div class="loader-text">SAIFULLAH</div>
+      <div class="loader-subtitle">Loading Portfolio...</div>
+    </div>
+  </div>
+
+  <div class="cursor"></div>
+  <div class="cursor-outline"></div>
+
+  <div class="bg-animation">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+      <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+      <li><a href="#skills" onclick="closeMobileMenu()">Skills</a></li>
+      <li><a href="#portfolio" onclick="closeMobileMenu()">Portfolio</a></li>
+      <li><a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a></li>
+      <li><a href="#team" onclick="closeMobileMenu()">Team</a></li>
+      <li><a href="#pricing" onclick="closeMobileMenu()">Pricing</a></li>
+      <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="nav-container">
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">Saifullah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="sun" id="themeIcon"></i>
+          </button>
+          <a href="#contact" class="btn-reveal">DOWNLOAD CV</a>
+          <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="hero" id="home">
+      <div class="hero-content" data-aos="fade-right">
+        <div class="hello-tag">
+          <span>👋</span>
+          <span>Hello, I am Saif!</span>
+        </div>
+        <h1>Building Digital<br><span class="gradient-heading">Excellence</span></h1>
+        <h2>I'm a <span class="gradient-heading" id="typed-text"></span></h2>
+        <p>I create high-converting landing pages and automated systems that drive results. Specializing in GHL, modern web development, and seamless user experiences.</p>
+        <div class="hero-buttons">
+          <a href="#portfolio" class="btn-reveal btn-large">
+            <span>View My Work</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper" data-aos="zoom-in">
+        <div class="hero-square-container">
+          <img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698924630a7fd11bb53fd888.png" alt="Saifullah">
+          <div class="tech-icons">
+            <div class="tech-icon">
+              <img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698623513fae0a2c5231e866.png" alt="GHL">
+            </div>
+            <div class="tech-icon">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
+            </div>
+            <div class="tech-icon">
+              <img src="https://www.vectorlogo.zone/logos/wordpress/wordpress-icon.svg" alt="WordPress">
+            </div>
+            <div class="tech-icon">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-image-side" data-aos="fade-right">
+        <div class="about-glow-container">
+          <img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/6989280c67d74920b2f40ae2.png" alt="About Saifullah">
+        </div>
+      </div>
+      <div class="about-content" data-aos="fade-left">
+        <h2 class="gradient-heading">About Me</h2>
+        <p>I am a passionate and dedicated developer with expertise in creating modern, responsive, and user-friendly websites. With a strong focus on clean code, performance, and problem-solving, I strive to deliver digital solutions that not only look great but also provide seamless functionality. My goal is to combine creativity with technology to build impactful projects that help businesses and individuals achieve their vision.</p>
+        <a href="#contact" class="btn-reveal btn-large">LET'S WORK TOGETHER</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-head" data-aos="fade-up">
+        <h2 class="gradient-heading">My Services</h2>
+        <p>Comprehensive digital solutions tailored to your business needs</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up">
+          <div class="icon-box"><i data-lucide="zap" size="32"></i></div>
+          <h3>GHL Specialist</h3>
+          <p>Advanced funnels, CRM automation, and workflow optimization for maximum efficiency.</p>
+          <a href="#contact" class="btn-reveal">HIRE ME</a>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon-box"><i data-lucide="code" size="32"></i></div>
+          <h3>Web Development</h3>
+          <p>High-performance React and WordPress solutions with modern architecture.</p>
+          <a href="#contact" class="btn-reveal">HIRE ME</a>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-box"><i data-lucide="layers" size="32"></i></div>
+          <h3>Automation Pro</h3>
+          <p>Seamless workflows and API integrations that save time and boost productivity.</p>
+          <a href="#contact" class="btn-reveal">HIRE ME</a>
+        </div>
+        <div class="service-card" data-aos="fade-up">
+          <div class="icon-box"><i data-lucide="palette" size="32"></i></div>
+          <h3>UI/UX Design</h3>
+          <p>Modern, intuitive interfaces designed in Figma for optimal user experience.</p>
+          <a href="#contact" class="btn-reveal">HIRE ME</a>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon-box"><i data-lucide="smartphone" size="32"></i></div>
+          <h3>Responsive Design</h3>
+          <p>Perfect viewing experience across all devices and screen sizes.</p>
+          <a href="#contact" class="btn-reveal">HIRE ME</a>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-box"><i data-lucide="rocket" size="32"></i></div>
+          <h3>SaaS Solutions</h3>
+          <p>Custom landing pages and dashboards built for SaaS products.</p>
+          <a href="#contact" class="btn-reveal">HIRE ME</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="section-head" data-aos="fade-up">
+        <h2 class="gradient-heading">My Skills</h2>
+        <p>Technologies and tools I work with daily</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card" data-aos="fade-up"><img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_1280.png" alt="HTML">
+          <h3>HTML</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="50"><img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_1280.png" alt="CSS">
+          <h3>CSS</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="100"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
+          <h3>JavaScript</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="150"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React">
+          <h3>React</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="200"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg" alt="Git">
+          <h3>Git</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="250"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap">
+          <h3>Bootstrap</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="300"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind">
+          <h3>Tailwind</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="350"><img src="https://www.vectorlogo.zone/logos/wordpress/wordpress-icon.svg" alt="WordPress">
+          <h3>WordPress</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="400"><img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698623513fae0a2c5231e866.png" alt="GHL">
+          <h3>GHL</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="450"><img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma">
+          <h3>Figma</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="500"><img src="https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg" alt="GSAP">
+          <h3>GSAP</h3>
+        </div>
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="550"><img src="https://storage.googleapis.com/msgsndr/rIHhzJuw6ZzM0JvHrXBa/media/698623510a7fd135a2bfa8e0.png" alt="ClickFunnels">
+          <h3>ClickFunnels</h3>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="portfolio" class="container">
+    <div class="section-head" data-aos="fade-up">
+      <h2 class="gradient-heading">Featured Portfolio</h2>
+      <p>Selected projects showcasing my expertise and creativity</p>
+    </div>
+    <div class="portfolio-grid" data-aos="fade-up">
+      <a href="https://hashir-raza.netlify.app/img/projects/Wayne%20Valay%20Animal%20Hospital.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Wayne%20Valay%20Animal%20Hospital.png" alt="Wayne Valay"></div>
+        <div class="project-info">
+          <h3>Wayne Valay Hospital</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/E.V.V.A%20Voice%20Ai.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/E.V.V.A%20Voice%20Ai.png" alt="EVVA AI"></div>
+        <div class="project-info">
+          <h3>E.V.V.A Voice AI</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/Youthful%20MD.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Youthful%20MD.png" alt="Youthful MD"></div>
+        <div class="project-info">
+          <h3>Youthful MD</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/Mechenical%20Crop.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Mechenical%20Crop.png" alt="Mechanical Crop"></div>
+        <div class="project-info">
+          <h3>Mechanical Crop</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/Welhus%20studio.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Welhus%20studio.png" alt="Welhus Studio"></div>
+        <div class="project-info">
+          <h3>Welhus Studio</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/Vratans%20Benefits%20center.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Vratans%20Benefits%20center.png" alt="Vratans"></div>
+        <div class="project-info">
+          <h3>Vratans Benefits Center</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/Aquasition.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Aquasition.png" alt="Aquasition"></div>
+        <div class="project-info">
+          <h3>Aquasition</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/Lawdingo.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Lawdingo.png" alt="Lawdingo"></div>
+        <div class="project-info">
+          <h3>Lawdingo</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+      <a href="https://hashir-raza.netlify.app/img/projects/Championlife%20CRM.png" target="_blank" class="project-card">
+        <div class="project-visual"><img src="https://hashir-raza.netlify.app/img/projects/Championlife%20CRM.png" alt="Champion CRM"></div>
+        <div class="project-info">
+          <h3>Champion CRM</h3><i data-lucide="external-link"></i>
+        </div>
+      </a>
+    
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <h2 class="gradient-heading">Client Testimonials</h2>
+          <p>What my clients say about working with me</p>
+        </div>
+        <div class="swiper testimonial-swiper" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-slide">
+                <div class="quote-icon">"</div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Saifullah completely transformed our digital presence. His GHL automation expertise saved us over 20 hours every week. The attention to detail and professional approach exceeded all our expectations!"</p>
+                <div class="client-info">
+                  <div class="client-avatar"><img src="https://i.pravatar.cc/150?img=12" alt="Michael Chen"></div>
+                  <div class="client-details">
+                    <h4>Michael Chen</h4>
+                    <p>CEO, TechFlow Solutions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-slide">
+                <div class="quote-icon">"</div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Working with Saifullah was an absolute game-changer for our business. Fast, professional, and delivered beyond expectations. Our conversion rate increased by 40% within the first month!"</p>
+                <div class="client-info">
+                  <div class="client-avatar"><img src="https://i.pravatar.cc/150?img=45" alt="Sarah Martinez"></div>
+                  <div class="client-details">
+                    <h4>Sarah Martinez</h4>
+                    <p>Founder, Growth Labs Inc</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-slide">
+                <div class="quote-icon">"</div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Incredible attention to detail and modern design sense. Saifullah built us a stunning website that perfectly represents our brand and delivers real business results. Highly recommended!"</p>
+                <div class="client-info">
+                  <div class="client-avatar"><img src="https://i.pravatar.cc/150?img=33" alt="David Thompson"></div>
+                  <div class="client-details">
+                    <h4>David Thompson</h4>
+                    <p>Director, Elite Digital Agency</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-slide">
+                <div class="quote-icon">"</div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"The level of expertise and creativity Saifullah brings is unmatched. He understood our vision and brought it to life with precision. Our users love the new experience!"</p>
+                <div class="client-info">
+                  <div class="client-avatar"><img src="https://i.pravatar.cc/150?img=68" alt="Emily Rodriguez"></div>
+                  <div class="client-details">
+                    <h4>Emily Rodriguez</h4>
+                    <p>Marketing Head, Innovate Co</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <div class="contact-info-side" data-aos="fade-right">
+          <h2 class="gradient-heading">Get In Touch</h2>
+          <p>Have a project in mind? Let's discuss how I can help transform your vision into reality and drive exceptional results for your business.</p>
+          <div class="contact-method">
+            <div class="contact-icon"><i data-lucide="mail" size="24"></i></div>
+            <div class="contact-text">
+              <h4>Email Me</h4>
+              <p>ghl.expert99@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon"><i data-lucide="message-square" size="24"></i></div>
+            <div class="contact-text">
+              <h4>Live Chat</h4>
+              <p>Available on WhatsApp/Telegram</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon"><i data-lucide="phone" size="24"></i></div>
+            <div class="contact-text">
+              <h4>Call Me</h4>
+              <p>+92 (316) 35-35206</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-card" data-aos="fade-left">
+          <form class="form-grid">
+            <div class="input-group">
+              <input type="text" id="name" placeholder=" " required>
+              <label for="name">Your Name</label>
+            </div>
+            <div class="input-group">
+              <input type="email" id="email" placeholder=" " required>
+              <label for="email">Your Email</label>
+            </div>
+            <div class="input-group full-width">
+              <textarea id="message" placeholder=" " required></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            <div class="full-width">
+              <button type="submit" class="btn-reveal btn-large" style="width: 100%;">
+                <span>SEND MESSAGE</span>
+                <i data-lucide="send" size="20"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-logo logo">Saifullah<span>.</span></div>
+      <div class="footer-socials">
+        <a href="#"><i data-lucide="github" size="20"></i></a>
+        <a href="#"><i data-lucide="linkedin" size="20"></i></a>
+        <a href="#"><i data-lucide="twitter" size="20"></i></a>
+        <a href="#"><i data-lucide="instagram" size="20"></i></a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">&copy; 2026 Saifullah Portfolio. Crafted with passion and precision.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <script>
+    lucide.createIcons();
+    AOS.init({ duration: 1000, once: true });
+  </script>
+
+  <script src="./portfolio.js"></script>
+</body>
+</html>

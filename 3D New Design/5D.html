@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Futuristic Floating Menu</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*{margin:0; padding:0; box-sizing:border-box;}
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0d0d1a;
+  font-family:'Verdana', sans-serif;
+}
+
+.container{
+  display:flex;
+  gap:80px;
+  align-items:flex-start;
+}
+
+/* MENU */
+ul{
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+}
+
+ul li{
+  list-style:none;
+  width:260px;
+  padding:22px 30px;
+  background: linear-gradient(145deg, #2b2b3f, #1f1f30);
+  border-radius:18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 -2px 5px rgba(255,255,255,0.05);
+  cursor:pointer;
+  position:relative;
+  transition:all 0.6s cubic-bezier(0.25,1,0.5,1);
+  transform-style: preserve-3d;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+/* Hover Animation */
+ul li:hover{
+  transform: translateY(-10px) rotateZ(-2deg) scale(1.07);
+  box-shadow:0 25px 45px rgba(0,0,0,0.7), inset 0 -2px 10px rgba(255,255,255,0.1);
+}
+
+/* Icon */
+ul li i{
+  font-size:22px;
+  color:#aaa;
+  transition:all 0.5s ease;
+}
+
+ul li:hover i{
+  color:#ffd700;
+  transform: scale(1.2) rotateZ(15deg);
+}
+
+/* Text */
+ul li a{
+  text-decoration:none;
+  color:#ccc;
+  font-weight:600;
+  letter-spacing:0.05em;
+  transition:all 0.5s ease;
+}
+
+ul li:hover a{
+  color:#fff;
+}
+
+/* TAB OVERLAY */
+.tab-container{
+  position:relative;
+  width:500px;
+}
+
+.tab-box{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  padding:30px;
+  background: rgba(30,30,50,0.9);
+  backdrop-filter: blur(10px);
+  border-radius:18px;
+  color:#eee;
+  display:none;
+  box-shadow:0 15px 50px rgba(0,0,0,0.7);
+  transform:scale(0.95);
+  opacity:0;
+  transition: all 0.5s ease;
+}
+
+.tab-box.active{
+  display:block;
+  opacity:1;
+  transform:scale(1);
+}
+
+.tab-box h2{
+  margin-bottom:12px;
+  color:#ffd700;
+}
+
+.tab-box p{
+  line-height:1.5;
+  color:#ccc;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <ul>
+    <li onclick="openTab('web')"><i class="fas fa-laptop-code"></i><a>Web Developer</a></li>
+    <li onclick="openTab('wp')"><i class="fab fa-wordpress"></i><a>WordPress Developer</a></li>
+    <li onclick="openTab('ghl')"><i class="fas fa-network-wired"></i><a>GHL Developer</a></li>
+    <li onclick="openTab('figma')"><i class="fab fa-figma"></i><a>Figma Designer</a></li>
+    <li onclick="openTab('uiux')"><i class="fas fa-pencil-ruler"></i><a>UI/UX Designer</a></li>
+    <li onclick="openTab('auto')"><i class="fas fa-robot"></i><a>Automation Expert</a></li>
+  </ul>
+
+  <div class="tab-container">
+    <div class="tab-box" id="web">
+      <h2>Web Developer</h2>
+      <p>I build modern responsive websites using HTML, CSS, JavaScript & latest frameworks.</p>
+    </div>
+    <div class="tab-box" id="wp">
+      <h2>WordPress Developer</h2>
+      <p>Custom WordPress themes, Elementor, WooCommerce & high converting websites.</p>
+    </div>
+    <div class="tab-box" id="ghl">
+      <h2>GHL Developer</h2>
+      <p>GoHighLevel funnels, automations, CRM setups and full marketing systems.</p>
+    </div>
+    <div class="tab-box" id="figma">
+      <h2>Figma Designer</h2>
+      <p>Pixel perfect UI mockups, wireframes and interactive prototypes.</p>
+    </div>
+    <div class="tab-box" id="uiux">
+      <h2>UI / UX Designer</h2>
+      <p>Modern interface designing with user experience best practices.</p>
+    </div>
+    <div class="tab-box" id="auto">
+      <h2>Automation Expert</h2>
+      <p>Zapier + API + automation workflows to save time & boost conversions.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openTab(id){
+  document.querySelectorAll(".tab-box").forEach(box=>{
+    box.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "ghl-expert",
+  "version": "1.0.0",
+  "description": "GHL Expert AI Chatbot with secure Groq backend",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}

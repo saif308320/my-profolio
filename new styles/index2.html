@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neon Animated Register / Login (Reel style)</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    /* ========== Google font ========== */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    :root{
+      --bg1: #0b0b0f;
+      --glass: rgba(20,20,25,0.55);
+      --neon-a: #ff0066;
+      --neon-b: #00f0ff;
+      --accent: rgba(0,240,255,0.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% 20%, rgba(255,0,100,0.04), transparent 8%),
+        radial-gradient(1000px 500px at 95% 80%, rgba(0,255,255,0.03), transparent 10%),
+        var(--bg1);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
+      -webkit-font-smoothing:antialiased;
+      color:#e9eef3;
+    }
+
+    /* container that will have rotating neon border */
+    .neon-card{
+      position:relative;
+      width:380px;
+      max-width:92vw;
+      border-radius:22px;
+      padding:28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow:
+        0 6px 30px rgba(0,0,0,0.6),
+        0 0 60px rgba(0,0,0,0.35) inset;
+      overflow:hidden;
+      transition:0.7s ease;
+      backdrop-filter: blur(6px) saturate(120%);
+    }
+
+    /* animated rotating gradient border (outside) */
+    .neon-card::before{
+      content:"";
+      position:absolute;
+      inset:-3px;
+      z-index:0;
+      border-radius:26px;
+      background: conic-gradient(from 0deg, var(--neon-a), var(--neon-b), #8a00ff, var(--neon-a));
+      filter: blur(14px);
+      opacity:0.95;
+      transform: rotate(0deg);
+      animation: spin 5.8s linear infinite;
+    }
+    .neon-card::after{
+      content:"";
+      position:absolute;
+      inset:6px;
+      z-index:1;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+      pointer-events:none;
+    }
+
+    @keyframes spin{
+      to { transform: rotate(360deg); }
+    }
+
+    /* content inside card */
+    .card-inner{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-rows:auto 1fr;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo-dot{
+      width:44px;height:44px;border-radius:10px;
+      background: linear-gradient(135deg,var(--neon-a),var(--neon-b));
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 0 16px rgba(0,240,255,0.12);
+      display:flex;align-items:center;justify-content:center;font-weight:700;
+      color:white;
+      transform:translateZ(0);
+    }
+    .brand h3{margin:0; color:var(--neon-b); letter-spacing:0.6px}
+    .brand p{margin:0;font-size:12px;color:#bfc9d3;opacity:0.9}
+
+    /* main area holding panels */
+    .panel-wrap{
+      margin-top:6px;
+      position:relative;
+      height:380px;
+      transition:height .6s ease;
+    }
+
+    /* two panels: register (left) and login (right) simulated via translate */
+    .panels{
+      position:absolute;
+      inset:0;
+      display:flex;
+      transition:transform .7s cubic-bezier(.2,.9,.25,1);
+      will-change:transform;
+    }
+
+    .panel{
+      width:380px;
+      max-width:92vw;
+      padding:22px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.18));
+      margin-right:18px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      transform-origin:center;
+    }
+
+    /* small floating neon tag */
+    .tag{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:linear-gradient(90deg, rgba(255,0,102,0.12), rgba(0,240,255,0.08));
+      color:var(--neon-b);
+      font-weight:600;
+      font-size:13px;
+      margin-bottom:8px;
+      box-shadow:0 6px 26px rgba(0,0,0,0.5);
+    }
+
+    h2{
+      margin:8px 0 18px 0;
+      color:var(--neon-b);
+      letter-spacing:1px;
+      font-size:20px;
+    }
+
+    /* form input style */
+    .field{
+      position:relative;
+      margin:14px 0;
+    }
+
+    .field input{
+      width:100%;
+      padding:14px 44px 14px 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:10px;
+      outline:none;
+      color:#eaf6ff;
+      font-size:15px;
+      transition:box-shadow .25s ease, border-color .25s ease, transform .15s;
+      backdrop-filter: blur(4px);
+    }
+
+    .field .ic{
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--neon-b);
+      font-size:18px;
+      opacity:0.95;
+    }
+
+    /* floating label effect */
+    .field label{
+      position:absolute;
+      left:12px;
+      top:12px;
+      pointer-events:none;
+      color:#a9b7c3;
+      font-size:13px;
+      transition:all .22s ease;
+    }
+    .field input:focus { box-shadow: 0 6px 30px rgba(0,240,255,0.06); border-color: rgba(0,240,255,0.28); transform:translateY(-1px); }
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label{
+      transform: translateY(-12px) scale(.90);
+      color:var(--neon-a);
+      letter-spacing:0.4px;
+    }
+
+    /* neon action button */
+    .btn{
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:none;
+      font-weight:600;
+      letter-spacing:1px;
+      cursor:pointer;
+      background: linear-gradient(90deg, var(--neon-a), var(--neon-b));
+      color:white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 30px rgba(0,240,255,0.08);
+      transition: transform .14s ease, box-shadow .14s ease, opacity .14s;
+    }
+    .btn:active{ transform: translateY(1px) }
+    .btn[aria-pressed="true"]{ opacity:.92; box-shadow: 0 14px 46px rgba(0,0,0,0.7); }
+
+    .muted{font-size:13px;color:#b9c6cf;margin-top:12px;text-align:center}
+
+    /* toggle small links row */
+    .switch-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:12px;
+      gap:10px;
+    }
+
+    .switch-row a{
+      color:var(--neon-b);
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    /* subtle animated accent stripe on left */
+    .accent-stripe{
+      position:absolute;
+      left:18px;
+      top:22px;
+      bottom:22px;
+      width:6px;
+      border-radius:6px;
+      background: linear-gradient(180deg, rgba(255,0,102,0.8), rgba(0,240,255,0.9));
+      box-shadow: 0 0 18px rgba(0,240,255,0.06);
+      opacity:0.06;
+      transform:scaleY(1.08);
+    }
+
+    /* small sparkle/flash animation on the logo-dot for reel vibe */
+    .logo-dot::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:8px;
+      background: radial-gradient(circle at 20% 18%, rgba(255,255,255,0.25), transparent 12%);
+      mix-blend-mode: overlay;
+      animation: pulse 3.5s ease-in-out infinite;
+      opacity:0.8;
+    }
+    @keyframes pulse{
+      0%{ transform:scale(0.98); opacity:0.85 }
+      50%{ transform:scale(1.03); opacity:1 }
+      100%{ transform:scale(0.98); opacity:0.85 }
+    }
+
+    /* when .right-shift class applied, show login panel (right) */
+    .right-shift .panels{ transform: translateX(-398px); } /* panel width + gap */
+    /* adjust height when login visible to mimic expansion like reels */
+    .right-shift .panel-wrap{ height:320px }
+
+    /* responsive tweaks */
+    @media (max-width:420px){
+      .neon-card::before{ filter: blur(10px) }
+      .panel{ margin-right:12px }
+      .right-shift .panels{ transform: translateX(-calc(100% + 12px)) }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="neon-card" id="card">
+    <div class="card-inner">
+      <div class="brand">
+        <div class="logo-dot">S</div>
+        <div>
+          <h3>SkillSphere</h3>
+          <p>Make it shine — animated form demo</p>
+        </div>
+      </div>
+
+      <div class="panel-wrap" id="panelWrap">
+        <div class="panels" id="panels">
+          <!-- Register panel (left) -->
+          <div class="panel register-panel">
+            <span class="tag">New • Hot</span>
+            <h2>Create Account</h2>
+
+            <div class="field">
+              <input id="r_name" placeholder=" " type="text" required>
+              <label for="r_name">Full name</label>
+              <i class='bx bx-user ic'></i>
+            </div>
+
+            <div class="field">
+              <input id="r_email" placeholder=" " type="email" required>
+              <label for="r_email">Email</label>
+              <i class='bx bx-envelope ic'></i>
+            </div>
+
+            <div class="field">
+              <input id="r_pass" placeholder=" " type="password" required>
+              <label for="r_pass">Password</label>
+              <i class='bx bx-lock-alt ic'></i>
+            </div>
+
+            <button class="btn" id="toLogin">Register & Continue</button>
+
+            <div class="switch-row">
+              <div class="muted">Already registered?</div>
+              <a id="showLogin">Login →</a>
+            </div>
+          </div>
+
+          <!-- Login panel (right) -->
+          <div class="panel login-panel">
+            <span class="tag">Welcome back</span>
+            <h2>Sign In</h2>
+
+            <div class="field">
+              <input id="l_email" placeholder=" " type="text" required>
+              <label for="l_email">Username or Email</label>
+              <i class='bx bx-user ic'></i>
+            </div>
+
+            <div class="field">
+              <input id="l_pass" placeholder=" " type="password" required>
+              <label for="l_pass">Password</label>
+              <i class='bx bx-lock-alt ic'></i>
+            </div>
+
+            <button class="btn" id="loginBtn">Login</button>
+
+            <div class="switch-row">
+              <a id="showRegister">← Create account</a>
+              <div class="muted">Forgot? <a style="color:var(--neon-a);text-decoration:none">Reset</a></div>
+            </div>
+          </div>
+        </div> <!-- panels -->
+        <div class="accent-stripe" aria-hidden="true"></div>
+      </div> <!-- panel-wrap -->
+
+    </div> <!-- card-inner -->
+  </div> <!-- neon-card -->
+
+  <script>
+    // DOM refs
+    const card = document.getElementById('card');
+    const showLogin = document.getElementById('showLogin');
+    const showRegister = document.getElementById('showRegister');
+    const toLogin = document.getElementById('toLogin');
+
+    // helper to add class that shifts panels right (show login)
+    function revealLogin(){
+      card.classList.add('right-shift');
+      // small reel-like flash pulse
+      card.animate([
+        { boxShadow: '0 6px 30px rgba(0,0,0,0.6)', transform:'scale(1)' },
+        { boxShadow: '0 0 120px rgba(0,240,255,0.09)', transform:'scale(1.01)' },
+        { boxShadow: '0 6px 30px rgba(0,0,0,0.6)', transform:'scale(1)' }
+      ], { duration:420, easing:'ease-out' });
+    }
+
+    function revealRegister(){
+      card.classList.remove('right-shift');
+      card.animate([
+        { transform:'translateY(0)' },
+        { transform:'translateY(-4px)' },
+        { transform:'translateY(0)' }
+      ], { duration:380, easing:'cubic-bezier(.2,.9,.25,1)' });
+    }
+
+    showLogin.addEventListener('click', (e)=>{ e.preventDefault(); revealLogin(); });
+    toLogin.addEventListener('click', (e)=>{ e.preventDefault(); revealLogin(); });
+    showRegister.addEventListener('click', (e)=>{ e.preventDefault(); revealRegister(); });
+
+    // Make clicking inside inputs create subtle glow on the rotating border for extra reel effect
+    const inputs = document.querySelectorAll('.field input');
+    inputs.forEach(inp=>{
+      inp.addEventListener('focus', ()=> {
+        card.style.setProperty('--glow', '1');
+        // temporarily speed spin
+        const before = window.getComputedStyle(card, '::before');
+        card.animate([{ transform:'rotate(0deg)' }, { transform:'rotate(360deg)' }], { duration:2400, easing:'linear' });
+      });
+    });
+
+    // small keyboard shortcut: press 'L' to open login, 'R' to open register
+    document.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase() === 'l') revealLogin();
+      if(e.key.toLowerCase() === 'r') revealRegister();
+    });
+
+    // Prevent form default submission so demo stays visible
+    document.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', (ev)=>{
+        ev.preventDefault();
+        // quick micro-feedback
+        b.animate([{ transform:'translateY(0)' }, { transform:'translateY(-6px)' }, { transform:'translateY(0)' }], { duration:280 });
+        // small toast effect (optional)
+        const old = document.querySelector('.tmp-toast');
+        if(old) old.remove();
+        const t = document.createElement('div');
+        t.className = 'tmp-toast';
+        t.textContent = 'Demo button — replace with real submit';
+        Object.assign(t.style, {
+          position:'fixed', left:'50%', bottom:'36px', transform:'translateX(-50%)',
+          background:'rgba(0,0,0,0.6)', color:'#fff', padding:'8px 12px', borderRadius:'999px',
+          fontSize:'13px', zIndex:9999, opacity:0
+        });
+        document.body.appendChild(t);
+        t.animate([{opacity:0},{opacity:1}],{duration:220}).onfinish = ()=>{
+          setTimeout(()=> t.animate([{opacity:1},{opacity:0}],{duration:400}).onfinish = ()=> t.remove(), 900);
+        };
+      });
+    });
+  </script>
+
+</body>
+</html>

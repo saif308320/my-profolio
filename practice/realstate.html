@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Estate Agency</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+
+body, html { height:100%; }
+
+.slider-container { position: relative; width:100%; height:85vh; overflow:hidden; }
+
+.slide {
+    position:absolute; top:0; left:0;
+    width:100%; height:100%;
+    opacity:0;
+    transition:opacity 0.6s ease-in-out;
+    background-size:cover;
+    background-position:center;
+}
+
+.slide.active { opacity:1; }
+
+.slide::before {
+    content:''; position:absolute; top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.35);
+}
+
+.slide-content {
+    position:relative; z-index:2;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 8%;
+    gap:30px;
+}
+
+/* Content Boxes */
+.content-box {
+    max-width:480px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+/* Image Boxes */
+.image-box {
+    flex:1; display:flex; align-items:center; justify-content:center;
+}
+.image-box img {
+    max-width:380px;
+    max-height:70%;
+    border-radius:15px;
+    object-fit:cover;
+}
+
+/* Slide specific layout */
+.slide-1 .slide-content { flex-direction: row; }        /* text left, image right */
+.slide-2 .slide-content { flex-direction: row-reverse; } /* text right, image left */
+
+/* Text styling */
+.brand { display:flex; align-items:center; gap:8px; font-size:14px; color:#ff5733; font-weight:600; }
+.brand-icon { font-size:18px; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight:800; line-height:1.2; color:#fff; }
+.description { font-size: clamp(0.95rem,1.8vw,1.1rem); color:#ddd; line-height:1.6; }
+
+/* Buttons */
+.button-group { display:flex; gap:15px; flex-wrap:wrap; margin-top:10px; }
+.btn { padding:15px 35px; font-size:15px; font-weight:600; border:none; cursor:pointer; transition:all 0.3s ease; text-transform:uppercase; letter-spacing:0.5px; }
+.btn-primary { background:#ff5733; color:white; }
+.btn-primary:hover { background:#e64a2e; transform:translateY(-2px); box-shadow:0 5px 20px rgba(255,87,51,0.3);}
+.btn-secondary { background:white; color:#333; border:2px solid #e0e0e0; }
+.btn-secondary:hover { border-color:#ff5733; color:#ff5733; }
+
+.play-button { width:55px; height:55px; border-radius:50%; background:white; border:none; display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+.play-button:hover { transform: scale(1.1); box-shadow:0 6px 25px rgba(0,0,0,0.15); }
+.play-button::after { content:''; width:0; height:0; border-left:15px solid #ff5733; border-top:10px solid transparent; border-bottom:10px solid transparent; margin-left:3px; }
+
+/* Navigation Arrows */
+.nav-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.9); border:none; width:50px; height:50px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:24px; color:#333; z-index:10; transition:all 0.3s ease; }
+.nav-arrow:hover { background:white; transform:translateY(-50%) scale(1.1); }
+.nav-arrow.prev { left:30px; }
+.nav-arrow.next { right:30px; }
+
+/* Dots */
+.dots { position:absolute; bottom:30px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:10; }
+.dot { width:12px; height:12px; border-radius:50%; background:rgba(0,0,0,0.2); cursor:pointer; transition:all 0.3s ease; }
+.dot.active { background:#ff5733; width:30px; border-radius:6px; }
+
+/* Responsive */
+@media(max-width:992px){
+    .slide-content { flex-direction:column-reverse; justify-content:center; text-align:center; padding:0 5%; gap:25px; }
+    .content-box { max-width:100%; align-items:center; text-align:center; }
+    .image-box img { max-width:70%; max-height:50%; }
+    .btn { padding:12px 25px; font-size:14px; }
+    h1 { font-size:2rem; }
+    .description { font-size:0.95rem; }
+    .play-button { margin:10px auto 0; }
+}
+
+@media(max-width:576px){
+    .image-box img { max-width:90%; max-height:50%; }
+    .button-group { flex-direction:column; align-items:center; }
+    h1 { font-size:1.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="slider-container">
+    <!-- Slide 1 -->
+    <div class="slide slide-1 active" style="background-image: linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://storage.googleapis.com/msgsndr/B5YDEP6QgDzORXSUZejK/media/695fc6930597df65d3dd2d62.jpg');">
+        <div class="slide-content">
+            <div class="content-box">
+                <div class="brand"><span class="brand-icon">🏠</span><span>Real Estate Agency</span></div>
+                <h1>The Right Place of House Finding</h1>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <div class="button-group">
+                    <button class="btn btn-primary">Make An Enquiry</button>
+                    <button class="play-button" aria-label="Play video"></button>
+                </div>
+            </div>
+            <div class="image-box">
+                <img src="https://storage.googleapis.com/msgsndr/B5YDEP6QgDzORXSUZejK/media/695fc56d9c38cb1c8483577f.png" alt="House Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide slide-2" style="background-image: linear-gradient(to left, rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://storage.googleapis.com/msgsndr/B5YDEP6QgDzORXSUZejK/media/695fc6930597df2749dd2d61.jpg');">
+        <div class="slide-content">
+            <div class="image-box">
+                <img src="https://storage.googleapis.com/msgsndr/B5YDEP6QgDzORXSUZejK/media/695fc56d9c38cb1c8483577f.png" alt="House Image">
+            </div>
+            <div class="content-box">
+                <div class="brand"><span class="brand-icon">🏠</span><span>Real Estate Agency</span></div>
+                <h1>Find Your Dream House By Us</h1>
+                <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <div class="button-group">
+                    <button class="btn btn-primary">OUR SERVICES</button>
+                    <button class="btn btn-secondary">LEARN MORE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <button class="nav-arrow prev" aria-label="Previous slide">‹</button>
+    <button class="nav-arrow next" aria-label="Next slide">›</button>
+
+    <!-- Dots -->
+    <div class="dots">
+        <span class="dot active" data-slide="0"></span>
+        <span class="dot" data-slide="1"></span>
+    </div>
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const totalSlides = slides.length;
+
+function showSlide(n){
+    slides.forEach(s=>s.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
+    currentSlide = (n+totalSlides)%totalSlides;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+}
+
+function nextSlide(){ showSlide(currentSlide+1); }
+function prevSlide(){ showSlide(currentSlide-1); }
+
+document.querySelector('.next').addEventListener('click', nextSlide);
+document.querySelector('.prev').addEventListener('click', prevSlide);
+dots.forEach(dot=>dot.addEventListener('click',()=>showSlide(parseInt(dot.getAttribute('data-slide')))));
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Masterpiece | 4 Elite Clients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400;1,6..96,900&family=Plus+Jakarta+Sans:wght@200;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        :root {
+            --gold: #caa35c;
+            --bg: #f4f4f4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stage {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Large Background Number */
+        .bg-num {
+            position: absolute;
+            font-size: 35vw;
+            font-weight: 900;
+            color: rgba(202, 163, 92, 0.05);
+            line-height: 0.8;
+            z-index: 1;
+            font-family: 'Bodoni Moda', serif;
+            pointer-events: none;
+        }
+
+        .slider-container {
+            width: 85%;
+            max-width: 1400px;
+            height: 70vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            gap: 100px;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== TEXT SIDE ===== */
+        .text-wrap {
+            perspective: 1000px;
+        }
+
+        .quote-main {
+            font-family: 'Bodoni Moda', serif;
+            font-size: clamp(40px, 5vw, 70px);
+            font-style: italic;
+            font-weight: 400;
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            transform-origin: left;
+        }
+
+        .quote-main b {
+            font-weight: 900;
+            background: linear-gradient(45deg, #8a6d3b, #caa35c, #8a6d3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .gold-dash {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .client-info h5 {
+            font-size: 18px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* ===== IMAGE SIDE ===== */
+        .img-wrap {
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-inner {
+            width: 100%;
+            height: 550px;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .img-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+        }
+
+        /* Floating Badge */
+        .badge {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: var(--gold);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 10px;
+            z-index: 5;
+            box-shadow: 0 10px 30px rgba(202, 163, 92, 0.4);
+        }
+
+        /* ===== NAV CONTROLS ===== */
+        .navigation {
+            position: absolute;
+            bottom: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 150px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            font-size: 12px;
+            letter-spacing: 8px;
+            cursor: pointer;
+            color: #1a1a1a;
+            font-weight: 700;
+            position: relative;
+            background: none;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover { color: var(--gold); }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover::after { width: 100%; }
+
+    </style>
+</head>
+<body>
+
+<div class="stage">
+    <div class="bg-num" id="bg-num">01</div>
+
+    <div class="slider-container">
+        <div class="slide active">
+            <div class="text-wrap">
+                <h2 class="quote-main">“The <b>precision</b> of their vision redefined our future.”</h2>
+                <div class="client-info">
+                    <div class="gold-dash"></div>
+                    <h5>Dr. Evelyn Reed</h5>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <div class="badge">ESTATE LEADER</div>
+                <div class="img-inner">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="text-wrap">
+                <h2 class="quote-main">“A seamless transition into <b>unmatched</b> luxury.”</h2>
+                <div class="client-info">
+                    <div class="gold-dash"></div>
+                    <h5>Marcus Vane</h5>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <div class="badge">VC PARTNER</div>
+                <div class="img-inner">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="text-wrap">
+                <h2 class="quote-main">“Every detail reflects a <b>legacy</b> of excellence.”</h2>
+                <div class="client-info">
+                    <div class="gold-dash"></div>
+                    <h5>Sienna Croft</h5>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <div class="badge">ART COLLECTOR</div>
+                <div class="img-inner">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="text-wrap">
+                <h2 class="quote-main">“The gold standard of <b>institutional</b> investment.”</h2>
+                <div class="client-info">
+                    <div class="gold-dash"></div>
+                    <h5>Julian Thorne</h5>
+                </div>
+            </div>
+            <div class="img-wrap">
+                <div class="badge">CHIEF STRATEGIST</div>
+                <div class="img-inner">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1000&auto=format&fit=crop">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prev">PREVIOUS</button>
+        <button class="nav-btn" id="next">NEXT VISION</button>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let isBusy = false;
+
+    function move(dir) {
+        if (isBusy) return;
+        isBusy = true;
+
+        const outgoing = slides[current];
+        current = (current + dir + slides.length) % slides.length;
+        const incoming = slides[current];
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                outgoing.classList.remove('active');
+                isBusy = false;
+                document.getElementById('bg-num').innerText = `0${current + 1}`;
+            }
+        });
+
+        // OUT: Blur and Scale
+        tl.to(outgoing.querySelector('.text-wrap'), { filter: 'blur(20px)', opacity: 0, y: -50, duration: 0.8, ease: "power2.inOut" })
+          .to(outgoing.querySelector('.img-inner'), { scale: 0.8, filter: 'blur(20px)', opacity: 0, duration: 0.8, ease: "power2.inOut" }, "-=0.8");
+
+        // IN: Reveal and Focus
+        tl.set(incoming, { visibility: 'visible', opacity: 1 })
+          .fromTo(incoming.querySelector('.text-wrap'), 
+            { filter: 'blur(20px)', opacity: 0, y: 50 }, 
+            { filter: 'blur(0px)', opacity: 1, y: 0, duration: 1.2, ease: "expo.out" })
+          .fromTo(incoming.querySelector('.img-inner'), 
+            { scale: 1.5, filter: 'blur(20px)', opacity: 0 }, 
+            { scale: 1, filter: 'blur(0px)', opacity: 1, duration: 1.2, ease: "expo.out" }, "-=1")
+          .fromTo(incoming.querySelector('img'), { scale: 1.5 }, { scale: 1.2, duration: 2.5 }, "-=1")
+          .fromTo(document.getElementById('bg-num'), { y: 100, opacity: 0 }, { y: 0, opacity: 0.05, duration: 1 }, "-=1.5");
+
+        incoming.classList.add('active');
+    }
+
+    document.getElementById('next').onclick = () => move(1);
+    document.getElementById('prev').onclick = () => move(-1);
+
+    // Subtle Parallax for that "Ultra" feel
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 30;
+        const y = (e.clientY / window.innerHeight - 0.5) * 30;
+        gsap.to('.img-inner', { x: x, y: y, rotateY: x/2, duration: 1.5 });
+        gsap.to('.text-wrap', { x: -x, y: -y, duration: 1.5 });
+    });
+</script>
+
+</body>
+</html>

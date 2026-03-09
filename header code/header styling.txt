@@ -1,0 +1,339 @@
+<header style="width:100%; padding:15px 50px; display:flex; justify-content:space-between; align-items:center; background: linear-gradient(135deg, #0b2f2c, #061f1d); box-shadow: 0 4px 12px rgba(0,0,0,0.3); position:relative; z-index:1000;">
+
+    <style>
+        /* Logo */
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #c7af82, #ffffff, #e6dcc6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(-2deg);
+            filter: drop-shadow(0 0 8px rgba(199,175,130,0.8));
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #c7af82;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover underline animation */
+        nav a::after {
+            content: '';
+            position: absolute;
+            left:0;
+            bottom:-5px;
+            width:0%;
+            height:2px;
+            background: linear-gradient(90deg, #c7af82, #ffffff, #e6dcc6);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover::after {
+            width:100%;
+        }
+
+        nav a:hover {
+            color:#ffffff;
+            text-shadow: 0 0 6px rgba(199,175,130,0.7);
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            padding: 10px 25px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #c7af82, #ffffff, #e6dcc6);
+            color: #1a1a1a;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 10px rgba(199,175,130,0.5);
+            border:none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(199,175,130,0.6);
+            background: linear-gradient(135deg, #ffffff, #c7af82, #e6dcc6);
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            nav {
+                gap: 15px;
+                margin-top:10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <!-- Logo -->
+    <div class="logo">UltraBrand</div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- CTA -->
+    <button class="cta-btn">Get Started</button>
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    next seocnd header code   ------> 
+<header class="ultra-modern-header">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* HEADER BASE */
+    .ultra-modern-header {
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg,#061A1F,#0b2f2c);
+        z-index:1;
+        box-shadow:0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* HEADER CONTENT */
+    .header-content {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        width:100%;
+        z-index:2;
+    }
+
+    /* LOGO */
+    .logo {
+        font-size:30px;
+        font-weight:900;
+        background: linear-gradient(45deg,#c7af82,#ffffff,#e6dcc6);
+        -webkit-background-clip:text;
+        color:transparent;
+        cursor:pointer;
+        transition:all 0.4s ease;
+    }
+    .logo:hover{
+        transform:scale(1.1);
+        text-shadow:0 0 12px rgba(199,175,130,0.9);
+    }
+
+    /* NAVIGATION */
+    nav{
+        display:flex;
+        gap:30px;
+    }
+    nav a{
+        text-decoration:none;
+        font-weight:600;
+        color:#c7af82;
+        position:relative;
+        transition:all 0.4s ease;
+    }
+    nav a::after{
+        content:'';
+        position:absolute;
+        bottom:-5px; left:0;
+        width:0%; height:2px;
+        background:linear-gradient(90deg,#c7af82,#ffffff,#e6dcc6);
+        transition:width 0.4s ease;
+    }
+    nav a:hover::after{
+        width:100%;
+    }
+    nav a:hover{
+        color:#fff;
+        text-shadow:0 0 8px rgba(199,175,130,0.7);
+    }
+
+    /* CTA BUTTON */
+    .cta-btn{
+        padding:12px 28px;
+        border-radius:25px;
+        background:linear-gradient(135deg,#c7af82,#ffffff,#e6dcc6);
+        color:#1a1a1a;
+        font-weight:700;
+        border:none;
+        cursor:pointer;
+        transition:all 0.4s ease;
+        box-shadow:0 4px 12px rgba(199,175,130,0.5);
+        position:relative;
+        overflow:hidden;
+    }
+    .cta-btn:hover{
+        transform:translateY(-4px) scale(1.05);
+        box-shadow:0 10px 25px rgba(199,175,130,0.7);
+        color:#000;
+    }
+
+    /* SOCIAL ICONS */
+    .social-icons{
+        display:flex;
+        gap:20px;
+    }
+    .social-icons a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        width:45px;
+        height:45px;
+        border-radius:50%;
+        color:#c7af82;
+        background:transparent;
+        font-size:18px;
+        border:2px solid #c7af82;
+        transition:all 0.4s ease;
+        text-decoration:none;
+    }
+    .social-icons a:hover{
+        background:linear-gradient(135deg,#c7af82,#ffffff,#e6dcc6);
+        color:#000;
+        box-shadow:0 8px 15px rgba(199,175,130,0.6);
+        transform:scale(1.1);
+        border:none;
+    }
+
+    /* BACKGROUND ANIMATION */
+    #header-bg{
+        position:absolute;
+        top:0; left:0;
+        width:100%; height:100%;
+        z-index:0;
+    }
+
+    @media(max-width:768px){
+        .header-content{
+            flex-direction:column;
+            gap:12px;
+        }
+        nav{
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:15px;
+        }
+        .social-icons{
+            justify-content:center;
+        }
+        .cta-btn{
+            margin-top:10px;
+        }
+    }
+
+  </style>
+
+  <!-- Background Canvas -->
+  <canvas id="header-bg"></canvas>
+
+  <div class="header-content">
+    <div class="logo">UltraBrand</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <button class="cta-btn">Get Started</button>
+    
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <!-- JS Background Animation -->
+  <script>
+    const canvas = document.getElementById('header-bg');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = 120; // header height
+    const particles = [];
+
+    class Particle{
+      constructor(){
+        this.x=Math.random()*width;
+        this.y=Math.random()*height;
+        this.size=Math.random()*3+1;
+        this.speed=Math.random()*0.5+0.2;
+        this.color=`rgba(199,175,130,${Math.random()*0.5+0.2})`;
+      }
+      update(){
+        this.x+=this.speed;
+        if(this.x>width)this.x=0;
+      }
+      draw(){
+        ctx.fillStyle=this.color;
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    for(let i=0;i<120;i++)particles.push(new Particle());
+
+    function animate(){
+      ctx.clearRect(0,0,width,height);
+      for(let p of particles){
+        p.update();
+        p.draw();
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize',()=>{
+      width=canvas.width=window.innerWidth;
+      height=canvas.height=120;
+    });
+  </script>
+
+</header>
+

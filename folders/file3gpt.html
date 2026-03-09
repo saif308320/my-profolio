@@ -1,0 +1,701 @@
+<!-- Portfolio Section Start -->
+<style>
+body {
+  background: #0F172A;
+  color: #E0E7FF;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.portfolio-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 0 24px;
+}
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #00D9FF;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.profile-block {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 56px;
+  background: rgba(124,62,237,0.08);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(124,62,237,0.12);
+}
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00D9FF;
+  box-shadow: 0 4px 24px rgba(0,217,255,0.18);
+}
+.profile-info h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #00D9FF;
+  margin-bottom: 8px;
+}
+.profile-info h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #7C3AED;
+  margin-bottom: 12px;
+}
+.profile-info p {
+  font-size: 1.1rem;
+  color: #A5B4FC;
+  margin-bottom: 18px;
+}
+.profile-badges {
+  margin-bottom: 12px;
+}
+.badge {
+  display: inline-block;
+  background: #FF6B35;
+  color: #fff;
+  border-radius: 16px;
+  padding: 6px 18px;
+  margin: 0 6px 6px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255,107,53,0.12);
+}
+.stats-cards {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+.stat-card {
+  background: rgba(247,184,1,0.08);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(247,184,1,0.08);
+  border: 2px solid #F7B801;
+}
+.stat-icon {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  color: #F7B801;
+}
+.stat-number {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #00D9FF;
+}
+.stat-label {
+  font-size: 1rem;
+  color: #A5B4FC;
+  margin-top: 4px;
+}
+.skills-section {
+  margin-bottom: 48px;
+}
+.skills-section h2 {
+  color: #7C3AED;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.skills-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.skill-card {
+  background: rgba(0,217,255,0.08);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,217,255,0.08);
+  border: 2px solid #00D9FF;
+  transition: transform 0.2s;
+}
+.skill-card:hover {
+  transform: scale(1.06);
+  border-color: #7C3AED;
+}
+.skill-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00D9FF;
+  margin-bottom: 6px;
+}
+.skill-desc {
+  font-size: 1rem;
+  color: #A5B4FC;
+  margin-bottom: 12px;
+}
+.skill-bar-bg {
+  background: #1A1A2E;
+  border-radius: 8px;
+  height: 10px;
+  width: 100%;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  background: linear-gradient(90deg, #00D9FF 60%, #7C3AED 100%);
+  height: 100%;
+  border-radius: 8px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.projects-section {
+  margin-bottom: 48px;
+}
+.projects-section h2 {
+  color: #FF6B35;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+.project-card {
+  background: rgba(124,62,237,0.10);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(124,62,237,0.08);
+  border: 2px solid #7C3AED;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.project-card:hover {
+  transform: scale(1.04) translateY(-6px);
+  box-shadow: 0 8px 32px rgba(124,62,237,0.18);
+  border-color: #00D9FF;
+}
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #7C3AED;
+  margin-bottom: 6px;
+}
+.project-badge {
+  display: inline-block;
+  background: #F7B801;
+  color: #0F172A;
+  border-radius: 12px;
+  padding: 3px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.project-tech {
+  font-size: 0.95rem;
+  color: #A5B4FC;
+  margin-bottom: 8px;
+}
+.project-rating {
+  color: #F7B801;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.project-cta {
+  display: inline-block;
+  background: linear-gradient(90deg, #00D9FF 60%, #7C3AED 100%);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.project-cta:hover {
+  background: linear-gradient(90deg, #7C3AED 60%, #00D9FF 100%);
+  transform: scale(1.08);
+}
+.testimonials-section {
+  margin-bottom: 48px;
+}
+.testimonials-section h2 {
+  color: #F7B801;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.testimonials-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.testimonial-card {
+  background: rgba(255,107,53,0.10);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 260px;
+  box-shadow: 0 2px 12px rgba(255,107,53,0.08);
+  border: 2px solid #FF6B35;
+  transition: transform 0.2s;
+}
+.testimonial-card:hover {
+  transform: scale(1.04);
+  border-color: #F7B801;
+}
+.testimonial-stars {
+  color: #F7B801;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+.testimonial-quote {
+  font-size: 1rem;
+  color: #A5B4FC;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.testimonial-client {
+  font-size: 0.95rem;
+  color: #E0E7FF;
+  font-weight: 600;
+}
+.education-section, .awards-section, .blog-section, .social-section {
+  margin-bottom: 48px;
+}
+.education-section h2, .awards-section h2, .blog-section h2, .social-section h2 {
+  color: #00D9FF;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.education-grid, .awards-grid, .blog-grid, .social-grid {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.education-card, .award-card, .blog-card, .social-card {
+  background: rgba(0,217,255,0.08);
+  border-radius: 16px;
+  padding: 24px 32px;
+  min-width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,217,255,0.08);
+  border: 2px solid #00D9FF;
+  transition: transform 0.2s;
+}
+.education-card:hover, .award-card:hover, .blog-card:hover, .social-card:hover {
+  transform: scale(1.06);
+  border-color: #7C3AED;
+}
+.education-title, .award-title, .blog-title, .social-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #7C3AED;
+  margin-bottom: 6px;
+}
+.education-desc, .award-desc, .blog-desc, .social-desc {
+  font-size: 1rem;
+  color: #A5B4FC;
+  margin-bottom: 12px;
+}
+.status-badge {
+  display: inline-block;
+  background: #F7B801;
+  color: #0F172A;
+  border-radius: 12px;
+  padding: 3px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.blog-meta {
+  font-size: 0.9rem;
+  color: #FF6B35;
+  margin-bottom: 8px;
+}
+.social-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: #00D9FF;
+  transition: color 0.2s;
+}
+.social-card:hover .social-icon {
+  color: #FF6B35;
+}
+.cta-section {
+  background: linear-gradient(90deg, #00D9FF 60%, #7C3AED 100%);
+  padding: 48px 0;
+  text-align: center;
+  border-radius: 24px;
+  margin-bottom: 48px;
+}
+.cta-section h2 {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+.cta-section p {
+  font-size: 1.1rem;
+  color: #E0E7FF;
+  margin-bottom: 24px;
+}
+.cta-section .cta-btn {
+  background: #fff;
+  color: #00D9FF;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,217,255,0.12);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.cta-section .cta-btn:hover {
+  background: #7C3AED;
+  color: #fff;
+  transform: scale(1.08);
+}
+@media (max-width: 900px) {
+  .profile-block, .stats-cards, .skills-grid, .testimonials-grid, .education-grid, .awards-grid, .blog-grid, .social-grid {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+</style>
+
+<div class="portfolio-container">
+
+  <!-- Personal Intro/Profile -->
+  <div class="profile-block">
+    <img src="your-image.jpg" alt="Saifullah" class="profile-img" />
+    <div class="profile-info">
+      <h1>Saifullah</h1>
+      <h2>GHL Developer | Father: Asif Soomro</h2>
+      <div class="profile-badges">
+        <span class="badge">Innovative</span>
+        <span class="badge">Detail-Oriented</span>
+        <span class="badge">Fast Delivery</span>
+        <span class="badge">Client-Focused</span>
+      </div>
+      <p>
+        Passionate about building modern, high-converting web experiences.<br>
+        20+ projects delivered in 1 month.<br>
+        Expert in HTML, CSS, JavaScript, and GHL Convert Building.<br>
+        Email: saifullah@email.com | LinkedIn: linkedin.com/in/saifullah | GitHub: github.com/saifullah
+      </p>
+    </div>
+  </div>
+
+  <!-- Stats Block -->
+  <div class="stats-cards">
+    <div class="stat-card">
+      <div class="stat-icon">🚀</div>
+      <div class="stat-number" id="projects-count">0</div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⭐</div>
+      <div class="stat-number" id="satisfaction-count">0</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💡</div>
+      <div class="stat-number" id="skills-count">0</div>
+      <div class="stat-label">Core Skills</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-number" id="experience-count">0</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+  </div>
+
+  <!-- Skills & Expertise -->
+  <div class="skills-section">
+    <h2>Skills & Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-title">HTML</div>
+        <div class="skill-desc">Semantic, accessible markup for modern web apps.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">CSS</div>
+        <div class="skill-desc">Responsive, animated, and visually stunning styles.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">JavaScript</div>
+        <div class="skill-desc">Dynamic, interactive, and high-performance code.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">GHL Convert Building</div>
+        <div class="skill-desc">Expert in GHL page builder and conversion funnels.</div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Projects -->
+  <div class="projects-section">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">E-Commerce Platform</div>
+        <div class="project-badge">E-Commerce</div>
+        <div class="project-tech">HTML, CSS, JS, GHL</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">SaaS Dashboard</div>
+        <div class="project-badge">SaaS</div>
+        <div class="project-tech">HTML, CSS, JS</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Landing Page Redesign</div>
+        <div class="project-badge">Landing Page</div>
+        <div class="project-tech">HTML, CSS, GHL</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Client Portal</div>
+        <div class="project-badge">Portal</div>
+        <div class="project-tech">HTML, CSS, JS</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Mobile Responsive Site</div>
+        <div class="project-badge">Mobile</div>
+        <div class="project-tech">HTML, CSS</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Interactive Web App</div>
+        <div class="project-badge">Web App</div>
+        <div class="project-tech">HTML, CSS, JS</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Business Website</div>
+        <div class="project-badge">Business</div>
+        <div class="project-tech">HTML, CSS, JS, GHL</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Conversion Funnel</div>
+        <div class="project-badge">Funnel</div>
+        <div class="project-tech">HTML, CSS, GHL</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Portfolio Website</div>
+        <div class="project-badge">Portfolio</div>
+        <div class="project-tech">HTML, CSS, JS</div>
+        <div class="project-rating">★★★★★</div>
+        <a href="#" class="project-cta">View Project</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="testimonials-section">
+    <h2>Client Testimonials</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Saifullah delivered our project ahead of schedule and exceeded expectations. Highly recommended!"</div>
+        <div class="testimonial-client">- John Doe, CEO</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"Professional, creative, and always available for support. Will work again!"</div>
+        <div class="testimonial-client">- Jane Smith, Marketing Lead</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"The best GHL developer I've worked with. Fast and reliable."</div>
+        <div class="testimonial-client">- Alex Lee, Product Manager</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education & Certifications -->
+  <div class="education-section">
+    <h2>Education & Certifications</h2>
+    <div class="education-grid">
+      <div class="education-card">
+        <div class="education-title">Bachelor's in Computer Science</div>
+        <div class="education-desc">XYZ University, 2022</div>
+        <span class="status-badge">Completed</span>
+      </div>
+      <div class="education-card">
+        <div class="education-title">Full Stack Bootcamp</div>
+        <div class="education-desc">ABC Institute, 2023</div>
+        <span class="status-badge">Completed</span>
+      </div>
+      <div class="education-card">
+        <div class="education-title">Google UX Certification</div>
+        <div class="education-desc">Google, 2024</div>
+        <span class="status-badge">In Progress</span>
+      </div>
+      <div class="education-card">
+        <div class="education-title">AWS Certified Developer</div>
+        <div class="education-desc">Amazon, 2023</div>
+        <span class="status-badge">Completed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Awards & Achievements -->
+  <div class="awards-section">
+    <h2>Awards & Achievements</h2>
+    <div class="awards-grid">
+      <div class="award-card">
+        <div class="award-title">Best Web Developer 2024</div>
+        <div class="award-desc">Awarded by XYZ Community</div>
+      </div>
+      <div class="award-card">
+        <div class="award-title">Top Rated Developer</div>
+        <div class="award-desc">Upwork, 2023</div>
+      </div>
+      <div class="award-card">
+        <div class="award-title">Innovation Leader</div>
+        <div class="award-desc">Hackathon Winner, 2022</div>
+      </div>
+      <div class="award-card">
+        <div class="award-title">Client Choice Award</div>
+        <div class="award-desc">Freelancer.com, 2023</div>
+      </div>
+      <div class="award-card">
+        <div class="award-title">Project Excellence</div>
+        <div class="award-desc">ABC Agency, 2022</div>
+      </div>
+      <div class="award-card">
+        <div class="award-title">Team Leadership</div>
+        <div class="award-desc">XYZ Startup, 2023</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog/Articles -->
+  <div class="blog-section">
+    <h2>Blog & Articles</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-title">React Best Practices</div>
+        <div class="blog-meta">Jan 2024 • 5 min read</div>
+        <div class="blog-desc">Tips and tricks for building scalable React apps.</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">GHL Convert Mastery</div>
+        <div class="blog-meta">Feb 2024 • 7 min read</div>
+        <div class="blog-desc">How to maximize conversions with GHL builder.</div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-title">Modern CSS Animations</div>
+        <div class="blog-meta">Mar 2024 • 6 min read</div>
+        <div class="blog-desc">Create stunning animations with pure CSS.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social Links -->
+  <div class="social-section">
+    <h2>Connect With Me</h2>
+    <div class="social-grid">
+      <div class="social-card">
+        <div class="social-icon">🐙</div>
+        <div class="social-title">GitHub</div>
+        <div class="social-desc">github.com/saifullah</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon">💼</div>
+        <div class="social-title">LinkedIn</div>
+        <div class="social-desc">linkedin.com/in/saifullah</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon">✉️</div>
+        <div class="social-title">Email</div>
+        <div class="social-desc">saifullah@email.com</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon">🌐</div>
+        <div class="social-title">Portfolio</div>
+        <div class="social-desc">saifullah.com</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon">🐦</div>
+        <div class="social-title">Twitter/X</div>
+        <div class="social-desc">@saifullah</div>
+      </div>
+    </div>
+    <button class="cta-btn" style="margin-top:24px;">Download Resume</button>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="cta-section">
+    <h2>Ready to Bring Your Vision to Life?</h2>
+    <p>Let's build something amazing together. Start your project or schedule a call now!</p>
+    <button class="cta-btn">Start a Project</button>
+    <button class="cta-btn">Schedule a Call</button>
+  </div>
+</div>
+
+<!-- JavaScript for Animated Counters and Skill Bars -->
+<script>
+function animateCounter(id, end, duration) {
+  let start = 0;
+  const step = Math.ceil(end / (duration / 20));
+  const el = document.getElementById(id);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= end) {
+      el.textContent = end;
+      clearInterval(timer);
+    } else {
+      el.textContent = start;
+    }
+  }, 20);
+}
+window.addEventListener('DOMContentLoaded', () => {
+  animateCounter('projects-count', 25, 1200);
+  animateCounter('satisfaction-count', 100, 1200);
+  animateCounter('skills-count', 4, 1200);
+  animateCounter('experience-count', 2, 1200);
+
+  document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+    setTimeout(() => {
+      bar.style.width = bar.getAttribute('data-width');
+    }, 400);
+  });
+});
+</script>

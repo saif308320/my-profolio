@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Professional Elite Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        :root {
+            --gold: #caa35c;
+            --bg: #f4f4f4;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #555;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-wrapper {
+            width: 95%;
+            max-width: 1300px;
+            height: 650px;
+            background: var(--white);
+            position: relative;
+            box-shadow: 0 60px 120px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            padding: 0 100px; /* Big side padding to avoid text touching edges */
+            overflow: hidden;
+        }
+
+        /* ===== SLIDE LAYOUT ===== */
+        .slide {
+            position: absolute;
+            left: 100px;
+            right: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 0;
+            visibility: hidden;
+            gap: 80px; /* Proper gap between text and image */
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== LEFT SIDE: TEXT ===== */
+        .content-side {
+            width: 55%;
+        }
+
+        .quote-icon {
+            color: var(--gold);
+            font-size: 80px;
+            font-family: 'Playfair Display', serif;
+            line-height: 0;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: var(--text-dark);
+            line-height: 1.3;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        .author-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-line {
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .author-details h4 {
+            font-size: 22px;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .author-details p {
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* ===== RIGHT SIDE: IMAGE ===== */
+        .image-side {
+            width: 35%;
+            height: 480px;
+            position: relative;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* The Gold Frame (Decorative but professional) */
+        .gold-frame {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold);
+            z-index: 1;
+        }
+
+        /* ===== NAVIGATION HUD ===== */
+        .nav-controls {
+            position: absolute;
+            bottom: 50px;
+            right: 100px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .arrow-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            background: white;
+            font-size: 18px;
+        }
+
+        .arrow-btn:hover {
+            background: var(--gold);
+            color: white;
+            border-color: var(--gold);
+        }
+
+        .slide-counter {
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="slide active">
+        <div class="content-side">
+            <span class="quote-icon">“</span>
+            <h2 class="testimonial-text">The architectural precision here is simply unparalleled. It’s a masterpiece.</h2>
+            <div class="author-box">
+                <div class="author-line"></div>
+                <div class="author-details">
+                    <h4>Dr. Evelyn Reed</h4>
+                    <p>Institutional Partner</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-side">
+            <div class="gold-frame"></div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1500&auto=format&fit=crop">
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="content-side">
+            <span class="quote-icon">“</span>
+            <h2 class="testimonial-text">Acquiring high-value assets has never been this seamless or transparent.</h2>
+            <div class="author-box">
+                <div class="author-line"></div>
+                <div class="author-details">
+                    <h4>Marcus Vane</h4>
+                    <p>Asset Strategist</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-side">
+            <div class="gold-frame"></div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1500&auto=format&fit=crop">
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-controls">
+        <div class="slide-counter" id="counter">01 / 02</div>
+        <div class="arrow-btn" id="prev">←</div>
+        <div class="arrow-btn" id="next">→</div>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    let isMoving = false;
+
+    function move(dir) {
+        if (isMoving) return;
+        isMoving = true;
+
+        const outSlide = slides[current];
+        current = (current + dir + slides.length) % slides.length;
+        const inSlide = slides[current];
+
+        const tl = gsap.timeline({
+            onComplete: () => {
+                outSlide.classList.remove('active');
+                isMoving = false;
+                document.getElementById('counter').innerText = `0${current + 1} / 02`;
+            }
+        });
+
+        // Professional Transition: Smooth Fade & Slight Slide
+        tl.to(outSlide.querySelector('.content-side'), { x: -30, opacity: 0, duration: 0.5 })
+          .to(outSlide.querySelector('.image-side'), { x: 30, opacity: 0, duration: 0.5 }, "-=0.5")
+          .set(outSlide, { visibility: 'hidden' });
+
+        tl.set(inSlide, { visibility: 'visible', opacity: 1 })
+          .fromTo(inSlide.querySelector('.content-side'), { x: 50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" })
+          .fromTo(inSlide.querySelector('.image-side'), { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, "-=0.6");
+
+        inSlide.classList.add('active');
+    }
+
+    document.getElementById('next').onclick = () => move(1);
+    document.getElementById('prev').onclick = () => move(-1);
+</script>
+
+</body>
+</html>

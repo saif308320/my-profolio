@@ -1,0 +1,239 @@
+<!-- ================= MODERN SLIDERS (HTML + CSS + JS) ================= -->
+
+<style>
+/* ===== GLOBAL ===== */
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+/* ===== SLIDER 1 : HERO SLIDER ===== */
+.hero-slider {
+  position: relative;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  padding: 80px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  opacity: 0.85;
+  margin-bottom: 30px;
+}
+
+.hero-content button {
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-content button:hover {
+  transform: translateY(-3px);
+}
+
+.hero-image {
+  width: 40%;
+}
+
+.hero-image img {
+  width: 100%;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.4));
+}
+
+/* ===== SLIDER 2 : MINIMAL FEATURE SLIDER ===== */
+.minimal-slider {
+  background: #ffffff;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.minimal-slide {
+  display: none;
+  max-width: 700px;
+  margin: auto;
+}
+
+.minimal-slide.active {
+  display: block;
+}
+
+.minimal-slide h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.minimal-slide p {
+  font-size: 17px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.minimal-slide span {
+  display: inline-block;
+  padding: 12px 26px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== SLIDER 3 : CARD CAROUSEL ===== */
+.card-slider {
+  background: #0b0b0b;
+  padding: 80px 40px;
+  color: #fff;
+}
+
+.cards {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.5s ease;
+}
+
+.card {
+  min-width: 320px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  transition: 0.4s;
+}
+
+.card.active {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.15);
+}
+
+.card p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card h4 {
+  color: #00f2ff;
+  font-size: 16px;
+}
+
+/* ===== NAV BUTTONS ===== */
+.slider-nav {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.slider-nav button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 5px;
+  background: #aaa;
+  cursor: pointer;
+}
+
+.slider-nav button.active {
+  background: #000;
+}
+</style>
+
+<!-- ===== SLIDER 1 ===== -->
+<div class="slider-wrapper">
+  <div class="hero-slider">
+    <div class="hero-content">
+      <h1>Modern Digital Experience</h1>
+      <p>Clean, powerful and professional web solutions built for the future.</p>
+      <button>Get Started</button>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e" />
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDER 2 ===== -->
+<div class="slider-wrapper minimal-slider">
+  <div class="minimal-slide active">
+    <h2>Minimal Design</h2>
+    <p>Focused layouts that improve readability and conversion.</p>
+    <span>Learn More</span>
+  </div>
+
+  <div class="minimal-slide">
+    <h2>Responsive Layout</h2>
+    <p>Perfect experience across desktop, tablet, and mobile.</p>
+    <span>Explore</span>
+  </div>
+
+  <div class="slider-nav">
+    <button class="dot active"></button>
+    <button class="dot"></button>
+  </div>
+</div>
+
+<!-- ===== SLIDER 3 ===== -->
+<div class="slider-wrapper card-slider">
+  <div class="cards" id="cardTrack">
+    <div class="card active">
+      <p>“This design transformed our online presence completely.”</p>
+      <h4>Client One</h4>
+    </div>
+    <div class="card">
+      <p>“Clean, modern and extremely professional work.”</p>
+      <h4>Client Two</h4>
+    </div>
+    <div class="card">
+      <p>“Outstanding experience with top-level execution.”</p>
+      <h4>Client Three</h4>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== MINIMAL SLIDER JS ===== */
+const slides = document.querySelectorAll('.minimal-slide');
+const dots = document.querySelectorAll('.dot');
+let index = 0;
+
+setInterval(() => {
+  slides[index].classList.remove('active');
+  dots[index].classList.remove('active');
+  index = (index + 1) % slides.length;
+  slides[index].classList.add('active');
+  dots[index].classList.add('active');
+}, 3500);
+
+/* ===== CARD SLIDER JS ===== */
+let cardIndex = 0;
+const cards = document.querySelectorAll('.card');
+
+setInterval(() => {
+  cards.forEach(card => card.classList.remove('active'));
+  cardIndex = (cardIndex + 1) % cards.length;
+  cards[cardIndex].classList.add('active');
+}, 3000);
+</script>
+
+<!-- ================= END ================= -->

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* Flex Container for Cards */
+.testimonial-wrapper {
+    display: flex;
+    gap: 20px;
+    max-width: 1100px;
+    overflow-x: auto;
+    padding: 40px 20px;
+    scroll-behavior: smooth;
+}
+
+/* Hide Scrollbar */
+.testimonial-wrapper::-webkit-scrollbar { display: none; }
+
+.testimonial-card {
+    flex: 0 0 340px;
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+    position: relative;
+    border: 1px solid #f1f1f1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+/* Yellow Stars */
+.stars {
+    color: #ffc107;
+    font-size: 24px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+/* EXACT QUOTE DESIGN (Hollow/Outline) */
+.quote-bg {
+    position: absolute;
+    top: 80px; /* stars ke neeche */
+    left: 32px; /* left side */
+    font-size: 140px;
+    font-family: 'Georgia', serif;
+    line-height: 0;
+    color: transparent;
+    -webkit-text-stroke: 2px #f0635f;
+    opacity: 0.4;
+    z-index: 0;
+    user-select: none;
+}
+
+/* Testimonial text */
+.test-content {
+    font-size: 16px;
+    color: #777;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+/* User Profile Section */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-meta h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #222;
+    font-weight: 700;
+}
+
+.user-meta span {
+    font-size: 12px;
+    color: #f0635f;
+    font-weight: 400;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .testimonial-wrapper {
+        padding: 20px 10px;
+        gap: 15px;
+    }
+    .testimonial-card {
+        flex: 0 0 90%;
+        padding: 25px;
+        font-size: 14px;
+    }
+    .quote-bg {
+        top: 70px;
+        font-size: 100px;
+        left: 20px;
+    }
+    .stars {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="testimonial-wrapper" id="slider">
+    <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-bg">’’</div>
+        <p class="test-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet libero et justo tristique vulputate. Vestibulum congue vulputate nibh, eget consectetur nibh euismod at.</p>
+        <div class="profile">
+            <img src="https://assets.cdn.filesafe.space/rIHhzJuw6ZzM0JvHrXBa/media/695ac38105b5119bc02d43fb.jpg" alt="Jeremy">
+            <div class="user-meta">
+                <h4>Jeremy Wilson</h4>
+                <span>Office Worker</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-bg">’’</div>
+        <p class="test-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet libero et justo tristique vulputate. Vestibulum congue vulputate nibh, eget consectetur nibh euismod at.</p>
+        <div class="profile">
+            <img src="https://assets.cdn.filesafe.space/rIHhzJuw6ZzM0JvHrXBa/media/695ac3813ccdd61c9e00233e.jpg" alt="Anna">
+            <div class="user-meta">
+                <h4>Anna Rose</h4>
+                <span>Doctor</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-bg">’’</div>
+        <p class="test-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet libero et justo tristique vulputate. Vestibulum congue vulputate nibh, eget consectetur nibh euismod at.</p>
+        <div class="profile">
+            <img src="https://assets.cdn.filesafe.space/rIHhzJuw6ZzM0JvHrXBa/media/695ac3816e700e2998570f27.jpg" alt="Jacob">
+            <div class="user-meta">
+                <h4>Jacob Anderson</h4>
+                <span>Student</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <div class="quote-bg">’’</div>
+        <p class="test-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sit amet libero et justo tristique vulputate. Vestibulum congue vulputate nibh, eget consectetur nibh euismod at.</p>
+        <div class="profile">
+            <img src="https://assets.cdn.filesafe.space/rIHhzJuw6ZzM0JvHrXBa/media/695ac3813ccdd6da1400233f.jpg" alt="Sarah">
+            <div class="user-meta">
+                <h4>Sarah Jenkins</h4>
+                <span>Designer</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const slider = document.getElementById('slider');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+// Mouse Drag
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseup', () => isDown = false);
+slider.addEventListener('mouseleave', () => isDown = false);
+window.addEventListener('mouseup', () => isDown = false);
+slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    slider.scrollLeft = scrollLeft - (x - startX) * 2;
+});
+
+// Auto Slide Desktop + Mobile
+setInterval(() => {
+    if (!isDown) {
+        const card = slider.querySelector('.testimonial-card');
+        const gap = window.innerWidth < 768 ? 15 : 20;
+        const width = card.offsetWidth + gap;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (slider.scrollLeft >= maxScroll - 5) {
+            slider.scrollLeft = 0;
+        } else {
+            slider.scrollLeft += width;
+        }
+    }
+}, 3500);
+</script>
+
+</body>
+</html>

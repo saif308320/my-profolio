@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Client Stories Slider</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* WRAPPER FOR SHADOW */
+.cs-right{
+  position:relative;
+}
+
+/* LEFT SHADOW */
+.cs-right::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:80px;
+  height:100%;
+  pointer-events:none;
+  z-index:5;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.12),
+    rgba(0,0,0,0)
+  );
+}
+
+.cs-slider{
+  display:flex;
+  gap:30px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:20px;
+  cursor:grab;
+}
+
+.cs-slider::-webkit-scrollbar{
+  height:6px;
+}
+.cs-slider::-webkit-scrollbar-thumb{
+  background:#999;
+  border-radius:10px;
+}
+
+.cs-card{
+  min-width:420px;
+  background:#fff;
+  padding:40px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.05);
+  margin-top:20px;
+}
+
+.cs-stars{
+  color:#c9a46a;
+  letter-spacing:3px;
+  font-size:18px;
+}
+
+.cs-text{
+  margin:25px 0 40px;
+  color:#555;
+  line-height:1.7;
+}
+
+.cs-user{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.cs-user img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.cs-user h4{
+  margin:0;
+  font-size:16px;
+}
+
+.cs-user span{
+  font-size:12px;
+  color:#999;
+}
+</style>
+</head>
+
+<body>
+
+<section class="client-stories">
+  <div class="cs-right">
+    <div class="cs-slider" id="csSlider">
+
+      <div class="cs-card">
+        <div class="cs-stars">★★★★★</div>
+        <p class="cs-text">"The team at [Company Name] made finding our dream home an absolute pleasure. Their attention to detail and understanding of our needs were exceptional. We couldn't be"</p>
+        <div class="cs-user">
+          <img src="https://i.pravatar.cc/100?img=32">
+          <div>
+            <h4>Eleanor Vance</h4>
+            <span>LUXURY APARTMENT BUYER</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card">
+        <div class="cs-stars">★★★★★</div>
+        <p class="cs-text">"Selling our estate felt daunting, but [Company Name] handled everything with unparalleled professionalism. The marketing was superb, attracting the perfect buyer"</p>
+        <div class="cs-user">
+          <img src="https://i.pravatar.cc/100?img=12">
+          <div>
+            <h4>Marcus Thorne</h4>
+            <span>ESTATE SELLER</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card">
+        <div class="cs-stars">★★★★★</div>
+        <p class="cs-text">"As a first-time homebuyer, I was nervous, but [Company Name] guided me through every step. Their expertise and patience were invaluable. I highly recommend their services"</p>
+        <div class="cs-user">
+          <img src="https://i.pravatar.cc/100?img=45">
+          <div>
+            <h4>Sophia Grant</h4>
+            <span>PROPERTY INVESTOR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card">
+        <div class="cs-stars">★★★★★</div>
+        <p class="cs-text">"We were looking for a very specific type of property, and [Company Name] delivered beyond our expectations. Their advanced search tools and local knowledge are second"</p>
+        <div class="cs-user">
+          <img src="https://i.pravatar.cc/100?img=22">
+          <div>
+            <h4>Daniel Reed</h4>
+            <span>HOME BUYER</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card">
+        <div class="cs-stars">★★★★★</div>
+        <p class="cs-text">"The process of acquiring my new office space was incredibly efficient and professional. [Company Name] understood my commercial needs perfectly and found an ideal location."</p>
+        <div class="cs-user">
+          <img src="https://i.pravatar.cc/100?img=36">
+          <div>
+            <h4>Olivia Brown</h4>
+            <span>SELLER</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card">
+        <div class="cs-stars">★★★★★</div>
+        <p class="cs-text">"As a first-time homebuyer, I was nervous, but [Company Name] guided me through every step. Their expertise and patience were invaluable. I highly recommend their services"</p>
+        <div class="cs-user">
+          <img src="https://i.pravatar.cc/100?img=18">
+          <div>
+            <h4>James Walker</h4>
+            <span>REAL ESTATE CLIENT</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+const slider = document.getElementById("csSlider");
+let isDown=false,startX,scrollLeft;
+
+slider.addEventListener("mousedown",e=>{
+  isDown=true;
+  startX=e.pageX-slider.offsetLeft;
+  scrollLeft=slider.scrollLeft;
+});
+
+slider.addEventListener("mouseup",()=>isDown=false);
+slider.addEventListener("mouseleave",()=>isDown=false);
+
+slider.addEventListener("mousemove",e=>{
+  if(!isDown) return;
+  e.preventDefault();
+  const x=e.pageX-slider.offsetLeft;
+  slider.scrollLeft=scrollLeft-(x-startX)*2;
+});
+</script>
+
+</body>
+</html>

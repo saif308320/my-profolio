@@ -1,0 +1,70 @@
+
+/* first navbar  start  */
+body{
+  margin-top: 20px;
+}
+.navbar2 {
+  display: flex;
+  justify-content: center; /* center horizontal */
+  align-items: center;     /* center vertical */
+  background: #444;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.navbar2 input {
+  width: 300px;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  
+}
+
+.nav-links a{
+  color: #f2f2f2;
+  text-decoration: none;
+  padding-right: 300px;
+  font-size: 26px;
+}
+.nav-links a:hover{
+  color: #04AA6D;
+}
+
+/* second navbar start  */
+
+.navbar3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  height: 70px;
+  
+
+}
+
+.navbar3 a{
+
+  text-decoration: none;
+  font-size: 26px;
+  padding: 20px;
+  color: black;
+  padding: 1px;
+
+
+}
+.navbar3 input {
+  width: 300px;
+  height: 40px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border:none;
+  
+}
+input:focus {
+  outline: none; /* browser ka default outline hata diya */
+  border: 2px solid #4CAF50; /* green border */
+  box-shadow: 0 0 5px #4CAF50; /* green glow */
+}
